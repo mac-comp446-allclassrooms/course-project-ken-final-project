@@ -1,0 +1,77 @@
+:root {
+    --color1: #4f3428;
+    --color2: #b2a62b;
+    --color3: #d8a150;
+    --color4: #a36441;
+    --color5: #581c15;
+
+}
+
+/* Fonts */
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+h3 {
+    font-size: 1rem;
+}
+
+/* Block stuff */
+body {
+    background-color: var(--color4);
+}
+.statblock {
+    border-color: var(--color1);
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 30px;
+    padding: 10px;
+    background-color: var(--color2);
+}
+
+.block_title {
+    border-style: solid;
+    border-color: var(--color5);
+    border-radius: 30px;
+    border-width: 1px;
+    padding-left: 10px;
+
+    background-color: var(--color4);
+}
+
+.subblock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statbox {
+    display: flex;
+    border-style:inset;
+    border-color: var(--color4);
+    border-radius: 30px;
+    border-width: 1px;
+    padding-left: 10px;
+    justify-content: space-between;
+
+    flex-grow: 1;
+}
+
+input[type=text] {
+    background-color: inherit;
+    /* display: flex; */
+    border-style: solid;
+    border-radius: 30px;
+    width: 66%;
+}
+
+input[type=number] {
+    background-color: inherit;
+    display: flex;
+    border-style: solid;
+    border-radius: 30px;
+    width: 4rem;
+    /* flex-grow: 1; */
+}
