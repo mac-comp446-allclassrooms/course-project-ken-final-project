@@ -5,49 +5,77 @@
         <h1>UserName</h1>
         <h1>Character Name</h1>
         <h1>Campaign</h1>
+        <h1>Level</h1>
+        <h1>Exit</h1>
     </div>
 </header>
 
 <body>
     <div id="character_sheet">
         <form>
-            <div class="statblock" id="info_block">
-                <div class="block_title">
-                    <h2>Character Info</h2>
-                </div>
-                <div class="subblock">
-                    <div class="statbox">
-                        <h3>Name: </h3>
-                        <input type="text" id="cName">
+            <div style="display: flex;">
+                <div class="statblock" id="info_block">
+                    <div class="block_title">
+                        <h2>Character Info</h2>
                     </div>
+                
+                    <div class="subblock">
+                        <div class="statbox">
+                            <h3>Name: </h3>
+                            <input type="text" id="cName">
+                        </div>
 
-                    <div class="statbox">
-                        <h3>Species: </h3>
-                        <input type="text" id="cSpecies">
+                        <div class="statbox">
+                            <h3>Species: </h3>
+                            <input type="text" id="cSpecies">
+                        </div>
+                        <div class="statbox">
+                            <h3>Class: </h3>
+                            <input type="text" id="cClass">
+                        </div>
                     </div>
-                    <div class="statbox">
-                        <h3>Class: </h3>
-                        <input type="text" id="cClass">
+                    <div class="subblock">
+                        <div class="statbox">
+                            <h3>Level: </h3>
+                            <input type="number" id="cLevel">
+                        </div>
+                        <div class="statbox">
+                            <h3>Health:</h3>
+                            <input type="number" id="cCurrHealth">
+                            <h3>/</h3>
+                            <input type="number" id="cMaxHealth">
+                        </div>
+                        <div class="statbox">
+                            <h3>Armor Class: </h3>
+                            <input type="number" id="cArmorClass">
+                        </div>
                     </div>
                 </div>
-                <div class="subblock">
-                    <div class="statbox">
-                        <h3>Level: </h3>
-                        <input type="number" id="cLevel">
-                    </div>
-                    <div class="statbox">
-                        <h3>Health:</h3>
-                        <input type="number" id="cCurrHealth">
-                        <h3>/</h3>
-                        <input type="number" id="cMaxHealth">
-                    </div>
-                    <div class="statbox">
-                        <h3>Armor Class: </h3>
-                        <input type="number" id="cArmorClass">
+                <div>
+                    <div class="statblock">
+                        <div class="block_title">
+                            <h2>Wallet</h2>
+                        </div>
+                        <div class="statbox">
+                            <h3>Platinum: </h3>
+                            <input type="number">
+                        </div>
+                        <div class="statbox">
+                            <h3>Gold: </h3>
+                            <input type="number">
+                        </div>
+                        <div class="statbox">
+                            <h3>Silver: </h3>
+                            <input type="number">
+                        </div>
+                        <div class="statbox">
+                            <h3>Copper: </h3>
+                            <input type="number">
+                        </div>
+
                     </div>
                 </div>
             </div>
-
             <div class = "statblock" id="corestatblock">
                 <div class="block_title">
                     <h2>Core Stats</h2>
@@ -81,10 +109,12 @@
                         <input type="number">
                     </div>
                 </div>
-
+                <!-- Add: Subblock for two saving throws and initiative? -->
             </div>
 
             <div class="statblock" id="substatblock">
+                <!-- Maybe generate this programatically using a list of skills? -->
+                <!-- Skill has str skillname, int  score, and an int mod that is derived from the score (add proficiency later?) -->
                 <div class="block_title">
                     <h2>Sub Stats</h2>
                 </div>
@@ -104,6 +134,45 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Add: Combat -->
+            <div class="statblock" id="combatblock">
+                <!-- Add: Weapons-->
+                <div class="block_title" id="weapons_title">
+                    <h2>Weapons</h2>
+                </div>
+                <div class="weapon_display">
+                    <!-- This will essentially be a table in appearance -->
+                    <!-- Headings of weaponName, type(s), range, skill (dropdown if multiple options), modifier, damageType -->
+                    <div class="statbox">
+                        <h3>Daggers</h3>
+                        <p>Finnesse, Melee, Thrown</p>
+                        <select>
+                            <option value="dexterity">Dexterity</option>
+                            <option value="strength">Strength</option>
+                        </select>
+                        <p>Melee, 60ft</p>
+                        <p>1d4(+mod)</p>
+                        <p>Piercing</p>
+                    </div>
+                    <div class="statbox">
+                        <h3>Shortbow</h3>
+                        <p>Ammunition</p>
+                        <select>
+                            <option value="dexterity">Dexterity</option>
+                            <option value="strength">Strength</option>
+                        </select>
+                        <p>80ft</p>
+                        <p>1d6 (+mod)</p>
+                        <p>Piercing</p>
+                    </div>
+                </div>
+                <!-- Add: Spells -->
+                <div class="block_title" id="spells_title" style="display:none;">
+                    <h2>Spells</h2>
+                </div>
+            </div>
+                
         </form>
     </div>
 </body>
