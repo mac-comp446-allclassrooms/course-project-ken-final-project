@@ -21,11 +21,18 @@ h3 {
 
 header {
     overflow: hidden;
+    display: flex;
     background-color: var(--color4);
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+    width: 99%; /* Full width */
     border-bottom: var(--color1);
+    justify-content: space-between;
+}
+
+header > button {
+    background-color: var(--color5);
+    color: var(--color4);
 }
 
 /* Block stuff */
@@ -76,6 +83,7 @@ body {
     /* display: flex; */
     justify-content: space-around;
     border-radius: inherit;
+    padding: 10px;
 }
 
 /* Input styling */
