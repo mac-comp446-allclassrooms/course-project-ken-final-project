@@ -1,9 +1,15 @@
 :root {
-    --color1: #4f3428;
+    /* --color1: #4f3428;
     --color2: #b2a62b;
     --color3: #d8a150;
     --color4: #a36441;
-    --color5: #581c15;
+    --color5: #581c15; */
+    --primary-border: black;
+    --secondary-border: gray;
+    --primary-text: black;
+    --secondary-text: gray;
+    --primary-background: white;
+    --secondary-background: lightgray;
 
 }
 
@@ -19,45 +25,72 @@ h3 {
     font-size: 0.75rem;
 }
 
-header {
-    overflow: hidden;
-    display: flex;
-    background-color: var(--color4);
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 99%; /* Full width */
-    border-bottom: var(--color1);
-    justify-content: space-between;
-}
-
-header > button {
-    background-color: var(--color5);
-    color: var(--color4);
-}
-
-/* Block stuff */
-body {
-    background-color: var(--color4);
-    margin-top: 60px;
-}
-.statblock {
-    border-color: var(--color1);
+/* Login */
+.loginblock {
+    border-color: var(--primary-border);
     border-style: solid;
     border-width: 2px;
     border-radius: 15px; /* max: 30*/
     padding: 10px;
-    background-color: var(--color2);
+    background-color: var(--primary-background);
+    margin: 1px;
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50%;
+}
+
+.loginblock * input[type=text] {
+    border-radius: 5px; /* max: 30*/
+    width: 100px;
+}
+
+.loginblock * button {
+    border-radius: 5px; /* max: 30*/
+}
+
+
+header {
+    overflow: hidden;
+    display: flex;
+    background-color: var(--primary-background);
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 99%; /* Full width */
+    border-bottom: var(--primary-border);
+    justify-content: space-between;
+}
+
+header > button {
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+}
+
+/* Block stuff */
+body {
+    background-color: var(--primary-background);
+    margin-top: 60px;
+}
+
+.statblock {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 15px; /* max: 30*/
+    padding: 10px;
+    background-color: var(--primary-background);
     margin: 1px;
 }
 
 .block_title {
     border-style: solid;
-    border-color: var(--color5);
+    border-color: var(--primary-border);
     border-radius: inherit;
     border-width: 1px;
     padding-left: 10px;
 
-    background-color: var(--color4);
+    background-color: var(--primary-background);
 }
 
 .subblock {
@@ -69,7 +102,7 @@ body {
 .statbox {
     display: flex;
     border-style:inset;
-    border-color: var(--color4);
+    border-color: var(--primary-border);
     border-radius: inherit;
     border-width: 1px;
     padding-left: 10px;
@@ -79,11 +112,11 @@ body {
     flex-grow: 1;
     /* width: 33.3%; */
 }
+
 .weapon_display {
     /* display: flex; */
     justify-content: space-around;
     border-radius: inherit;
-    padding: 10px;
 }
 
 /* Input styling */
