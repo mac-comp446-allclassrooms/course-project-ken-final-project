@@ -1,12 +1,84 @@
-<link rel='stylesheet' type="text/css" href = "../css_styling/charactersheet.css">
+<link rel='stylesheet' type="text/css" href="../css_styling/charactersheet.css">
 <div class="tab">
     <button class="tablinks">Username</button>
     <button class="tablinks">Characters</button>
 </div>
+
 <body>
-    <form>
+    <form id="character_sheet">
+        <div class="contentblock" style="display: flex;">
         <div class="displayblock" id="charprofile">
-            Character Profile
+            <h2>Character Profile</h2>
+            <div class="contentblock" style="display: flex;">
+                <div class="contentblock">
+
+                    <div class="stat">
+                        <label>Name</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="stat">
+                        <label>Species</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="stat">
+                        <label>Class</label>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="contentblock">
+                    <div class="stat">
+                        <label>Level</label>
+                        <input type="number">
+                    </div>
+
+                    <div class="stat">
+                        <label>Health</label>
+                        <input type="number">
+                        <label>/</label>
+                        <input type="number">
+                    </div>
+
+                    <div class="stat">
+                        <label>Armor Class</label>
+                        <input type="number">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="displayblock" id="abilityscores">
+            <h2>Ability Scores</h2>
+            <div class="stat">
+                <label>Charisma</label>
+                <input type="number">
+            </div>
+
+            <div class="stat">
+                <label>Constitution</label>
+                <input type="number">
+            </div>
+
+            <div class="stat">
+                <label>Dexterity</label>
+                <input type="number">
+            </div>
+
+            <div class="stat">
+                <label>Intelligence</label>
+                <input type="number">
+            </div>
+
+            <div class="stat">
+                <label>Strength</label>
+                <input type="number">
+            </div>
+
+            <div class="stat">
+                <label>Wisdom</label>
+                <input type="number">
+            </div>
+        </div>
         </div>
     </form>
 </body>

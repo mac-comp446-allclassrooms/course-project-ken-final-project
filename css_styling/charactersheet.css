@@ -27,8 +27,7 @@ h3 {
     border-radius: 10px;  
 }
   
-  /* Style the buttons that are used to open the tab content */
-  .tab button {
+.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -36,25 +35,23 @@ h3 {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+}
+
+.tab button:hover {
     background-color: var(--primary-background);
     color: var(--primary-text);
-  }
-  
-  /* Create an active/current tablink class */
-  .tab button.active {
+}
+
+.tab button.active {
     background-color: var(--secondary-background);
     color: var(--secondary-text);
-  }
-  
-  body {
-      background-color: var(--primary-background);
-  }
+}
 
-  /* Page */
+body {
+    background-color: var(--primary-background);
+}
+
+/* Page */
 .displayblock {
     border-color: var(--primary-border);
     border-style: solid;
@@ -62,5 +59,37 @@ h3 {
     border-radius: 10px;
     padding: 10px;
     background-color: var(--primary-background);
-    max-width: 33%;
+}
+
+/* .contentblock {
+    display: inline-grid;
+    grid-auto-flow: row;
+    grid-template-columns: 2;
+} */
+
+.stat {
+    display: flex;
+    margin-block: 0.5rem;
+}
+
+.stat > input {
+    margin-inline: 0.5rem;
+    border-color: var(--primary-border);
+    border-style: solid;
+}
+
+.stat > input[type=text] {
+    /* display: flex; */
+    width: 5rem;
+
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.stat > input[type=number] {
+    /* display: flex; */
+    width: 2rem;
+
+    border-width: 1px;
+    border-radius: 10px;
 }

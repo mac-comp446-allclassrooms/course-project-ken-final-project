@@ -20,7 +20,6 @@ h3 {
     font-size: 0.75rem;
 }
 
-/* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid var(--primary-background);
@@ -28,7 +27,6 @@ h3 {
   border-radius: 10px;
 }
 
-/* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: inherit;
   float: left;
@@ -39,13 +37,11 @@ h3 {
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: var(--primary-background);
   color: var(--primary-text);
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
   background-color: var(--secondary-background);
   color: var(--secondary-text);
@@ -55,6 +51,7 @@ body {
     background-color: var(--primary-background);
 }
 
+/* Page */
 .container {
     border-color: var(--primary-border);
     border-style: solid;
@@ -71,5 +68,5 @@ body {
     border-radius: 10px;
     padding: 10px;
     background-color: var(--primary-background);
-    max-width: 33%;
+    max-width: 5rem;
 }
