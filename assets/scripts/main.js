@@ -11,8 +11,11 @@ class Character {
         this.maxhealth = 32;
         this.armorclass = 15;
 
+        
+        this.skills = new Map();
+        this.weapons = new Map();
 
-
+        console.log("Created");
 
         this.abilities = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
 
@@ -23,14 +26,11 @@ class Character {
         this.wisskills = ["Animal Handling", "Insight", "Medicine", "Perception", "Survival"];
         this.chaskills = ["Deception", "Intimidation", "Performance", "Persuasion"];
         
-        this.skills = new Map();
-
-        console.log("Created");
-
         this.generateStats();
 
         this.renderUI();
         console.log("Rendered");
+
     }
     
     // generateStatsMap()
@@ -89,7 +89,7 @@ class Character {
 
         // render abilitiesblock
         this.abilities.forEach(abilityname => {
-            let ability = new Ability(abilityname, 10);
+            let ability = new Ability(abilityname, 12);
             ability.renderElement();
         });
 
@@ -106,13 +106,15 @@ class Ability {
     constructor(name, score) {
         this.name = name;
         this.score = score;
+        this.mod = Math.floor((score-10)/2)
     }
 
     createSkillElement(){
         let newSkill = document.createElement("div");
         newSkill.classList.add("stat");
         newSkill.innerHTML = "<label>" + this.name + "</label>"
-                + '<input type="number" value="10">';
+                + '<input type="number" value="' + this.score + '">'
+                + this.mod;
         return newSkill;
     }
 
@@ -135,8 +137,9 @@ class Skill {
     createSkillElement(){
         let newSkill = document.createElement("div");
         newSkill.classList.add("stat");
-        newSkill.innerHTML = "<label>" + this.name + "</label>"
-                + '<input type="number" value="10">';
+        newSkill.innerHTML = "<label>" + this.name + " <i>(" + this.parent.slice(0, 3) + ")</i>" + "</label>"
+                + '<input type="number" value="' + this.score + '">'
+                + this.mod;
         return newSkill;
     }
 
@@ -148,4 +151,4 @@ class Skill {
     }
 }
 
-const char1 = new Character("Mainty", 3);
+const char1 = new Character("Tav", 3);
