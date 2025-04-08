@@ -68,5 +68,5 @@ body {
     border-radius: 10px;
     padding: 10px;
     background-color: var(--primary-background);
-    max-width: 5rem;
+    max-width: 33%;
 }

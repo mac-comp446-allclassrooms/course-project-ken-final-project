@@ -11,40 +11,42 @@
             <div class="statblock" id="profileblock">
                 <h2>Character Profile</h2>
                 <div class="contentblock" style="display: flex;">
-                    <div class="contentblock">
-                        <div class="stat">
-                            <label>Name</label>
-                            <input type="text" id="namedisplay">
-                        </div>
+                    <table>
+                        <tr class="stat">
+                            <td>Name</td>
+                            <td><input type="text" id="namedisplay"></td>
+                        </tr>
 
-                        <div class="stat">
-                            <label>Species</label>
-                            <input type="text" id="speciesdisplay">
-                        </div>
+                        <tr class="stat">
+                            <td>Species</td>
+                            <td><input type="text" id="speciesdisplay"></td>
+                        </tr>
 
-                        <div class="stat">
-                            <label>Class</label>
-                            <input type="text" id="classdisplay">
-                        </div>
-                    </div>
-                    <div class="contentblock">
-                        <div class="stat">
-                            <label>Level</label>
-                            <input type="number" id="leveldisplay">
-                        </div>
+                        <tr class="stat">
+                            <td>Class</td>
+                            <td><input type="text" id="classdisplay"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr class="stat">
+                            <td>Level</td>
+                            <td><input type="number" id="leveldisplay"></td>
+                        </tr>
 
-                        <div class="stat">
-                            <label>Health</label>
-                            <input type="number" id="currhealthdisplay">
-                            <label>/</label>
-                            <input type="number" id="maxhealthdisplay">
-                        </div>
+                        <tr class="stat">
+                            <td>Health</td>
+                            <td>
+                                <input type="number" id="currhealthdisplay">
+                                <label>/</label>
+                                <input type="number" id="maxhealthdisplay">
+                            </td>
+                        </tr>
 
-                        <div class="stat">
-                            <label>Armor Class</label>
-                            <input type="number" id="armorclassdisplay">
-                        </div>
-                    </div>
+                        <tr class="stat">
+                            <td>Armor Class</td>
+                            <td><input type="number" id="armorclassdisplay"></td>
+                        </tr>
+                    </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
 
                 </div>
@@ -52,11 +54,13 @@
         </div>
             
         <div class="contentblock" style="display: flex;">
-            <div class="statblock" id="abilityblock">
+            <div class="statblock">
                 <h2>Ability Scores</h2>
+                <table id="abilityblock"></table>
             </div>
-            <div class="statblock" id="skillblock">
+            <div class="statblock">
                 <h2>Skill Scores</h2>
+                <table id="skillblock"></table>
             </div>
         </div>
 

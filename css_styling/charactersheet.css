@@ -78,23 +78,23 @@ body {
     grid-template-columns: 2;
 } */
 
-.stat {
+/* .stat {
     display: flex;
     flex-grow: 1;
     margin-block: 0.5rem;
-    /* align-content: right; */
+    align-content: right;
     justify-content: space-between;
-    /* border-style: solid; */
-    /* border-width: 1px; */
-}
+    border-style: solid;
+    border-width: 1px;
+} */
 
-.stat > input {
+/* .stat input {
     margin-inline: 0.5rem;
     border-color: var(--primary-border);
     border-style: solid;
-}
+} */
 
-.stat > input[type=text] {
+.stat input[type=text] {
     /* display: flex; */
     width: 5rem;
 
@@ -102,7 +102,7 @@ body {
     border-radius: 5px;
 }
 
-.stat > input[type=number] {
+.stat input[type=number] {
     /* display: flex; */
     width: 3rem;
 

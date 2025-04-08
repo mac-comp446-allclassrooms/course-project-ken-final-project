@@ -1,5 +1,6 @@
 class Character {
     constructor(name, level) {
+        console.log("Constructing");
         this.name = name;
         this.level = level;
 
@@ -30,10 +31,9 @@ class Character {
 
         this.renderUI();
         console.log("Rendered");
-
     }
     
-    // generateStatsMap()
+    // generateStats()
     generateStats() {
         // Resets stats
         this.skills.clear();
@@ -53,6 +53,7 @@ class Character {
         this.generateSubStats("Charisma", this.chaskills);
     }
 
+
     generateSubStats(parent, list) {
         list.forEach(skillname => {
             let thisskill = new Skill(skillname, parent, 10);
@@ -60,9 +61,8 @@ class Character {
         });
     }
 
-    // generateStats()
-    // Calls generateStatsMap() and then creates and places elements
-    // Would either create as new (with value 10) or read from file
+    // renderUI()
+    // Creates and places elements
     renderUI() {
 
         // render profileblock
@@ -94,8 +94,9 @@ class Character {
         });
 
         // render skillsblock
-        this.skills.keys().forEach(key => {
-            let skill = this.skills.get(key);
+        // statblock = document.getElementById("skillblock");
+        this.skills.keys().forEach(skillname => {
+            let skill = this.skills.get(skillname);
             skill.renderElement();
         });
     }
@@ -106,23 +107,23 @@ class Ability {
     constructor(name, score) {
         this.name = name;
         this.score = score;
-        this.mod = Math.floor((score-10)/2)
+        this.mod = Math.floor((score-10)/2);
     }
 
     createSkillElement(){
-        let newSkill = document.createElement("div");
+        let newSkill = document.createElement("tr");
         newSkill.classList.add("stat");
-        newSkill.innerHTML = "<label>" + this.name + "</label>"
-                + '<input type="number" value="' + this.score + '">'
-                + this.mod;
+        newSkill.innerHTML = "<td>" + this.name + "</td>"
+                + '<td><input type="number" value="' + this.score + '"></td><td>'
+                + this.mod + "</td>";
         return newSkill;
     }
 
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("abilityblock");
-        const newSkillElement = this.createSkillElement();
-        statblock.appendChild(newSkillElement);
+        const newAbilityElement = this.createSkillElement();
+        statblock.appendChild(newAbilityElement);
     }
 }
 
@@ -131,15 +132,16 @@ class Skill {
         this.name = name;
         this.parent = parent;
         this.score = score;
-        this.mod = Math.floor((score-10)/2)
+        this.mod = Math.floor((score-10)/2);
     }
 
     createSkillElement(){
-        let newSkill = document.createElement("div");
+        let newSkill = document.createElement("tr");
         newSkill.classList.add("stat");
-        newSkill.innerHTML = "<label>" + this.name + " <i>(" + this.parent.slice(0, 3) + ")</i>" + "</label>"
-                + '<input type="number" value="' + this.score + '">'
-                + this.mod;
+        newSkill.innerHTML = "<td>" + this.name + "</td>"
+                + "<td><i>(" + this.parent.slice(0, 3) + ")</i></td>"
+                + '<td><input type="number" value="' + this.score + '"></td>'
+                + "<td>" + this.mod + "</td>";
         return newSkill;
     }
 
