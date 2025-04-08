@@ -1,4 +1,5 @@
 <link rel='stylesheet' type="text/css" href="../css_styling/charactersheet.css">
+<script src="../assets/scripts/main.js" defer></script>
 <div class="tab">
     <button class="tablinks">Username</button>
     <button class="tablinks">Characters</button>
@@ -6,8 +7,8 @@
 
 <body>
     <form id="character_sheet">
-        <div class="contentblock" style="display: flex;">
-        <div class="displayblock" id="charprofile">
+        <!-- <div class="contentblock"> <div class="contentblock" style="display: flex;"> -->
+        <div class="displayblock" id="profileblock">
             <h2>Character Profile</h2>
             <div class="contentblock" style="display: flex;">
                 <div class="contentblock">
@@ -47,38 +48,13 @@
                 </div>
             </div>
         </div>
-        <div class="displayblock" id="abilityscores">
+        <div class="contentblock"> <div class="contentblock" style="display: flex;">
+        <div class="displayblock" id="abilityblock">
             <h2>Ability Scores</h2>
-            <div class="stat">
-                <label>Charisma</label>
-                <input type="number">
-            </div>
-
-            <div class="stat">
-                <label>Constitution</label>
-                <input type="number">
-            </div>
-
-            <div class="stat">
-                <label>Dexterity</label>
-                <input type="number">
-            </div>
-
-            <div class="stat">
-                <label>Intelligence</label>
-                <input type="number">
-            </div>
-
-            <div class="stat">
-                <label>Strength</label>
-                <input type="number">
-            </div>
-
-            <div class="stat">
-                <label>Wisdom</label>
-                <input type="number">
-            </div>
         </div>
+        <div class="displayblock" id="skillblock">
+            <h2>Skill Scores</h2>
         </div>
+        <!-- </div> -->
     </form>
 </body>

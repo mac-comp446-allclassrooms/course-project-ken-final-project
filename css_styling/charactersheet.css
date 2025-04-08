@@ -58,6 +58,7 @@ body {
     border-width: 1px;
     border-radius: 10px;
     padding: 10px;
+    margin: 5px;
     background-color: var(--primary-background);
 }
 
@@ -69,7 +70,12 @@ body {
 
 .stat {
     display: flex;
+    flex-grow: 1;
     margin-block: 0.5rem;
+    /* align-content: right; */
+    justify-content: space-between;
+    /* border-style: solid; */
+    /* border-width: 1px; */
 }
 
 .stat > input {
@@ -88,7 +94,7 @@ body {
 
 .stat > input[type=number] {
     /* display: flex; */
-    width: 2rem;
+    width: 3rem;
 
     border-width: 1px;
     border-radius: 10px;

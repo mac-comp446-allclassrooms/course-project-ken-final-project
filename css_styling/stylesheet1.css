@@ -51,7 +51,7 @@ body {
     border-color: var(--primary-border);
     border-style: solid;
     border-width: 2px;
-    border-radius: 15px; /* max: 30*/
+    /* border-radius: 15px; max: 30 */
     padding: 10px;
     background-color: var(--primary-background);
     margin: 1px;
