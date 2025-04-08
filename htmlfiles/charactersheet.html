@@ -1,60 +1,69 @@
 <link rel='stylesheet' type="text/css" href="../css_styling/charactersheet.css">
 <script src="../assets/scripts/main.js" defer></script>
 <div class="tab">
-    <button class="tablinks">Username</button>
-    <button class="tablinks">Characters</button>
+    <button class="tablinks" id="usernameheader">Username</button>
+    <button class="tablinks" id="characterheader">Characters</button>
 </div>
 
 <body>
     <form id="character_sheet">
-        <!-- <div class="contentblock"> <div class="contentblock" style="display: flex;"> -->
-        <div class="displayblock" id="profileblock">
-            <h2>Character Profile</h2>
-            <div class="contentblock" style="display: flex;">
-                <div class="contentblock">
+        <div class="contentblock">
+            <div class="statblock" id="profileblock">
+                <h2>Character Profile</h2>
+                <div class="contentblock" style="display: flex;">
+                    <div class="contentblock">
+                        <div class="stat">
+                            <label>Name</label>
+                            <input type="text" id="namedisplay">
+                        </div>
 
-                    <div class="stat">
-                        <label>Name</label>
-                        <input type="text">
-                    </div>
+                        <div class="stat">
+                            <label>Species</label>
+                            <input type="text" id="speciesdisplay">
+                        </div>
 
-                    <div class="stat">
-                        <label>Species</label>
-                        <input type="text">
+                        <div class="stat">
+                            <label>Class</label>
+                            <input type="text" id="classdisplay">
+                        </div>
                     </div>
+                    <div class="contentblock">
+                        <div class="stat">
+                            <label>Level</label>
+                            <input type="number" id="leveldisplay">
+                        </div>
 
-                    <div class="stat">
-                        <label>Class</label>
-                        <input type="text">
-                    </div>
-                </div>
-                <div class="contentblock">
-                    <div class="stat">
-                        <label>Level</label>
-                        <input type="number">
-                    </div>
+                        <div class="stat">
+                            <label>Health</label>
+                            <input type="number" id="currhealthdisplay">
+                            <label>/</label>
+                            <input type="number" id="maxhealthdisplay">
+                        </div>
 
-                    <div class="stat">
-                        <label>Health</label>
-                        <input type="number">
-                        <label>/</label>
-                        <input type="number">
+                        <div class="stat">
+                            <label>Armor Class</label>
+                            <input type="number" id="armorclassdisplay">
+                        </div>
                     </div>
+                    <textarea placeholder="Physical Description" style="resize: none;"></textarea>
 
-                    <div class="stat">
-                        <label>Armor Class</label>
-                        <input type="number">
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="contentblock"> <div class="contentblock" style="display: flex;">
-        <div class="displayblock" id="abilityblock">
-            <h2>Ability Scores</h2>
+            
+        <div class="contentblock" style="display: flex;">
+            <div class="statblock" id="abilityblock">
+                <h2>Ability Scores</h2>
+            </div>
+            <div class="statblock" id="skillblock">
+                <h2>Skill Scores</h2>
+            </div>
         </div>
-        <div class="displayblock" id="skillblock">
-            <h2>Skill Scores</h2>
+
+        <div class="contentblock">
+            <div class="statblock" id="weaponblock">
+                <h2>Weapons</h2>
+            </div>
         </div>
-        <!-- </div> -->
     </form>
 </body>

@@ -3,6 +3,17 @@ class Character {
         this.name = name;
         this.level = level;
 
+        this.species = "Tiefling";
+        this.charClass = "Sorcerer";
+
+        this.level = level;
+        this.currhealth = 23;
+        this.maxhealth = 32;
+        this.armorclass = 15;
+
+
+
+
         this.abilities = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
 
         this.strskills = ["Athletics"];
@@ -13,7 +24,13 @@ class Character {
         this.chaskills = ["Deception", "Intimidation", "Performance", "Persuasion"];
         
         this.skills = new Map();
+
+        console.log("Created");
+
         this.generateStats();
+
+        this.renderUI();
+        console.log("Rendered");
     }
     
     // generateStatsMap()
@@ -47,6 +64,28 @@ class Character {
     // Calls generateStatsMap() and then creates and places elements
     // Would either create as new (with value 10) or read from file
     renderUI() {
+
+        // render profileblock
+        const namedisplay = document.getElementById("namedisplay");
+        namedisplay.setAttribute("value", this.name);
+
+        const charclass = document.getElementById("classdisplay");
+        charclass.setAttribute("value", this.charClass);
+
+        const species = document.getElementById("speciesdisplay");
+        species.setAttribute("value", this.species);
+
+        const level = document.getElementById("leveldisplay");
+        level.setAttribute("value", this.level);
+
+        const currhealth = document.getElementById("currhealthdisplay");
+        currhealth.setAttribute("value", this.currhealth);
+
+        const maxhealth = document.getElementById("maxhealthdisplay");
+        maxhealth.setAttribute("value", this.maxhealth);
+
+        const armorclass = document.getElementById("armorclassdisplay");
+        armorclass.setAttribute("value", this.armorclass);
 
         // render abilitiesblock
         this.abilities.forEach(abilityname => {
@@ -110,6 +149,3 @@ class Skill {
 }
 
 const char1 = new Character("Mainty", 3);
-console.log("Created");
-char1.renderUI();
-console.log("Rendered");

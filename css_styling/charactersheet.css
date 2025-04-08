@@ -5,6 +5,16 @@
     --secondary-text: gray;
     --primary-background: white;
     --secondary-background: lightgray;
+
+    /* Skill Colors */
+    --color1: #e3e3ff;
+    --color2: #dff2fd;
+    --color3: #e2fce6;
+    --color4: #fcfade;
+    --color5: #ffeee2;
+    --color6: #ffdbdb;
+
+
 }
 
 /* Fonts */
@@ -52,7 +62,7 @@ body {
 }
 
 /* Page */
-.displayblock {
+.statblock {
     border-color: var(--primary-border);
     border-style: solid;
     border-width: 1px;
