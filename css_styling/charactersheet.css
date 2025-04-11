@@ -111,7 +111,7 @@ button {
 }
 input[type=text] {
     /* display: flex; */
-    width: 5rem;
+    width: 6rem;
 
     border-width: 1px;
     border-radius: 5px;

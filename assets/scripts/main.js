@@ -10,17 +10,17 @@ class Character {
         console.log(String(this.charClass) + charClass)
 
         this.level = level;
-        this.currhealth = 23;
-        this.maxhealth = 32;
+        this.currhealth = 10;
+        this.maxhealth = 10;
         this.armorclass = 15;
 
         this.abilities = new Map([
-            ["Strength", new Ability("Strength", 11)],
-            ["Dexterity", new Ability("Dexterity", 17)],
-            ["Constitution", new Ability("Constitution", 2)],
-            ["Intelligence", new Ability("Intelligence", 9)],
-            ["Wisdom", new Ability("Wisdom", 13)],
-            ["Charisma", new Ability("Charisma", 5)]
+            ["Strength", new Ability("Strength", 10)],
+            ["Dexterity", new Ability("Dexterity", 10)],
+            ["Constitution", new Ability("Constitution", 10)],
+            ["Intelligence", new Ability("Intelligence", 10)],
+            ["Wisdom", new Ability("Wisdom", 10)],
+            ["Charisma", new Ability("Charisma", 10)]
         ]);
 
         console.log("Created");
@@ -34,13 +34,13 @@ class Character {
         
         this.skills = new Map();
         this.generateStats();
-
-        this.weapons = new Map();
-
-
+        
+        this.weaponsList = [];
     }
     
     // generateStats()
+    // This will be different later on when JSON is working
+    // And templates. And stuff.
     generateStats() {
         // Resets stats
         this.skills.clear();
@@ -53,7 +53,7 @@ class Character {
         // con
         this.generateSubStats("Constitution", this.conskills);
         // int
-        this.generateSubStats("Intelligence", this.strskills);
+        this.generateSubStats("Intelligence", this.intskills);
         // wis
         this.generateSubStats("Wisdom", this.wisskills);
         // cha
@@ -112,8 +112,56 @@ class Character {
             let skill = this.skills.get(skillname);
             skill.renderElement();
         });
+
+        this.weaponsList.forEach(weapon => {
+            weapon.renderElement() 
+        });
         console.log("Rendered");
 
+    }
+    
+    createWeapon(name, finesse, range, damageroll, damagetype) {
+        this.weaponsList.push(new Weapon(name, finesse, range, damageroll, damagetype));
+    }
+    
+}
+
+class User {
+    constructor(username) {
+        this.username = username;
+        this.characterList = [];
+
+        // Reads characters
+    }
+
+    newCharacter(name, species, characterClass, level) {
+        this.characterList.push(new Character(name, species, characterClass, level))
+    }
+
+    renderCharacterSheet(i) {
+        console.log(this.characterList.at(i));
+        this.characterList.at(i).renderUI();
+    }
+
+    renderMenu() {
+        this.renderThumbnails();
+    }
+
+    renderThumbnails() {
+        const characterdisplay = document.getElementById("characterlist");
+        this.characterList.forEach(character => {
+            const characterThumbnail = this.createThumbnail(character);
+            characterdisplay.appendChild(characterThumbnail);
+        });
+    }
+
+    createThumbnail(character) {
+        let newThumbnail = document.createElement("div");
+        newThumbnail.classList.add("character_thumbnail");
+        newThumbnail.innerHTML = "<h2>"+ character.name + " (Level: "+ character.level+")</h2>"
+                + "<h3>Species: " + character.species + "</h3>"
+                + "<h3>Class: " + character.charClass + "</h3>";
+        return newThumbnail;
     }
     
 }
@@ -184,49 +232,46 @@ class Skill {
     }
 }
 
-
-class User {
-    constructor(username) {
-        this.username = username;
-        this.characterList = [];
-
-        // Reads characters
+class Weapon {
+    constructor(name, finesse, range, damageroll, damagetype) {
+        this.name = name;
+        this.finesse = finesse;
+        this.range = range;
+        this.damageroll = damageroll;
+        this.damagetype = damagetype;
     }
 
-    newCharacter(name, species, characterClass, level) {
-        this.characterList.push(new Character(name, species, characterClass, level))
-    }
-
-    renderCharacterSheet(i) {
-        console.log(this.characterList.at(i));
-        this.characterList.at(i).renderUI();
-    }
-
-    renderMenu() {
-        this.renderThumbnails();
-    }
-
-    renderThumbnails() {
-        const characterdisplay = document.getElementById("characterlist");
-        this.characterList.forEach(character => {
-            const characterThumbnail = this.createThumbnail(character);
-            characterdisplay.appendChild(characterThumbnail);
-        });
-    }
-
-    createThumbnail(character) {
-        let newThumbnail = document.createElement("div");
-        newThumbnail.classList.add("character_thumbnail");
-        newThumbnail.innerHTML = "<h2>"+ character.name + " (Level: "+ character.level+")</h2>"
-                + "<h3>Species: " + character.species + "</h3>"
-                + "<h3>Class: " + character.charClass + "</h3>";
-        return newThumbnail;
-    }
     
+    createWeaponElement(){
+        let newWeapon = document.createElement("tr");
+        newWeapon.classList.add("stat");
+
+        newWeapon.innerHTML = "<td>" + this.name + "</td>"
+
+                + "<td>" + "<select name='mod'>"
+                    + "<option value='Dexterity'>Dex  </option>"
+                    + "<option value='Strength'>Str</option>"
+                +" </select>" + "</td>"
+                + "<td>" + this.finesse + "</td>"
+                + "<td>" + this.range + "</td>"+ "<td>" + this.damageroll + "</td>"
+                + "<td>"+ this.damagetype + "</td>";
+        return newWeapon;
+    }
+
+    // renderElement()
+    renderElement() {
+        const statblock = document.getElementById("weaponblock");
+        const newAbilityElement = this.createWeaponElement();
+        statblock.appendChild(newAbilityElement);
+    }
+
 }
 
 let user1 = new User("Jimothy");
-user1.newCharacter("Tav", "Tiefling", "Sorcerer", 3);
-user1.newCharacter("Aayla Secura", "Twi'lek", "Jedi", 4);                                                                               
-user1.renderCharacterSheet(1);
+user1.newCharacter("Default", "Default", "Default", 1);
+user1.newCharacter("Tav", "Tiefling", "Sorcerer", 1);
+user1.newCharacter("Aayla Secura", "Twi'lek", "Jedi", 4);
+user1.characterList.at(0).createWeapon("dagger", "yes", "3ft", "1d6", "slashing")                                                                               
+user1.characterList.at(2).createWeapon("lightsaber", "no", "10ft", "4d10", "lazer")                                                                               
+user1.renderCharacterSheet(0);
 // user1.renderMenu();

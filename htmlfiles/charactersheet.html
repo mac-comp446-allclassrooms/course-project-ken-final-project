@@ -48,7 +48,6 @@
                         </tr>
                     </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
-
                 </div>
             </div>
         </div>
@@ -57,6 +56,8 @@
             <div class="statblock">
                 <h2>Ability Scores</h2>
                 <table id="abilityblock"></table>
+                <!-- <h2>Saving ??</h2>
+                <table id="extrastatblock"></table> -->
             </div>
             <div class="statblock">
                 <h2>Skill Scores</h2>
@@ -68,7 +69,11 @@
             <div class="statblock" id="combatblock">
                 <h2>Weapons</h2>
                 <table id="weaponblock">
-                    <th>
+                    <tr>
+                        <td>
+                            <label>Name</label>
+                            <input type="text" placeholder="weapon"></input>
+                        </td>
                         <td>
                             <label>Type</label>
                             <select>
@@ -77,10 +82,7 @@
                                 <option>Versatile</option>
                             </select>
                         </td>
-                        <td>
-                            <label>Name</label>
-                            <input type="text" placeholder="weapon"></input>
-                        </td>
+                        
                         <td>
                             <!-- <input type="text" placeholder="type"></input> -->
                             <label>Finesse</label>
@@ -104,7 +106,7 @@
                         <td>
                             <button>Create Weapon</button>
                         </td>
-                    </th>
+                    </tr>
                 </table>
             </div>
         </div>
