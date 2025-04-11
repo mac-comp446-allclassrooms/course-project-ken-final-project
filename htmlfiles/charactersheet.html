@@ -65,8 +65,47 @@
         </div>
 
         <div class="contentblock">
-            <div class="statblock" id="weaponblock">
+            <div class="statblock" id="combatblock">
                 <h2>Weapons</h2>
+                <table id="weaponblock">
+                    <th>
+                        <td>
+                            <label>Type</label>
+                            <select>
+                                <option>Melee</option>
+                                <option>Ranged</option>
+                                <option>Versatile</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label>Name</label>
+                            <input type="text" placeholder="weapon"></input>
+                        </td>
+                        <td>
+                            <!-- <input type="text" placeholder="type"></input> -->
+                            <label>Finesse</label>
+                            <input type="checkbox">
+                        </td>
+                        <td>
+                            <label>Range</label>
+                            <input type="text" placeholder="range">
+                        </td>
+                        <!-- <td>
+                            <input type="text" placeholder="mod">
+                        </td> -->
+                        <td>
+                            <label>Damage</label>
+                            <input type="text" placeholder="roll">
+                        </td>
+                        <td>
+                            <label>Damage</label>
+                            <input type="text" placeholder="type">
+                        </td>
+                        <td>
+                            <button>Create Weapon</button>
+                        </td>
+                    </th>
+                </table>
             </div>
         </div>
     </form>

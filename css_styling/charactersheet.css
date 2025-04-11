@@ -1,6 +1,6 @@
 :root {
     --primary-border: black;
-    --secondary-border: gray;
+    --secondary-border: lightgray;
     --primary-text: black;
     --secondary-text: gray;
     --primary-background: white;
@@ -14,19 +14,27 @@
     --color5: #ffeee2;
     --color6: #ffdbdb;
 
-
+    /* --font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    /* --font: 'Lucida Console', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    --font: monospace;    
 }
 
 /* Fonts */
 h1 {
     font-size: 1.5rem;
+    font-family: var(--font);
 }
 h2 {
     font-size: 1rem;
     font-weight: bold;
+    font-family: var(--font);
 }
 h3 {
     font-size: 0.75rem;
+    font-family: var(--font);
+}
+p{
+    font-family: var(--font);
 }
 
 /* Style the tab */
@@ -78,23 +86,30 @@ body {
     grid-template-columns: 2;
 } */
 
-/* .stat {
-    display: flex;
-    flex-grow: 1;
-    margin-block: 0.5rem;
-    align-content: right;
-    justify-content: space-between;
-    border-style: solid;
-    border-width: 1px;
-} */
+table { 
+    /* border-style: solid;
+    border-color: var(--primary-border); */
+    /* border-width: 0.5px; */
+    border-collapse: collapse;
+    font-family: var(--font);
+}
 
-/* .stat input {
-    margin-inline: 0.5rem;
-    border-color: var(--primary-border);
-    border-style: solid;
-} */
+td {
+    padding-inline: 0.5rem;
+    /* text-align: center; */
+    /* font-family: var(--font); */
+}
+.stat {
+    border-color: red;
+}
 
-.stat input[type=text] {
+input {
+    font-family: inherit;
+}
+button {
+    font-family: inherit;
+}
+input[type=text] {
     /* display: flex; */
     width: 5rem;
 
@@ -107,5 +122,6 @@ body {
     width: 3rem;
 
     border-width: 1px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border-color: var(--secondary-border);
 }
