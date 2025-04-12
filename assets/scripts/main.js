@@ -7,7 +7,7 @@ class Character {
         this.species = species;
 
         this.charClass = charClass;
-        console.log(String(this.charClass) + charClass)
+        // console.log(String(this.charClass) + charClass)
 
         this.level = level;
         this.currhealth = 10;
@@ -244,7 +244,7 @@ class Weapon {
     
     createWeaponElement(){
         let newWeapon = document.createElement("tr");
-        newWeapon.classList.add("stat");
+        newWeapon.classList.add("weapon");
 
         newWeapon.innerHTML = "<td>" + this.name + "</td>"
 
