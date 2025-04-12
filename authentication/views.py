@@ -31,7 +31,7 @@ def login_page(request):
 		login(request, user)
 		return redirect('/home/')
 	#GET request
-	return render(request, 'login.html')
+	return render(request, 'authentication/login.html')
 
 # make view function for registration page
 def register_page(request):
@@ -54,7 +54,7 @@ def register_page(request):
 		messages.info(request, 'Account created successfully!')
 		return redirect('/login/')
 	# this is a a get request
-	return render(request, 'register.html')
+	return render(request, 'authentication/register.html')
 
 
 # much of this was helped by https://www.geeksforgeeks.org/user-authentication-system-using-django/
