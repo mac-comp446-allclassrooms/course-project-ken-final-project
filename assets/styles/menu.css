@@ -53,6 +53,9 @@ body {
 
 /* Page */
 .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
     border-color: var(--primary-border);
     border-style: solid;
     border-width: 1px;
