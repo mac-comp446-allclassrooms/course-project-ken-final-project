@@ -1,76 +1,31 @@
-:root {
-    --primary-border: black;
-    --primary-text: black;
-    --primary-background: white;
-
-    --secondary-border: gray;
-    --secondary-text: gray;
-    --secondary-background: lightgray;
-}
-
-/* Fonts */
-h1 {
-    font-size: 1.5rem;
-}
-h2 {
-    font-size: 1rem;
-    font-weight: bold;
-}
-h3 {
-    font-size: 0.75rem;
-}
-
-.tab {
-  overflow: hidden;
-  border: 1px solid var(--primary-background);
-  background-color: var(--secondary-background);
-  border-radius: 10px;
-}
-
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-.tab button:hover {
-  background-color: var(--primary-background);
-  color: var(--primary-text);
-}
-
-.tab button.active {
-  background-color: var(--secondary-background);
-  color: var(--secondary-text);
-}
-
 body {
-    background-color: var(--primary-background);
+  background-color: var(--primary-background);
 }
 
 /* Page */
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-    border-color: var(--primary-border);
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: var(--primary-background);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  border-color: var(--primary-border);
+  border: 1px, solid;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--primary-background);
 }
 
 .character_thumbnail {
-    border-color: var(--primary-border);
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    background-color: var(--primary-background);
-    /* max-width: 33%; */
+  border-color: var(--primary-border);
+  border: 1px, solid;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--secondary-background);
+  transition: box-shadow 0.5s;
+
+
+  /* max-width: 33%; */
+}
+
+.character_thumbnail:hover {
+  box-shadow: 5px 5px 5px var(--secondary-border);
 }

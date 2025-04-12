@@ -1,13 +1,14 @@
 class Character {
     constructor(name, species, charClass, level) {
-        console.log("Constructing");
+        console.log("Constructing " + name
+
+        );
         this.name = name;
         this.level = level;
 
         this.species = species;
 
         this.charClass = charClass;
-        // console.log(String(this.charClass) + charClass)
 
         this.level = level;
         this.currhealth = 10;
@@ -33,7 +34,7 @@ class Character {
         this.chaskills = ["Deception", "Intimidation", "Performance", "Persuasion"];
         
         this.skills = new Map();
-        this.generateStats();
+        this.generateDefaultStats();
         
         this.weaponsList = [];
     }
@@ -41,7 +42,7 @@ class Character {
     // generateStats()
     // This will be different later on when JSON is working
     // And templates. And stuff.
-    generateStats() {
+    generateDefaultStats() {
         // Resets stats
         this.skills.clear();
 
@@ -139,7 +140,6 @@ class User {
     }
 
     renderCharacterSheet(i) {
-        console.log(this.characterList.at(i));
         this.characterList.at(i).renderUI();
     }
 
@@ -158,7 +158,8 @@ class User {
     createThumbnail(character) {
         let newThumbnail = document.createElement("div");
         newThumbnail.classList.add("character_thumbnail");
-        newThumbnail.innerHTML = "<h2>"+ character.name + " (Level: "+ character.level+")</h2>"
+        newThumbnail.innerHTML = "<h2>"+ character.name + " </h2>"
+                + "<h3>(Level: "+ character.level+")</h3>"
                 + "<h3>Species: " + character.species + "</h3>"
                 + "<h3>Class: " + character.charClass + "</h3>";
         return newThumbnail;
@@ -180,14 +181,16 @@ class Ability {
         var moddisplay = ""
         if (this.mod >= 0) {
             moddisplay = "+" + this.mod;
-            console.log(this.mod);
+            // console.log(this.mod);
         } else {
             moddisplay = this.mod;
         }
 
-        newSkill.innerHTML = "<td>" + this.name + "</td>"
-                + '<td><input type="number" min="-15" max="30" value="' + this.score + '"></td><td>'
-                + moddisplay + "</td>";
+        newSkill.innerHTML = "<td>" + this.name + '</td>'
+                + '<td><input type="number"'
+                + 'min="-15" max="30" value="' + this.score + '"></td>'
+                + '<td>'+ moddisplay + '</td>';
+        // newSkill.addEventListener('onchange', updateMod(this))
         return newSkill;
     }
 
@@ -195,8 +198,15 @@ class Ability {
     renderElement() {
         const statblock = document.getElementById("abilityblock");
         const newAbilityElement = this.createSkillElement();
+        newAbilityElement.addEventListener('change', updateMod(this));
         statblock.appendChild(newAbilityElement);
     }
+}
+
+function updateMod(element) {
+    // console.log(element);
+    console.log("UpdateMod " + element.name + " " + element.score);
+    // console.log(element.id);
 }
 
 class Skill {
@@ -213,7 +223,7 @@ class Skill {
         var moddisplay = ""
         if (this.mod >= 0) {
             moddisplay = "+" + this.mod;
-            console.log(this.mod);
+            // console.log(this.mod);
         } else {
             moddisplay = this.mod;
         }
@@ -239,6 +249,7 @@ class Weapon {
         this.range = range;
         this.damageroll = damageroll;
         this.damagetype = damagetype;
+        this.button;
     }
 
     
@@ -253,7 +264,8 @@ class Weapon {
                     + "<option value='Strength'>Str</option>"
                 +" </select>" + "</td>"
                 + "<td>" + this.finesse + "</td>"
-                + "<td>" + this.range + "</td>"+ "<td>" + this.damageroll + "</td>"
+                + "<td>" + this.range + "</td>"
+                + "<td>"+ this.damageroll + "+" + "STR" + "</td>"
                 + "<td>"+ this.damagetype + "</td>";
         return newWeapon;
     }
@@ -261,17 +273,23 @@ class Weapon {
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("weaponblock");
-        const newAbilityElement = this.createWeaponElement();
-        statblock.appendChild(newAbilityElement);
+        const newWeaponElement  = this.createWeaponElement();
+        statblock.appendChild(newWeaponElement);
     }
-
 }
+
+
 
 let user1 = new User("Jimothy");
 user1.newCharacter("Default", "Default", "Default", 1);
 user1.newCharacter("Tav", "Tiefling", "Sorcerer", 1);
 user1.newCharacter("Aayla Secura", "Twi'lek", "Jedi", 4);
+user1.newCharacter("Groot", "Tree", "Rogue", 10);
+user1.newCharacter("Cassian Andor", "Human (Kenari)", "Rebel", 3);
+user1.newCharacter("Shrek", "Ogre", "Barbarian, Rogue", 3);
+
+
 user1.characterList.at(0).createWeapon("dagger", "yes", "3ft", "1d6", "slashing")                                                                               
-user1.characterList.at(2).createWeapon("lightsaber", "no", "10ft", "4d10", "lazer")                                                                               
-user1.renderCharacterSheet(0);
+user1.characterList.at(2).createWeapon("lightsaber", "no", "10ft", "4d10", "laser")                                                                               
+user1.renderCharacterSheet(2);
 // user1.renderMenu();
