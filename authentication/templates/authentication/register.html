@@ -2,8 +2,10 @@
 <html lang='en'>
 
 <head>
-	<link rel='stylesheet' type="text/css" href = "assets/styles/loginpage.css">
-	<link rel='stylesheet' type="text/css" href = "assets/styles/main.css">
+	{% load static %}
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/loginpage.css' %}">
+	
+	<link rel='stylesheet' type="text/css" href = "{% static 'assets/styles/main.css' %}">
 	<title>Registration Form</title>
 </head>
 
@@ -35,8 +37,7 @@
 				<div>
 			</div>
 			<div>
-				<!-- <button id="newaccount">Create New Account</button> -->
-				<a href='/login/'><button id="loginpage">Return to Login Page</button></a>
+				<a href='/login/'><button type='button' id="loginpage">Return to Login Page</button></a>
 				<button id="createaccount" type='submit'>Create Account</button>
 			</div>
 		</form>
