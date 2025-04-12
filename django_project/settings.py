@@ -67,6 +67,10 @@ TEMPLATES = [
 	},
 ]
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'assets/styles'
+]
+
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
