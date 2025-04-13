@@ -121,8 +121,8 @@ class Character {
 
     }
     
-    createWeapon(name, finesse, range, damageroll, damagetype) {
-        this.weaponsList.push(new Weapon(name, finesse, range, damageroll, damagetype));
+    createWeapon(name, weapontype, finesse, range, damageroll, damagetype) {
+        this.weaponsList.push(new Weapon(name, weapontype, finesse, range, damageroll, damagetype));
     }
     
 }
@@ -172,6 +172,7 @@ class Ability {
         this.name = name;
         this.score = score;
         this.mod = Math.floor((score-10)/2);
+        this.statelement;
     }
 
     createSkillElement(){
@@ -181,32 +182,37 @@ class Ability {
         var moddisplay = ""
         if (this.mod >= 0) {
             moddisplay = "+" + this.mod;
-            // console.log(this.mod);
         } else {
             moddisplay = this.mod;
         }
 
-        newSkill.innerHTML = "<td>" + this.name + '</td>'
+        newSkill.innerHTML = "<td>" + this.name + '</button></td>'
                 + '<td><input type="number"'
-                + 'min="-15" max="30" value="' + this.score + '"></td>'
+                + 'min="-15" max="30" value="' + this.score + '" onchange ="updateMod(this, value)"></td>'
                 + '<td>'+ moddisplay + '</td>';
-        // newSkill.addEventListener('onchange', updateMod(this))
         return newSkill;
     }
 
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("abilityblock");
-        const newAbilityElement = this.createSkillElement();
-        newAbilityElement.addEventListener('change', updateMod(this));
-        statblock.appendChild(newAbilityElement);
+        this.renderElement = this.createSkillElement();
+        statblock.appendChild(this.renderElement);
     }
 }
 
-function updateMod(element) {
-    // console.log(element);
-    console.log("UpdateMod " + element.name + " " + element.score);
-    // console.log(element.id);
+function updateMod(loc, val) {
+    console.log("Changed " + val);
+    mod = Math.floor((val-10)/2);
+    
+    var moddisplay = ""
+        if (mod >= 0) {
+            moddisplay = "+" + mod;
+        } else {
+            moddisplay = mod;
+        }
+    const currtar = loc.parentNode.nextSibling;
+    currtar.innerHTML = moddisplay;
 }
 
 class Skill {
@@ -215,6 +221,7 @@ class Skill {
         this.parent = parent;
         this.score = score;
         this.mod = Math.floor((score-10)/2);
+        this.statelement;
     }
 
     createSkillElement(){
@@ -229,7 +236,7 @@ class Skill {
         }
         newSkill.innerHTML = "<td>" + this.name + "</td>"
                 + "<td><i>(" + this.parent.slice(0, 3) + ")</i></td>"
-                + '<td><input type="number" min="-15" max="30" value="' + this.score + '"></td>'
+                + '<td><input type="number" min="-15" max="30" value="' + this.score + '" onchange ="updateMod(this, value)"></td>'
                 + "<td>" + moddisplay + "</td>";
         return newSkill;
     }
@@ -243,13 +250,14 @@ class Skill {
 }
 
 class Weapon {
-    constructor(name, finesse, range, damageroll, damagetype) {
+    constructor(name, weapontype, finesse, range, damageroll, damagetype) {
         this.name = name;
+        this.weapontype = weapontype;
         this.finesse = finesse;
         this.range = range;
         this.damageroll = damageroll;
+        console.log(damagetype);
         this.damagetype = damagetype;
-        this.button;
     }
 
     
@@ -258,12 +266,11 @@ class Weapon {
         newWeapon.classList.add("weapon");
 
         newWeapon.innerHTML = "<td>" + this.name + "</td>"
-
+                + "<td>" + this.weapontype + "</td>"
                 + "<td>" + "<select name='mod'>"
                     + "<option value='Dexterity'>Dex  </option>"
                     + "<option value='Strength'>Str</option>"
                 +" </select>" + "</td>"
-                + "<td>" + this.finesse + "</td>"
                 + "<td>" + this.range + "</td>"
                 + "<td>"+ this.damageroll + "+" + "STR" + "</td>"
                 + "<td>"+ this.damagetype + "</td>";
@@ -289,7 +296,7 @@ user1.newCharacter("Cassian Andor", "Human (Kenari)", "Rebel", 3);
 user1.newCharacter("Shrek", "Ogre", "Barbarian, Rogue", 3);
 
 
-user1.characterList.at(0).createWeapon("dagger", "yes", "3ft", "1d6", "slashing")                                                                               
-user1.characterList.at(2).createWeapon("lightsaber", "no", "10ft", "4d10", "laser")                                                                               
+user1.characterList.at(0).createWeapon("Dagger", "Versatile", "True", "3ft", "1d6", "slashing")                                                                               
+user1.characterList.at(2).createWeapon("Lightsaber", "Versatile", "False", "10ft", "4d10", "laser")                                                                               
 user1.renderCharacterSheet(2);
 // user1.renderMenu();
