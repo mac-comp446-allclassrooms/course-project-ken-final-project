@@ -7,7 +7,12 @@ from .models import *
 
 # make a view request for the home page
 def home(request):
-	return render(request, 'index.html')
+	return render(request, 'menu.html')
+
+# view page for the menu
+def menu(request):
+	return render(request, 'menu.html')
+
 
 # make a view request for the login page
 def login_page(request):
@@ -40,7 +45,8 @@ def register_page(request):
 		ln = ''
 		un = request.POST.get('username')
 		pw = request.POST.get('password')
-
+		print('un is', un)
+		print('pw is', pw)
 		user = User.objects.filter(username=un)
 		
 		if user.exists():

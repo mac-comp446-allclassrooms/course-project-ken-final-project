@@ -5,20 +5,21 @@
 	{% load static %}
 	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/loginpage.css' %}">
 	
-	<link rel='stylesheet' type="text/css" href = "{% static 'assets/styles/main.css' %}">
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/main.css' %}">
+
 	<title>Registration Form</title>
 </head>
 
 <body>
 	<div class = "loginblock">
 		<h1>Create New Account</h1>
-		<form class>
+		<form method='post' enctype='multipart/form-data'>
 			{% csrf_token %}
 
 			{% if messages %}
 			<div class='alert alert-primary' role='alert'>
 				{% for message in messages %}
-					{{message}}
+				{{message}}
 				{% endfor %}
 			</div>
 			{% endif %}
@@ -29,6 +30,8 @@
 					<input type="text" id="username" name="username">
 				</div>
 				<div>
+					<!-- REPLACE WITH type='password' -->
+					<!-- TODO -->
 					<label for="password">Password:</label>
 					<input type="text" id="password" name="password">
 					<br>
