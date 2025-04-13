@@ -172,6 +172,7 @@ class Ability {
         this.name = name;
         this.score = score;
         this.mod = Math.floor((score-10)/2);
+        this.statelement;
     }
 
     createSkillElement(){
@@ -196,16 +197,27 @@ class Ability {
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("abilityblock");
-        const newAbilityElement = this.createSkillElement();
-        statblock.appendChild(newAbilityElement);
+        this.renderElement = this.createSkillElement();
+        statblock.appendChild(this.renderElement);
     }
 }
 
 function updateMod(loc, val) {
     console.log("Changed " + val);
+    mod = Math.floor((val-10)/2);
+    console.log(mod);
+    
+    var moddisplay = ""
+        if (mod >= 0) {
+            moddisplay = "+" + mod;
+            // console.log(this.mod);
+        } else {
+            moddisplay = mod;
+        }
     const currtar = loc.parentNode.nextSibling;
-    this.score = val;
-    console.log(this.score);
+    console.log(moddisplay)
+    currtar.innerHTML = moddisplay;
+    
     // console.log("UpdateMod " + element.name + " " + element.score);
     // console.log(element.id);
 }
