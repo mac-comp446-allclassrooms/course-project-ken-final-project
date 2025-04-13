@@ -186,11 +186,10 @@ class Ability {
             moddisplay = this.mod;
         }
 
-        newSkill.innerHTML = "<td>" + this.name + '</td>'
+        newSkill.innerHTML = "<td><button type='button'>" + this.name + '</button></td>'
                 + '<td><input type="number"'
-                + 'min="-15" max="30" value="' + this.score + '"></td>'
+                + 'min="-15" max="30" value="' + this.score + '" onchange ="updateMod(this, value)"></td>'
                 + '<td>'+ moddisplay + '</td>';
-        // newSkill.addEventListener('onchange', updateMod(this))
         return newSkill;
     }
 
@@ -198,14 +197,16 @@ class Ability {
     renderElement() {
         const statblock = document.getElementById("abilityblock");
         const newAbilityElement = this.createSkillElement();
-        newAbilityElement.addEventListener('change', updateMod(this));
         statblock.appendChild(newAbilityElement);
     }
 }
 
-function updateMod(element) {
-    // console.log(element);
-    console.log("UpdateMod " + element.name + " " + element.score);
+function updateMod(loc, val) {
+    console.log("Changed " + val);
+    const currtar = loc.parentNode.nextSibling;
+    this.score = val;
+    console.log(this.score);
+    // console.log("UpdateMod " + element.name + " " + element.score);
     // console.log(element.id);
 }
 
@@ -249,7 +250,6 @@ class Weapon {
         this.range = range;
         this.damageroll = damageroll;
         this.damagetype = damagetype;
-        this.button;
     }
 
     
