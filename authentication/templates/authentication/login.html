@@ -2,8 +2,12 @@
 <html lang='en'>
 
 <head>
-	<link rel='stylesheet' type="text/css" href = "/static/authentication/loginpage.css">
-	<link rel='stylesheet' type="text/css" href = "/main.css">
+	{% load static %}
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/loginpage.css' %}">
+	
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/main.css' %}">
+
+	<title>RPMe Login</title>
 </head>
 
 <body>
@@ -17,7 +21,7 @@
 			{% if messages %}
 			<div class='alert alert-primary' role='alert'>
 				{% for message in messages %}
-					{{message}}
+				{{message}}
 				{% endfor %}
 			</div>
 			{% endif %}
