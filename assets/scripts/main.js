@@ -161,7 +161,8 @@ class User {
         newThumbnail.innerHTML = "<h2>"+ character.name + " </h2>"
                 + "<h3>(Level: "+ character.level+")</h3>"
                 + "<h3>Species: " + character.species + "</h3>"
-                + "<h3>Class: " + character.charClass + "</h3>";
+                + "<h3>Class: " + character.charClass + "</h3>"
+                + "<button>Open</button>" + "<button>Delete</button>";
         return newThumbnail;
     }
     
@@ -298,5 +299,5 @@ user1.newCharacter("Shrek", "Ogre", "Barbarian, Rogue", 3);
 
 user1.characterList.at(0).createWeapon("Dagger", "Versatile", "True", "3ft", "1d6", "slashing")                                                                               
 user1.characterList.at(2).createWeapon("Lightsaber", "Versatile", "False", "10ft", "4d10", "laser")                                                                               
-user1.renderCharacterSheet(2);
-// user1.renderMenu();
+// user1.renderCharacterSheet(2);
+user1.renderMenu();

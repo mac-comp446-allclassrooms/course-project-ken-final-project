@@ -153,8 +153,10 @@ td {
 input {
     font-family: inherit;
 }
+
 button {
-    font-family: inherit;
+    font-family: var(--font);
+    /* border-radius: 5px; */
 }
 
 input[type=text] {
