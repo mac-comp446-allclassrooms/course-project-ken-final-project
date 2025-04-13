@@ -127,11 +127,11 @@ body {
     background-color: var(--primary-background);
 }
 
-/* .contentblock {
-    display: inline-grid;
+.contentblock {
+    /* display: inline-grid; */
     grid-auto-flow: row;
     grid-template-columns: 2;
-} */
+}
 
 table { 
     /* border-style: solid;
@@ -156,6 +156,7 @@ input {
 button {
     font-family: inherit;
 }
+
 input[type=text] {
     /* display: flex; */
     width: 6rem;
@@ -171,4 +172,8 @@ input[type=text] {
     border-width: 1px;
     border-radius: 5px;
     border-color: var(--secondary-border);
+}
+
+select {
+    border-radius: 5px;   
 }
