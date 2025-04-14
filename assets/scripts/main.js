@@ -3,6 +3,11 @@ class Character {
         console.log("Constructing " + name
 
         );
+
+        // for stat in charprofileStats
+        //  set stats
+        //  display stat
+        //  class-ify stats? (strings and integers?)
         this.name = name;
         this.level = level;
 
@@ -15,6 +20,10 @@ class Character {
         this.maxhealth = 10;
         this.armorclass = 15;
 
+        // This part would read in from database
+        // for ability in abilities (in database?) ->
+        //  map.put(ability.name, new Ability(ability.name, ability.score))
+        //  shortened name somewhere?
         this.abilities = new Map([
             ["Strength", new Ability("Strength", 10)],
             ["Dexterity", new Ability("Dexterity", 10)],
@@ -299,5 +308,5 @@ user1.newCharacter("Shrek", "Ogre", "Barbarian, Rogue", 3);
 
 user1.characterList.at(0).createWeapon("Dagger", "Versatile", "True", "3ft", "1d6", "slashing")                                                                               
 user1.characterList.at(2).createWeapon("Lightsaber", "Versatile", "False", "10ft", "4d10", "laser")                                                                               
-// user1.renderCharacterSheet(2);
-user1.renderMenu();
+user1.renderCharacterSheet(0);
+// user1.rendersMenu();
