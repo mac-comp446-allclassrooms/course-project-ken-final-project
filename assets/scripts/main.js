@@ -278,24 +278,14 @@ class Weapon {
 
         newWeapon.innerHTML = "<td> <input type='text' value =" + this.name + "></input></td>"
                 + "<td><input type='text' value =" + this.weapontype + "></input></td>"
-                + "<td>" + "<select name='mod'  onchange ='updateWeaponMod(this, value>'"
+                + "<td>" + "<select name='mod'"
                         + "<option value='Dexterity'>Dex</option>"
                         + "<option value='Strength'>Str</option>"
                 +" </select>" + "</td>"
                 + "<td><input type='text' value =" + this.range + "></input></td>"
                 + "<td><input type='text' value =" + this.damageroll + "></input></td>"
                 + "<td><input type='text' value =" + this.damagetype + "></input></td>"
-                + "<td><button> delete</button></td>"
-
-        // newWeapon.innerHTML = "<td>" + this.name + "</td>"
-        //         + "<td>" + this.weapontype + "</td>"
-        //         + "<td>" + "<select name='mod'  onchange ='updateWeaponMod(this, value>'"
-        //             + "<option value='Dexterity'>Dex</option>"
-        //             + "<option value='Strength'>Str</option>"
-        //         +" </select>" + "</td>"
-        //         + "<td>" + this.range + "</td>"
-        //         + "<td>"+ this.damageroll + "+" + "STR" + "</td>"
-        //         + "<td>"+ this.damagetype + "</td>";
+                + "<td><button type='button' onclick = 'deleteWeaponElement(this)'>delete</button></td>"
         return newWeapon;
     }
 
@@ -316,18 +306,20 @@ class Weapon {
     }
 }
 
-function updateWeaponMod(loc, val) {
-    console.log("Changed " + val);
-    // mod = Math.floor((val-10)/2);
-    
-    // var moddisplay = ""
-    //     if (mod >= 0) {
-    //         moddisplay = "+" + mod;
-    //     } else {
-    //         moddisplay = mod;
-    //     }
-    // const currtar = loc.parentNode.nextSibling;
-    // currtar.innerHTML = moddisplay;
+function renderNewWeaponElement() {
+    const newWeapon = new Weapon("", "", "", "", "", "");
+    newWeapon.renderElement()
+    console.log(1);
+    // const statblock = document.getElementById("weaponblock");
+    // this.statelement = this.createWeaponElement();
+    // statblock.appendChild(this.statelement);
+}
+
+function deleteWeaponElement(loc) {
+    // console.log(1);
+    grandparent = loc.parentNode.parentNode;
+    // console.log("Delete " + grandparent);
+    grandparent.remove();
 }
 
 let user1 = new User("Jimothy");
