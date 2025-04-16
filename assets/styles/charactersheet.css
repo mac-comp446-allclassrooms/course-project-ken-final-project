@@ -14,21 +14,21 @@ body {
 }
 
 /* .contentblock {
-    display: inline-grid;
-    grid-auto-flow: row;
-    grid-template-columns: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
 } */
 
 table { 
     /* border-style: solid;
     border-color: var(--primary-border); */
     /* border-width: 0.5px; */
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     font-family: var(--font);
 }
 
 td {
-    padding-inline: 0.5rem;
+    padding-inline: 0.25rem;
     /* text-align: center; */
     /* font-family: var(--font); */
 }
@@ -39,9 +39,15 @@ td {
 input {
     font-family: inherit;
 }
+
 button {
-    font-family: inherit;
+    font-family: var(--font);
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: var(--primary-background);
+    transition: background-color 0.5s;
 }
+
 input[type=text] {
     /* display: flex; */
     width: 6rem;

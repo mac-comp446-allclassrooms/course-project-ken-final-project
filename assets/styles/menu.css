@@ -4,9 +4,6 @@ body {
 
 /* Page */
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
   border-color: var(--primary-border);
   border: 1px, solid;
   border-radius: 10px;
@@ -14,16 +11,27 @@ body {
   background-color: var(--primary-background);
 }
 
+.containerdisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
 .character_thumbnail {
   border-color: var(--primary-border);
   border: 1px, solid;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 10px;
   background-color: var(--secondary-background);
   transition: box-shadow 0.5s;
-
+  
+  justify-content: center;
 
   /* max-width: 33%; */
+}
+
+.character_thumbnail button {
+  margin-left: 1rem;
 }
 
 .character_thumbnail:hover {

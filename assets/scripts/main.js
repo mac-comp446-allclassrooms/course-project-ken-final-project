@@ -1,4 +1,4 @@
-class Character {
+class CharacterSheet {
     constructor(name, species, charClass, level) {
         console.log("Constructing " + name
 
@@ -145,7 +145,7 @@ class User {
     }
 
     newCharacter(name, species, characterClass, level) {
-        this.characterList.push(new Character(name, species, characterClass, level))
+        this.characterList.push(new CharacterSheet(name, species, characterClass, level))
     }
 
     renderCharacterSheet(i) {
@@ -168,9 +168,9 @@ class User {
         let newThumbnail = document.createElement("div");
         newThumbnail.classList.add("character_thumbnail");
         newThumbnail.innerHTML = "<h2>"+ character.name + " </h2>"
-                + "<h3>(Level: "+ character.level+")</h3>"
-                + "<h3>Species: " + character.species + "</h3>"
-                + "<h3>Class: " + character.charClass + "</h3>"
+                + "<p><i>(Level: "+ character.level+")</i></p>"
+                + "<p><strong>Species:</strong> <i>" + character.species + "</i></p>"
+                + "<p><strong>Class:</strong> <i>" + character.charClass + "</i></p>"
                 + "<button>Open</button>" + "<button>Delete</button>";
         return newThumbnail;
     }
@@ -206,8 +206,8 @@ class Ability {
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("abilityblock");
-        this.renderElement = this.createSkillElement();
-        statblock.appendChild(this.renderElement);
+        this.statelement = this.createSkillElement();
+        statblock.appendChild(this.statelement);
     }
 }
 
@@ -254,8 +254,8 @@ class Skill {
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("skillblock");
-        const newSkillElement = this.createSkillElement();
-        statblock.appendChild(newSkillElement);
+        this.statelement = this.createSkillElement();
+        statblock.appendChild(this.statelement);
     }
 }
 
@@ -266,8 +266,9 @@ class Weapon {
         this.finesse = finesse;
         this.range = range;
         this.damageroll = damageroll;
-        console.log(damagetype);
         this.damagetype = damagetype;
+        
+        this.statelement;
     }
 
     
@@ -275,38 +276,70 @@ class Weapon {
         let newWeapon = document.createElement("tr");
         newWeapon.classList.add("weapon");
 
-        newWeapon.innerHTML = "<td>" + this.name + "</td>"
-                + "<td>" + this.weapontype + "</td>"
-                + "<td>" + "<select name='mod'>"
-                    + "<option value='Dexterity'>Dex  </option>"
-                    + "<option value='Strength'>Str</option>"
+        newWeapon.innerHTML = "<td> <input type='text' value =" + this.name + "></input></td>"
+                + "<td><input type='text' value =" + this.weapontype + "></input></td>"
+                + "<td>" + "<select name='mod'  onchange ='updateWeaponMod(this, value>'"
+                        + "<option value='Dexterity'>Dex</option>"
+                        + "<option value='Strength'>Str</option>"
                 +" </select>" + "</td>"
-                + "<td>" + this.range + "</td>"
-                + "<td>"+ this.damageroll + "+" + "STR" + "</td>"
-                + "<td>"+ this.damagetype + "</td>";
+                + "<td><input type='text' value =" + this.range + "></input></td>"
+                + "<td><input type='text' value =" + this.damageroll + "></input></td>"
+                + "<td><input type='text' value =" + this.damagetype + "></input></td>"
+                + "<td><button> delete</button></td>"
+
+        // newWeapon.innerHTML = "<td>" + this.name + "</td>"
+        //         + "<td>" + this.weapontype + "</td>"
+        //         + "<td>" + "<select name='mod'  onchange ='updateWeaponMod(this, value>'"
+        //             + "<option value='Dexterity'>Dex</option>"
+        //             + "<option value='Strength'>Str</option>"
+        //         +" </select>" + "</td>"
+        //         + "<td>" + this.range + "</td>"
+        //         + "<td>"+ this.damageroll + "+" + "STR" + "</td>"
+        //         + "<td>"+ this.damagetype + "</td>";
         return newWeapon;
     }
 
+    
+
     // renderElement()
+    
+    // renderElement() {
+    //     const statblock = document.getElementById("weaponblock");
+    //     const newWeaponElement  = this.createWeaponElement();
+    //     statblock.appendChild(newWeaponElement);
+    // }
+
     renderElement() {
         const statblock = document.getElementById("weaponblock");
-        const newWeaponElement  = this.createWeaponElement();
-        statblock.appendChild(newWeaponElement);
+        this.statelement = this.createWeaponElement();
+        statblock.appendChild(this.statelement);
     }
 }
 
-
+function updateWeaponMod(loc, val) {
+    console.log("Changed " + val);
+    // mod = Math.floor((val-10)/2);
+    
+    // var moddisplay = ""
+    //     if (mod >= 0) {
+    //         moddisplay = "+" + mod;
+    //     } else {
+    //         moddisplay = mod;
+    //     }
+    // const currtar = loc.parentNode.nextSibling;
+    // currtar.innerHTML = moddisplay;
+}
 
 let user1 = new User("Jimothy");
 user1.newCharacter("Default", "Default", "Default", 1);
 user1.newCharacter("Tav", "Tiefling", "Sorcerer", 1);
 user1.newCharacter("Aayla Secura", "Twi'lek", "Jedi", 4);
-user1.newCharacter("Groot", "Tree", "Rogue", 10);
+user1.newCharacter("Groot", "Tree", "Monk", 10);
 user1.newCharacter("Cassian Andor", "Human (Kenari)", "Rebel", 3);
 user1.newCharacter("Shrek", "Ogre", "Barbarian, Rogue", 3);
 
 
-user1.characterList.at(0).createWeapon("Dagger", "Versatile", "True", "3ft", "1d6", "slashing")                                                                               
+user1.characterList.at(0).createWeapon("Dagger", "Versatile", "True", "20ft/60ft", "1d4", "piercing")                                                                               
 user1.characterList.at(2).createWeapon("Lightsaber", "Versatile", "False", "10ft", "4d10", "laser")                                                                               
 user1.renderCharacterSheet(0);
-// user1.rendersMenu();
+// user1.renderMenu();

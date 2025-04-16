@@ -55,60 +55,45 @@
             </div>
         </div>
             
-        <div class="contentblock" style="display: flex;">
-            <div class="statblock">
-                <h2>Ability Scores</h2>
-                <table id="abilityblock"></table>
-                <!-- <h2>Saving ??</h2>
-                <table id="extrastatblock"></table> -->
-            </div>
-            <div class="statblock">
-                <h2>Skill Scores</h2>
-                <table id="skillblock"></table>
-            </div>
+        <!-- <div class="contentblock" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px;"> -->
+        <div class="statblock">
+            <h2>Ability Scores</h2>
+            <table class="contentblock" id="abilityblock"></table>
+            <!-- <h2>Saving ??</h2>
+            <table id="extrastatblock"></table> -->
         </div>
+        <div class="statblock">
+            <h2>Skill Scores</h2>
+            <table class="contentblock" id="skillblock"></table>
+        </div>
+        <!-- </div> -->
 
         <div class="contentblock">
             <div class="statblock" id="combatblock">
-                <h2>Weapons</h2>
+                <div style="display: flex; justify-content: space-between;">
+                    <h2>Weapons</h2>
+                <button>Create Weapon</button>
+                </div>
                 <table id="weaponblock">
                     <tr>
-                        <td>
+                        <th>
                             <label>Name</label><br>
-                            <input type="text" placeholder="weapon"></input>
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Type</label><br>
-                            <select>
-                                <option>Melee</option>
-                                <option>Ranged</option>
-                                <option>Versatile</option>
-                            </select>
-                        </td>
-                        
-                        <td>
-                            <!-- <input type="text" placeholder="type"></input> -->
-                            <label>Finesse</label><br>
-                            <input type="checkbox">
-                        </td>
-                        <td>
+                        </th>
+                        <th>
+                            <label>Mod</label><br>
+                        </th>
+                        <th>
                             <label>Range</label><br>
-                            <input type="text" placeholder="range">
-                        </td>
-                        <!-- <td>
-                            <input type="text" placeholder="mod">
-                        </td> -->
-                        <td>
+                        </th>
+                        <th>
                             <label>Damage</label><br>
-                            <input type="text" placeholder="roll">
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             <label>Damage</label><br>
-                            <input type="text" placeholder="type">
-                        </td>
-                        <td>
-                            <button>Create Weapon</button>
-                        </td>
+                        </th>
                     </tr>
                 </table>
             </div>
