@@ -46,18 +46,19 @@ p{
   }
   
 .tab button {
-background-color: inherit;
-float: left;
-border: none;
-outline: none;
-cursor: pointer;
-padding: 14px 16px;
-transition: 0.3s;
+    font-family: var(--font);
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
 }
 
 .tab button:hover {
-background-color: var(--primary-background);
-color: var(--primary-text);
+    background-color: var(--primary-background);
+    color: var(--primary-text);
 }
 
 .tab button.active {
@@ -127,11 +128,9 @@ body {
     background-color: var(--primary-background);
 }
 
-.contentblock {
-    /* display: inline-grid; */
-    grid-auto-flow: row;
-    grid-template-columns: 2;
-}
+/* .contentblock { */
+    /* display: grid; */ 
+/* } */
 
 table { 
     /* border-style: solid;
@@ -143,9 +142,11 @@ table {
 
 td {
     padding-inline: 0.5rem;
+    border: black;
     /* text-align: center; */
     /* font-family: var(--font); */
 }
+
 .stat {
     border-color: red;
 }
@@ -156,7 +157,14 @@ input {
 
 button {
     font-family: var(--font);
-    /* border-radius: 5px; */
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: var(--primary-background);
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: var(--secondary-background);
 }
 
 input[type=text] {
