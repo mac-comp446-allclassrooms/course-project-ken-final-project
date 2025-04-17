@@ -194,12 +194,13 @@ class Ability {
         let newSkill = document.createElement("tr");
         newSkill.classList.add("stat");
         newSkill.classList.add(this.name + "stat");
+        console.log(newSkill.classList)
         
         let mod = calculateMod(this.score);    
 
         newSkill.innerHTML = "<td>" + this.name + '</button></td>'
                 + '<td><input type="number"'
-                + 'min="-15" max="30" value="' + this.score + '" onchange ="updateAbilityMod(this, value)"></td>'
+                + 'min="-15" max="30" value="' + this.score + '" onchange ="updateAbilityMod(this , value)"></td>'
                 + '<td>'+ mod + '</td>';
         return newSkill;
     }
@@ -214,7 +215,7 @@ class Ability {
 }
 
 function updateAbilityMod(loc, score) {
-    console.log("Changed ABILITY " + loc);
+    // console.log("Changed ABILITY " + loc);
     let mod = calculateMod(score);      
     const currtar = loc.parentNode.nextSibling;
     currtar.innerHTML = mod;
