@@ -149,18 +149,22 @@ class User {
         // Reads characters
     }
 
+    // Generates a new character within a specific user
     newCharacter(name, species, characterClass, level) {
         this.characterList.push(new CharacterSheet(name, species, characterClass, level))
     }
 
+    // Renders a specific character sheet given a specific character index
     renderCharacterSheet(i) {
         this.characterList.at(i).renderUI();
     }
 
+    // Populates menu with thumbnails of all characters in the characterlist
     renderMenu() {
         this.renderThumbnails();
     }
 
+    // Places character thumbnails
     renderThumbnails() {
         const characterdisplay = document.getElementById("characterlist");
         this.characterList.forEach(character => {
@@ -169,6 +173,7 @@ class User {
         });
     }
 
+    // Creates character thumbnails
     createThumbnail(character) {
         let newThumbnail = document.createElement("div");
         newThumbnail.classList.add("character_thumbnail");
@@ -214,6 +219,7 @@ class Ability {
     
 }
 
+// Updates Ability mod when skill input is changed
 function updateAbilityMod(loc, score) {
     // console.log("Changed ABILITY " + loc);
     let mod = calculateMod(score);      
@@ -239,7 +245,7 @@ class Skill {
         let mod = calculateMod(this.score);    
         newSkill.innerHTML = "<td>" + this.name + "</td>"
                 + "<td><i>(" + this.parent.slice(0, 3) + ")</i></td>"
-                + '<td><input type="number" min="-15" max="30" value="' + this.score + '" onchange ="updateMod(this, value)"></td>'
+                + '<td><input type="number" min="-15" max="30" value="' + this.score + '" onchange ="updateSkillMod(this, value)"></td>'
                 + "<td>" + mod + "</td>";
         return newSkill;
     }
@@ -252,7 +258,8 @@ class Skill {
     }
 }
 
-function updateMod(loc, score) {
+// Updates Skill mod when skill input is changed
+function updateSkillMod(loc, score) {
     console.log("Changed " + score);
     mod = calculateMod(score);
     const currtar = loc.parentNode.nextSibling;
@@ -271,7 +278,6 @@ class Weapon {
         this.statelement;
     }
 
-    
     createWeaponElement(){
         let newWeapon = document.createElement("tr");
         newWeapon.classList.add("weapon");
@@ -289,8 +295,6 @@ class Weapon {
         return newWeapon;
     }
 
-    
-
     // renderElement()
     renderElement() {
         const statblock = document.getElementById("weaponblock");
@@ -299,6 +303,7 @@ class Weapon {
     }
 }
 
+// Places empty weapon row in weapons table
 function renderNewWeaponElement() {
     const newWeapon = new Weapon("", "", "", "", "", "");
     newWeapon.renderElement()
@@ -308,6 +313,7 @@ function renderNewWeaponElement() {
     // statblock.appendChild(this.statelement);
 }
 
+// Deletes weapon row
 function deleteWeaponElement(loc) {
     console.log("Weapon Deleted");
     grandparent = loc.parentNode.parentNode;
@@ -315,6 +321,7 @@ function deleteWeaponElement(loc) {
     grandparent.remove();
 }
 
+// Calculates mod from a given score
 function calculateMod(score) {
     mod = Math.floor((score-10)/2);
     if (mod >= 0) {
