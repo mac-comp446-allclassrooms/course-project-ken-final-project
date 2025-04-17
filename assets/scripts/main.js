@@ -1,8 +1,13 @@
+// CharacterSheet class
+// Currently: constructs/generates a (5e) character based on
+//  name, species, class, level
 class CharacterSheet {
-    constructor(name, species, charClass, level) {
-        console.log("Constructing " + name
 
-        );
+    // Constructor
+    // constructs/generates a (5e) character based on
+    //  name, species, class, level
+    constructor(name, species, charClass, level) {
+        console.log("Constructing " + name);
 
         // for stat in charprofileStats
         //  set stats
@@ -35,6 +40,7 @@ class CharacterSheet {
 
         console.log("Created");
 
+        // Organizes the keys of each Skill into a list of each stat
         this.strskills = ["Athletics"];
         this.dexskills = ["Acrobatics", "Slight of Hand", "Stealth"];
         this.conskills = [];
@@ -57,22 +63,22 @@ class CharacterSheet {
 
         // Generates stats objects
         // str
-        this.generateSubStats("Strength", this.strskills);
+        this.generateSkills("Strength", this.strskills);
         // dex
-        this.generateSubStats("Dexterity", this.dexskills);
+        this.generateSkills("Dexterity", this.dexskills);
         // con
-        this.generateSubStats("Constitution", this.conskills);
+        this.generateSkills("Constitution", this.conskills);
         // int
-        this.generateSubStats("Intelligence", this.intskills);
+        this.generateSkills("Intelligence", this.intskills);
         // wis
-        this.generateSubStats("Wisdom", this.wisskills);
+        this.generateSkills("Wisdom", this.wisskills);
         // cha
-        this.generateSubStats("Charisma", this.chaskills);
+        this.generateSkills("Charisma", this.chaskills);
     }
 
-    // generateSubStats()
-    // Temporary  
-    generateSubStats(parent, list) {
+    // generateSkills()
+    // Temporary, generates skills based on their parent skills
+    generateSkills(parent, list) {
         list.forEach(skillname => {
             let thisskill = new Skill(skillname, parent, this.abilities.get(parent).score);
             this.skills.set(skillname, thisskill);
@@ -82,7 +88,6 @@ class CharacterSheet {
     // renderUI()
     // Creates and places elements
     renderUI() {
-
         // render profileblock
         const namedisplay = document.getElementById("namedisplay");
         namedisplay.setAttribute("value", this.name);
@@ -181,25 +186,21 @@ class Ability {
     constructor(name, score) {
         this.name = name;
         this.score = score;
-        this.mod = Math.floor((score-10)/2);
+        this.mod = calculateMod(score);
         this.statelement;
     }
 
     createSkillElement(){
         let newSkill = document.createElement("tr");
         newSkill.classList.add("stat");
+        newSkill.classList.add(this.name + "stat");
         
-        var moddisplay = ""
-        if (this.mod >= 0) {
-            moddisplay = "+" + this.mod;
-        } else {
-            moddisplay = this.mod;
-        }
+        let mod = calculateMod(this.score);    
 
         newSkill.innerHTML = "<td>" + this.name + '</button></td>'
                 + '<td><input type="number"'
-                + 'min="-15" max="30" value="' + this.score + '" onchange ="updateMod(this, value)"></td>'
-                + '<td>'+ moddisplay + '</td>';
+                + 'min="-15" max="30" value="' + this.score + '" onchange ="updateAbilityMod(this, value)"></td>'
+                + '<td>'+ mod + '</td>';
         return newSkill;
     }
 
@@ -209,45 +210,36 @@ class Ability {
         this.statelement = this.createSkillElement();
         statblock.appendChild(this.statelement);
     }
+    
 }
 
-function updateMod(loc, val) {
-    console.log("Changed " + val);
-    mod = Math.floor((val-10)/2);
-    
-    var moddisplay = ""
-        if (mod >= 0) {
-            moddisplay = "+" + mod;
-        } else {
-            moddisplay = mod;
-        }
+function updateAbilityMod(loc, score) {
+    console.log("Changed ABILITY " + loc);
+    let mod = calculateMod(score);      
     const currtar = loc.parentNode.nextSibling;
-    currtar.innerHTML = moddisplay;
+    currtar.innerHTML = mod;
 }
+
 
 class Skill {
     constructor(name, parent, score) {
         this.name = name;
         this.parent = parent;
         this.score = score;
-        this.mod = Math.floor((score-10)/2);
+        this.mod = calculateMod(score);
         this.statelement;
     }
 
     createSkillElement(){
         let newSkill = document.createElement("tr");
         newSkill.classList.add("stat");
-        var moddisplay = ""
-        if (this.mod >= 0) {
-            moddisplay = "+" + this.mod;
-            // console.log(this.mod);
-        } else {
-            moddisplay = this.mod;
-        }
+        newSkill.classList.add(this.parent + "stat");
+        
+        let mod = calculateMod(this.score);    
         newSkill.innerHTML = "<td>" + this.name + "</td>"
                 + "<td><i>(" + this.parent.slice(0, 3) + ")</i></td>"
                 + '<td><input type="number" min="-15" max="30" value="' + this.score + '" onchange ="updateMod(this, value)"></td>'
-                + "<td>" + moddisplay + "</td>";
+                + "<td>" + mod + "</td>";
         return newSkill;
     }
 
@@ -257,6 +249,13 @@ class Skill {
         this.statelement = this.createSkillElement();
         statblock.appendChild(this.statelement);
     }
+}
+
+function updateMod(loc, score) {
+    console.log("Changed " + score);
+    mod = calculateMod(score);
+    const currtar = loc.parentNode.nextSibling;
+    currtar.innerHTML = mod;
 }
 
 class Weapon {
@@ -292,7 +291,6 @@ class Weapon {
     
 
     // renderElement()
-
     renderElement() {
         const statblock = document.getElementById("weaponblock");
         this.statelement = this.createWeaponElement();
@@ -314,6 +312,16 @@ function deleteWeaponElement(loc) {
     grandparent = loc.parentNode.parentNode;
     // console.log("Delete " + grandparent);
     grandparent.remove();
+}
+
+function calculateMod(score) {
+    mod = Math.floor((score-10)/2);
+    if (mod >= 0) {
+        moddisplay = "+" + mod;
+    } else {
+        moddisplay = mod;
+    } 
+    return moddisplay;
 }
 
 let user1 = new User("Jimothy");
