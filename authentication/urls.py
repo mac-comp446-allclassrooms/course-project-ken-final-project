@@ -23,11 +23,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
 urlpatterns = [
-	path('home/', home, name='home'),
+	# path('home/', home, name='home'),
 	path('', login_page, name='login_page'),
 	path('login/', login_page, name='login_page'),
 	path('register/', register_page, name='register'),
-	path('menu/', menu, name='menu'),
 ]
 
 

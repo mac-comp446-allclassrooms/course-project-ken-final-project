@@ -1,10 +1,10 @@
 // Populates menu with thumbnails of all characters in the characterlist
 function renderMenu() {
-    this.renderThumbnails(value);
+    this.renderThumbnails(characters);
 }
 
 // Places character thumbnails
-function renderThumbnails(value) {
+function renderThumbnails(characters) {
     const characterdisplay = document.getElementById("characterlist");
     this.characterList.forEach(character => {
         const characterThumbnail = this.createThumbnail(character);

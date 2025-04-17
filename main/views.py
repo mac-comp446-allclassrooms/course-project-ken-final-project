@@ -3,7 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+# view page for the home
 def home(request):
-	return('This is temporary before we move things over')
-
-
+	characters = request.user.character_set.all()
+	context = {
+		"characters" : characters
+	}
+	return render(request, 'main/menu.html', context)

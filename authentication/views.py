@@ -6,13 +6,8 @@ from django.contrib.auth.models import User
 from .models import *
 
 # make a view request for the home page
-def home(request):
-	return render(request, 'menu.html')
-
-# view page for the menu
-def menu(request):
-	return render(request, 'menu.html')
-
+# def home(request):
+# 	return render(request, 'menu.html')
 
 # make a view request for the login page
 def login_page(request):
