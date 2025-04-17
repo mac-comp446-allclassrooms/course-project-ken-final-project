@@ -1,13 +1,14 @@
 <head>
     <link rel='stylesheet' type="text/css" href="../assets/styles/main.css">
     <link rel='stylesheet' type="text/css" href="../assets/styles/menu.css">
+    <script src="../assets/scripts/menu.js" defer></script>
+    <!-- {{ value|json_script:"hello-data" }} -->
 </head>
-<script src="../assets/scripts/main.js" defer></script>
 <div class="tab">
     <button class="tablinks">Username</button>
     <button class="tablinks">Characters</button>
 </div>
-<body>
+<body onload="renderMenu()">
     <div class="container">
         <div style="display: flex; justify-content: space-between;">
             <h1>Characters</h1>
