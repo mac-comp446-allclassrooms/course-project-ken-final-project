@@ -278,7 +278,7 @@ class Weapon {
 
         newWeapon.innerHTML = "<td> <input type='text' value =" + this.name + "></input></td>"
                 + "<td><input type='text' value =" + this.weapontype + "></input></td>"
-                + "<td>" + "<select name='mod'"
+                + "<td>" + "<select name='mod'>"
                         + "<option value='Dexterity'>Dex</option>"
                         + "<option value='Strength'>Str</option>"
                 +" </select>" + "</td>"
@@ -292,12 +292,6 @@ class Weapon {
     
 
     // renderElement()
-    
-    // renderElement() {
-    //     const statblock = document.getElementById("weaponblock");
-    //     const newWeaponElement  = this.createWeaponElement();
-    //     statblock.appendChild(newWeaponElement);
-    // }
 
     renderElement() {
         const statblock = document.getElementById("weaponblock");
@@ -309,14 +303,14 @@ class Weapon {
 function renderNewWeaponElement() {
     const newWeapon = new Weapon("", "", "", "", "", "");
     newWeapon.renderElement()
-    console.log(1);
+    console.log("Weapon created");
     // const statblock = document.getElementById("weaponblock");
     // this.statelement = this.createWeaponElement();
     // statblock.appendChild(this.statelement);
 }
 
 function deleteWeaponElement(loc) {
-    // console.log(1);
+    console.log("Weapon Deleted");
     grandparent = loc.parentNode.parentNode;
     // console.log("Delete " + grandparent);
     grandparent.remove();

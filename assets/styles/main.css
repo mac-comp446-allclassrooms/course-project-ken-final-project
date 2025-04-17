@@ -142,6 +142,7 @@ table {
 
 td {
     padding-inline: 0.5rem;
+    border: black;
     /* text-align: center; */
     /* font-family: var(--font); */
 }
