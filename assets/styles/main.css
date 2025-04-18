@@ -38,6 +38,34 @@ p{
     font-family: var(--font);
 }
 
+button {
+    font-family: var(--font);
+    border-radius: 5px;
+    border-width: 1px;
+    background-color: var(--primary-background);
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: var(--secondary-background);
+}
+
+input {
+    font-family: inherit;
+}
+
+input[type=text] {
+    /* display: flex; */
+    width: 6rem;
+
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+select {
+    border-radius: 5px;   
+}
+
 .tab {
     overflow: hidden;
     border: 1px solid var(--primary-background);
@@ -58,7 +86,8 @@ p{
 
 .tab button:hover {
     background-color: var(--primary-background);
-    color: var(--primary-text);
+    /* color: var(--primary-text); */
+    background-color: red;
 }
 
 .tab button.active {
@@ -151,30 +180,6 @@ td {
     border-color: red;
 }
 
-input {
-    font-family: inherit;
-}
-
-button {
-    font-family: var(--font);
-    border-radius: 10px;
-    border-width: 1px;
-    background-color: var(--primary-background);
-    transition: background-color 0.5s;
-}
-
-button:hover {
-    background-color: var(--secondary-background);
-}
-
-input[type=text] {
-    /* display: flex; */
-    width: 6rem;
-
-    border-width: 1px;
-    border-radius: 5px;
-}
-
 .stat input[type=number] {
     /* display: flex; */
     width: 3rem;
@@ -184,6 +189,3 @@ input[type=text] {
     border-color: var(--secondary-border);
 }
 
-select {
-    border-radius: 5px;   
-}
