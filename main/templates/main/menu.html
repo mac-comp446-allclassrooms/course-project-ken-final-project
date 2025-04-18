@@ -2,10 +2,11 @@
     <link rel='stylesheet' type="text/css" href="../assets/styles/main.css">
     <link rel='stylesheet' type="text/css" href="../assets/styles/menu.css">
     <script src="../assets/scripts/menu.js" defer></script>
+    {{ context|json_script:"characters-data" }}
 </head>
 <div class="tab">
-    <button class="tablinks">Username</button>
-    <button class="tablinks">Characters</button>
+    <button class="tab-links">Username</button>
+    <button class="tab-links">Characters</button>
 </div>
 <body onload="renderMenu()">
     <div class="container">
@@ -13,6 +14,6 @@
             <h1>Characters</h1>
             <button type="button">Create New Character</button>
         </div>
-        <div class="containerdisplay" id="characterlist"></div>
+        <div class="container-display" id="character-list"></div>
     </div>
 </body>

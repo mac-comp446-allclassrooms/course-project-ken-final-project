@@ -17,3 +17,4 @@ class Character(models.Model):
 class DungeonsAndDragonsFifthEditionCharacter(Character):
 	species = models.CharField(max_length=200)
 	characterClass = models.CharField(max_length=200)
+	level = models.PositiveIntegerField()

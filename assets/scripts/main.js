@@ -176,7 +176,7 @@ class User {
     // Creates character thumbnails
     createThumbnail(character) {
         let newThumbnail = document.createElement("div");
-        newThumbnail.classList.add("character_thumbnail");
+        newThumbnail.classList.add("character-thumbnail");
         newThumbnail.innerHTML = "<h2>"+ character.name + " </h2>"
                 + "<p><i>(Level: "+ character.level+")</i></p>"
                 + "<p><strong>Species:</strong> <i>" + character.species + "</i></p>"
