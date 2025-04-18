@@ -12,6 +12,19 @@ Info about your project goes here
 
 Info about your project goes here
 
+## Developer Guide
+
+### Running Dev Server
+1.cd into django_auth
+2.Create a virtual environment that will exist on your machine (only do this once, this is automatically gitignored):
+ - $ python -m venv .venv
+3.Run these:
+ - $ source .venv/bin/activate
+ - (.venv) $ python3 -m pip install -r requirements.txt
+ - python manage.py runserver
+4.Open the link
+
+
 ## More information
 
 Info about your project goes here

@@ -1,0 +1,120 @@
+:root {
+    /* --color1: #4f3428;
+    --color2: #b2a62b;
+    --color3: #d8a150;
+    --color4: #a36441;
+    --color5: #581c15; */
+    --primary-border: black;
+    --secondary-border: gray;
+    --primary-text: black;
+    --secondary-text: gray;
+    --primary-background: white;
+    --secondary-background: lightgray;
+
+}
+
+/* Fonts */
+h1 {
+    font-size: 1.5rem;
+}
+h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+h3 {
+    font-size: 0.75rem;
+}
+
+header {
+    overflow: hidden;
+    display: flex;
+    background-color: var(--primary-background);
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 99%; /* Full width */
+    border-bottom: var(--primary-border);
+    justify-content: space-between;
+}
+
+header > button {
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+}
+
+/* Block stuff */
+body {
+    background-color: var(--primary-background);
+    margin-top: 60px;
+}
+
+.statblock {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 2px;
+    /* border-radius: 15px; max: 30 */
+    padding: 10px;
+    background-color: var(--primary-background);
+    margin: 1px;
+}
+
+.block_title {
+    border-style: solid;
+    border-color: var(--primary-border);
+    border-radius: inherit;
+    border-width: 1px;
+    padding-left: 10px;
+
+    background-color: var(--primary-background);
+}
+
+.subblock {
+    display: flex;
+    justify-content: space-between;
+    border-radius: inherit;
+}
+
+.statbox {
+    display: flex;
+    border-style:inset;
+    border-color: var(--primary-border);
+    border-radius: inherit;
+    border-width: 1px;
+    padding-left: 10px;
+    margin: 5px;
+    justify-content: space-between;
+
+    flex-grow: 1;
+    /* width: 33.3%; */
+}
+
+.weapon_display {
+    /* display: flex; */
+    justify-content: space-around;
+    border-radius: inherit;
+}
+
+/* Input styling */
+input {
+    background-color: inherit;
+    border-width: 1px;
+    border-radius: inherit;
+    border-style: solid;
+}
+
+input[type=text] {
+    /* display: flex; */
+    width: 66%;
+}
+
+input[type=number] {
+    display: flex;
+    width: 4rem;
+    /* flex-grow: 1; */
+}
+
+select{
+    background-color: inherit;
+    border-width: 1px;
+    border-radius: inherit;
+    border-style: solid;
+}
