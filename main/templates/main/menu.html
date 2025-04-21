@@ -1,7 +1,9 @@
 <head>
-    <link rel='stylesheet' type="text/css" href="../assets/styles/main.css">
-    <link rel='stylesheet' type="text/css" href="../assets/styles/menu.css">
-    <script src="../assets/scripts/menu.js" defer></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/main/menu.css' %}">
+    {% load static %}
+    <script src="{% static '/main/menu.js' %}"></script>
+
     {{ context|json_script:"characters-data" }}
 </head>
 <div class="tab">
@@ -14,6 +16,17 @@
             <h1>Characters</h1>
             <button type="button">Create New Character</button>
         </div>
-        <div class="container-display" id="character-list"></div>
+        <div class="container-display" id="character-list">
+            {% for character in characters %}
+                <div class="character-thumbnail">
+                    <h2>{{character.name}}</h2>
+                    <p><i>Level: {{character.level}}</i></p>
+                    <p><strong>Species:</strong> <i>{{character.species}}</i></p>
+                    <p><strong>Class:</strong> <i>{{character.characterClass}}</i></p>
+                    <button>Open</button>
+                    <button>Delete</button>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>

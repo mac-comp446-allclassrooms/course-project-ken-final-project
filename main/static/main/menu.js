@@ -1,14 +1,19 @@
 // Populates menu with thumbnails of all characters in the characterlist
 function renderMenu() {
-    const characters = JSON.parse(document.getElementById('characters-data').textContent);
+    const characters = JSON.parse(document.getElementById('characters-data'));
+    console.log(characters);
+    console.log(json.dumps(characters));
+    console.log("hi!");
     this.renderThumbnails(characters);
 }
 
 // Places character thumbnails
 function renderThumbnails(characters) {
     const characterDisplay = document.getElementById("character-list");
+    console.log("hi2!");
     for (const character of characters) {
         console.log(character);
+        console.log("hi3!");
         const characterThumbnail = this.createThumbnail(character);
         characterDisplay.appendChild(characterThumbnail);
     }
