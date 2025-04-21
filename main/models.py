@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from model_utils.managers import InheritanceManager
 
 # Create your models here.
 class UserTemplate(models.Model):
@@ -10,6 +11,7 @@ class UserTemplate(models.Model):
 		return self.name
 
 class Character(models.Model):
+	objects = InheritanceManager()
 	name = models.CharField(max_length=200)
 	system = models.CharField(max_length=200)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)

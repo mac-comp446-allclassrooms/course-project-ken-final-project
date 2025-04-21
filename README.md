@@ -28,5 +28,3 @@ Info about your project goes here
 ## More information
 
 Info about your project goes here
-
-
