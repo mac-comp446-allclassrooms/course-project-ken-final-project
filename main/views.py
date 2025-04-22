@@ -8,17 +8,18 @@ from main.models import Character
 
 # view page for home menu
 def home(request):
+	# POST request, handles opening and deleting characters
 	if (request.method == 'POST'):
 		if 'open' in request.POST:
-			print("open!")
-			print(Character.objects.get(user=request.user, id=request.POST.get('character-id')).name)
-			# return redirect('/character/') TODO: MAKE CHARACTER WORK
+			opened_character = Character.objects.get(user=request.user, id=request.POST.get('character-id'))
+			print("open: " + opened_character.name)
+			# return redirect('/character/', opened_character)
 		elif 'delete' in request.POST:
 			print("delete!")
 			Character.objects.get(user=request.user, id=request.POST.get('character-id')).delete()
 			return redirect('/home/')
 
-	#GET request
+	# GET request
 	characters = Character.objects.filter(user=request.user).select_subclasses()
 	context = {
 		"characters" : characters
@@ -26,12 +27,9 @@ def home(request):
 	return render(request, 'main/menu.html', context)
 
 # view page for an individual character
-def character(request):
-	# TODO: PLACEHOLDER CODE, REPLACE LATER
-	characters = Character.objects.filter(user=request.user).select_subclasses()
-
+def character(request, character):
 	context = {
-		"characters" : characters
+		"character" : character
 	}
 
 	return render(request, 'main/character-sheet.html', context)
