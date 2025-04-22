@@ -13,10 +13,10 @@ class UserTemplate(models.Model):
 class Character(models.Model):
 	objects = InheritanceManager()
 	name = models.CharField(max_length=200)
-	system = models.CharField(max_length=200)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class DungeonsAndDragonsFifthEditionCharacter(Character):
+	system = "D&D 5e"
 	species = models.CharField(max_length=200)
 	characterClass = models.CharField(max_length=200)
 	level = models.PositiveIntegerField()

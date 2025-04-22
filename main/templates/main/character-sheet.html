@@ -1,8 +1,9 @@
 <head>
-    <link rel='stylesheet' type="text/css" href="../assets/styles/main.css">
-    <link rel='stylesheet' type="text/css" href="../assets/styles/charactersheet.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/main/character-sheet.css' %}">
+    <!-- {% load static %}
+    <script src="{% static '/main/menu.js' %}"></script> TODO: ADD SCRIPT-->
 </head>
-<script src="../assets/scripts/main.js" defer></script>
 <div class="tab">
     <button class="tablinks" id="usernameheader">Username</button>
     <button class="tablinks" id="characterheader">Characters</button>

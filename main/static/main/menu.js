@@ -1,3 +1,5 @@
+// CURRENTLY UNUSED
+
 // Populates menu with thumbnails of all characters in the characterlist
 function renderMenu() {
     const characters = JSON.parse(document.getElementById('characters-data'));
