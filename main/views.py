@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from model_utils.managers import InheritanceManager
 
 from main.models import Character
@@ -13,7 +13,8 @@ def home(request):
 		if 'open' in request.POST:
 			opened_character = Character.objects.get(user=request.user, id=request.POST.get('character-id'))
 			print("open: " + opened_character.name)
-			# return redirect('/character/', opened_character)
+			request.session['character-id'] = request.POST.get('character-id')
+			return redirect('/character/')
 		elif 'delete' in request.POST:
 			print("delete!")
 			Character.objects.get(user=request.user, id=request.POST.get('character-id')).delete()
@@ -27,8 +28,18 @@ def home(request):
 	return render(request, 'main/menu.html', context)
 
 # view page for an individual character
-def character(request, character):
+def character(request):
+	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
+	print("yo!")
+	print(character.name)
+
 	context = {
 		"character" : character
 	}
-	return render(request, 'main/dnd5e-character-sheet.html', context)
+	try:
+		if character.system == "D&D 5e":
+			return render(request, 'main/dnd5e-character-sheet.html', context)
+		else: 
+			raise Http404("Game system not found!")
+	except:
+		raise Http404("Character not found!")
