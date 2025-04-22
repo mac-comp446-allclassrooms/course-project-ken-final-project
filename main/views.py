@@ -31,5 +31,4 @@ def character(request, character):
 	context = {
 		"character" : character
 	}
-
 	return render(request, 'main/character-sheet.html', context)

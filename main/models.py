@@ -20,3 +20,8 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 	species = models.CharField(max_length=200)
 	characterClass = models.CharField(max_length=200)
 	level = models.PositiveIntegerField()
+
+class DungeonsAndDragonsFifthEditionItem(models.Model):
+	name = models.CharField(max_length=200)
+	description = models.CharField(max_length=10000)
+	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
