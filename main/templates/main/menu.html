@@ -18,9 +18,12 @@
                     <form method="post">
                         {% csrf_token %}
                         <h2>{{character.name}}</h2>
-                        <p><i>Level: {{character.level}}</i></p>
-                        <p><strong>Species:</strong> <i>{{character.species}}</i></p>
-                        <p><strong>Class:</strong> <i>{{character.characterClass}}</i></p>
+                        {% if character.system == "D&D 5e" %}
+                            <p><i>Level: {{character.level}}</i></p>
+                            <p><strong>Species:</strong> <i>{{character.species}}</i></p>
+                            <p><strong>Class:</strong> <i>{{character.character_class}}</i></p>
+                        <!-- Dev Note: to add new templates, add a new ifelse clause here. -->
+                        {% endif %}
                         <button id="open-button" type='submit' name="open">Open</button>
                         <button id="delete-button" type='submit' name="delete">Delete</button>
                         <input type="hidden" id="character-id" name="character-id" value={{character.id}}>
