@@ -31,10 +31,16 @@ def home(request):
 def character(request):
 	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
 	ability_scores = character.dungeonsanddragonsfiftheditionabilityscore_set.all()
+	skills = character.dungeonsanddragonsfiftheditionskill_set.all()
+	items = character.dungeonsanddragonsfiftheditionitem_set.all()
+	attacks = character.dungeonsanddragonsfiftheditionattack_set.all()
 
 	context = {
 		"character" : character,
-		"ability_scores" : ability_scores
+		"ability_scores" : ability_scores,
+		"skills" : skills,
+		"items" : items,
+		"attacks" : attacks
 	}
 	try:
 		if character.system == "D&D 5e":
