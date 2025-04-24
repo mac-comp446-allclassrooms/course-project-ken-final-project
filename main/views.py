@@ -49,3 +49,8 @@ def character(request):
 			raise Http404("Game system not found!")
 	except:
 		raise Http404("Character not found!")
+
+
+def index(request):
+	template_name='index.html'
+	return render(request, 'main/index.html')
