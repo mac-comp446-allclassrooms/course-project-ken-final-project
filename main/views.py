@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse
 from model_utils.managers import InheritanceManager
 
-from main.models import Character
+from main.models import Character, DungeonsAndDragonsFifthEditionCharacter
 
 # Create your views here.
 
@@ -19,6 +19,12 @@ def home(request):
 			print("delete!")
 			Character.objects.get(user=request.user, id=request.POST.get('character-id')).delete()
 			return redirect('/home/')
+		elif 'new-character' in request.POST:
+			print("new character!")
+			new_character = DungeonsAndDragonsFifthEditionCharacter.objects.create_dnd5e_character(request.user) # Currently creates a 5e character, does not support dynamic templating at the moment.
+			print("opening new character")
+			request.session['character-id'] = new_character.id
+			return redirect('/character/')
 
 	# GET request
 	characters = Character.objects.filter(user=request.user).select_subclasses()

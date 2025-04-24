@@ -17,6 +17,38 @@ class Character(models.Model):
 	name = models.CharField(max_length=200)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
+	def create_dnd5e_character(self, current_user):
+		character = self.create(user = current_user)
+		ability_scores = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+		for ability_score in ability_scores:
+			DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score, character=character)
+
+		skills = {
+			"Athletics": "Strength",
+			"Acrobatics": "Dexterity",
+			"Sleight of Hand": "Dexterity",
+			"Stealth": "Dexterity",
+			"Arcana": "Intelligence",
+			"History": "Intelligence",
+			"Investigation": "Intelligence",
+			"Nature": "Intelligence",
+			"Religion": "Intelligence",
+			"Animal Handling": "Wisdom",
+			"Insight": "Wisdom",
+			"Perception": "Wisdom",
+			"Survival": "Wisdom",
+			"Deception": "Charisma",
+			"Intimidation": "Charisma",
+			"Performance": "Charisma",
+			"Persuasion": "Charisma",
+		}
+		for skill in skills:
+			ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=skills[skill])
+			DungeonsAndDragonsFifthEditionSkill.objects.create(name=skill, ability_score=ability_score, character=character)
+
+		return character
+
 class DungeonsAndDragonsFifthEditionCharacter(Character):
 	system = "D&D 5e"
 	species = models.CharField(max_length=200)
@@ -24,6 +56,8 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 	level = models.PositiveIntegerField(default=1)
 	hp_maximum = models.PositiveIntegerField(default=0)
 	hp_current = models.PositiveIntegerField(default=0)
+
+	objects = DungeonsAndDragonsFifthEditionCharacterManager()
 
 	def __str__(self):
 		return self.name
