@@ -43,10 +43,11 @@ h3 {
 .loginblock {
 	border-color: var(--primary-border);
 	border-style: solid;
-	border-width: 2px;
+	border-width: 1px;
 	border-radius: 10px;
 	padding: 10px;
-	background-color: var(--primary-background);
+	/* background-color: var(--primary-background); */
+	background-color: red;
 	margin: 100px;
 	
 	justify-content: center;

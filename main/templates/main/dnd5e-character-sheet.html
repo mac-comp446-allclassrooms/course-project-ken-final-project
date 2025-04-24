@@ -1,53 +1,49 @@
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'main/dnd5e-character-sheet.css' %}">
+    <link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
     <!-- {% load static %}
     <script src="{% static '/main/menu.js' %}"></script> TODO: ADD SCRIPT-->
 </head>
-<div class="tab">
-    <button class="tablinks" id="usernameheader">Username</button>
-    <button class="tablinks" id="characterheader">Characters</button>
-</div>
+
+{% include 'main/index.html' %}
 
 <body>
-    {% for i in ability_scores %}
-        {{i}}
-        fsaf
-    {% endfor %}
     {{character.name}}
     <form id="character_sheet">
         <div class="contentblock">
             <div class="statblock" id="profileblock">
-                <h2>Character Profile</h2>
+                <h2>Character Profile
+                    <button type="submit" id="save-character" name="save-character">Save Character</button>
+                </h2>
                 <div class="contentblock" style="display: flex;">
                     <table>
                         <tr class="stat">
                             <td>Name</td>
-                            <td><input type="text" id="namedisplay"></td>
+                            <td><input type="text" id="namedisplay" value="{{character.name}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Species</td>
-                            <td><input type="text" id="speciesdisplay"></td>
+                            <td><input type="text" id="speciesdisplay" value="{{character.species}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Class</td>
-                            <td><input type="text" id="classdisplay"></td>
+                            <td><input type="text" id="classdisplay" value="{{character.character_class}}"></td>
                         </tr>
                     </table>
                     <table>
                         <tr class="stat">
                             <td>Level</td>
-                            <td><input type="number" id="leveldisplay"></td>
+                            <td><input type="number" id="leveldisplay" value="{{character.level}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Health</td>
                             <td>
-                                <input type="number" id="currhealthdisplay">
+                                <input type="number" id="currhealthdisplay" value="{{character.hp_current}}">
                                 <label>/</label>
-                                <input type="number" id="maxhealthdisplay">
+                                <input type="number" id="maxhealthdisplay" value="{{character.hp_maximum}}">
                             </td>
                         </tr>
 
@@ -62,16 +58,43 @@
         </div>
             
         <div class="contentblock" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px;">
-        <div class="statblock">
-            <h2>Ability Scores</h2>
-            <table class="contentblock" id="abilityblock"></table>
-            <!-- <h2>Saving ??</h2>
-            <table id="extrastatblock"></table> -->
-        </div>
-        <div class="statblock">
-            <h2>Skill Scores</h2>
-            <table class="contentblock" id="skillblock"></table>
-        </div>
+            <div class="statblock">
+                <h2>Ability Scores</h2>
+                <table class="contentblock" id="abilityblock">
+                    <tr>
+                        <th>Ability</th>
+                        <th>Score</th>
+                        <th>Mod</th>
+                    </tr>
+                    {% for ability in ability_scores %}
+                        <tr>
+                            <td>{{ability.name}}</td>
+                            <td><input type="number" class="ability-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30"></td>
+                            <td>{{skill.ability_score.score|add:'-10'}}</td>
+                        </tr>                    
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="statblock">
+                <h2>Skill Scores</h2>
+                <table class="contentblock" id="skillblock">
+                    <tr>
+                        <th>Prof</th>
+                        <th>Skill</th>
+                        <th>Ability</th>
+                        <!-- <th>Score</th> -->
+                        <th>Mod</th>
+                    </tr>
+                    {% for skill in skills %}
+                        <tr>
+                            <td>{{skill.proficiency}}</td>
+                            <td>{{skill.name}}</td>
+                            <td>({{skill.ability_score.name}})</td>
+                            <td>{{skill.ability_score.score|add:'-10'}}</td>
+                        </tr>                    
+                    {% endfor %}
+                </table>
+            </div>
         </div>
 
         <div class="contentblock">
