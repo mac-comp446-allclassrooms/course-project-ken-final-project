@@ -34,7 +34,7 @@ class DungeonsAndDragonsFifthEditionAbilityScore(models.Model):
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.name
+		return self.character.name + "'s " + self.name
 
 class DungeonsAndDragonsFifthEditionSkill(models.Model):
 	name = models.CharField(max_length=200)
@@ -43,7 +43,7 @@ class DungeonsAndDragonsFifthEditionSkill(models.Model):
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.name
+		return self.character.name + "'s " + self.name
 
 class DungeonsAndDragonsFifthEditionItem(models.Model):
 	name = models.CharField(max_length=200)
@@ -51,7 +51,7 @@ class DungeonsAndDragonsFifthEditionItem(models.Model):
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.name
+		return self.character.name + "'s " + self.name
 
 class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	name = models.CharField(max_length=200)
@@ -61,4 +61,4 @@ class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.name
+		return self.character.name + "'s " + self.name
