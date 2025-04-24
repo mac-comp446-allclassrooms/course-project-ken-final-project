@@ -30,8 +30,6 @@ def home(request):
 # view page for an individual character
 def character(request):
 	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
-	print("yo!")
-	print(character.name)
 
 	context = {
 		"character" : character

@@ -22,6 +22,8 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 	species = models.CharField(max_length=200)
 	character_class = models.CharField(max_length=200)
 	level = models.PositiveIntegerField(default=1)
+	hp_maximum = models.PositiveIntegerField(default=0)
+	hp_current = models.PositiveIntegerField(default=0)
 
 class DungeonsAndDragonsFifthEditionAbilityScore(models.Model):
 	name = models.CharField(max_length=200)
