@@ -14,7 +14,9 @@
     <form id="character_sheet">
         <div class="contentblock">
             <div class="statblock" id="profileblock">
-                <h2>Character Profile</h2>
+                <h2>Character Profile
+                    <button type="submit" id="save-character" name="save-character">Save Character</button>
+                </h2>
                 <div class="contentblock" style="display: flex;">
                     <table>
                         <tr class="stat">
@@ -64,11 +66,13 @@
                     <tr>
                         <th>Ability</th>
                         <th>Score</th>
+                        <th>Mod</th>
                     </tr>
                     {% for ability in ability_scores %}
                         <tr>
-                            <td>{{ability}}</td>
-                            <td><input type="number" value="{{ability.score}}"></td>
+                            <td>{{ability.name}}</td>
+                            <td><input type="number" class="ability-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30"></td>
+                            <td>{{skill.ability_score.score|add:'-10'}}</td>
                         </tr>                    
                     {% endfor %}
                 </table>
@@ -77,13 +81,18 @@
                 <h2>Skill Scores</h2>
                 <table class="contentblock" id="skillblock">
                     <tr>
+                        <th>Prof</th>
                         <th>Skill</th>
-                        <th>Score</th>
+                        <th>Ability</th>
+                        <!-- <th>Score</th> -->
+                        <th>Mod</th>
                     </tr>
                     {% for skill in skills %}
                         <tr>
-                            <td>{{skill}}</td>
-                            <td><input type="number" value="{{skill.score}}"></td>
+                            <td>{{skill.proficiency}}</td>
+                            <td>{{skill.name}}</td>
+                            <td>({{skill.ability_score.name}})</td>
+                            <td>{{skill.ability_score.score|add:'-10'}}</td>
                         </tr>                    
                     {% endfor %}
                 </table>
