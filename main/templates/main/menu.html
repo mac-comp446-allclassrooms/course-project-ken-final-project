@@ -2,10 +2,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static '/main/menu.css' %}">
 </head>
-<div class="tab">
-    <button class="tab-links">Username</button>
-    <button class="tab-links">Characters</button>
-</div>
+
+{% include 'main/index.html' %}
+
 <body>
     <div class="container">
         <div style="display: flex; justify-content: space-between;">

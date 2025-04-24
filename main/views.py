@@ -52,4 +52,5 @@ def character(request):
 
 
 def index(request):
-	return render(request, '../templates/index.html')
+	template_name='index.html'
+	return render(request, 'main/index.html')

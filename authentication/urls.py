@@ -21,12 +21,14 @@ from authentication.views import *
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	# path('home/', home, name='home'),
 	path('', login_page, name='login_page'),
 	path('login/', login_page, name='login_page'),
 	path('register/', register_page, name='register'),
+	path('logout/', auth_views.LogoutView.as_view()),
 ]
 
 
