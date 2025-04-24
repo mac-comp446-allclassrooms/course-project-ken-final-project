@@ -30,9 +30,11 @@ def home(request):
 # view page for an individual character
 def character(request):
 	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
+	ability_scores = character.dungeonsanddragonsfiftheditionabilityscore_set.all()
 
 	context = {
-		"character" : character
+		"character" : character,
+		"ability_scores" : ability_scores
 	}
 	try:
 		if character.system == "D&D 5e":
