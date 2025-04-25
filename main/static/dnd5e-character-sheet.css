@@ -1,0 +1,65 @@
+body {
+    background-color: var(--primary-background);
+    /* background-color: red; */
+}
+
+/* Page */
+.statblock {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    background-color: var(--primary-background);
+    /* background-color: red; */
+}
+
+/* .contentblock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+} */
+
+table { 
+    /* border-style: solid;
+    border-color: var(--primary-border); */
+    /* border-width: 0.5px; */
+    /* border-collapse: collapse; */
+    font-family: var(--font);
+}
+
+td {
+    padding-inline: 0.25rem;
+    /* text-align: center; */
+    /* font-family: var(--font); */
+}
+
+input {
+    font-family: inherit;
+}
+
+button {
+    font-family: var(--font);
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: var(--primary-background);
+    transition: background-color 0.5s;
+}
+
+input[type=text] {
+    /* display: flex; */
+    width: 6rem;
+
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+input[type=number] {
+    /* display: flex; */
+    width: 3rem;
+
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: var(--secondary-border);
+}
