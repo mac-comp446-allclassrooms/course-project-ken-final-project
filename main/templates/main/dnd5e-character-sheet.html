@@ -1,8 +1,8 @@
 <head>
     {% load static %}
     <link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
-    <!-- {% load static %}
-    <script src="{% static '/main/menu.js' %}"></script> TODO: ADD SCRIPT-->
+    <!-- {% load static %} -->
+    <script src="{% static 'menu.js' %}"></script>
 </head>
 
 {% include 'main/index.html' %}
@@ -98,10 +98,10 @@
         </div>
 
         <div class="contentblock">
-            <div class="statblock" id="combatblock">
+            <div class="statblock">
                 <div style="display: flex; justify-content: space-between;">
                     <h2>Weapons</h2>
-                <button type="button" onclick="renderNewWeaponElement()">Create Weapon</button>
+                <button type="button" onclick="createNewWeapon()">Create Weapon</button>
                 </div>
                 <table id="weaponblock">
                     <tr>
@@ -118,10 +118,60 @@
                             <label>Range</label><br>
                         </th>
                         <th>
-                            <label>Damage</label><br>
+                            <label>Roll</label><br>
                         </th>
                         <th>
-                            <label>Damage</label><br>
+                            <label>Type</label><br>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="statblock">
+                <div style="display: flex; justify-content: space-between;">
+                    <h2>Spells</h2>
+                <button type="button" onclick="createNewSpell()">Create Spell</button>
+                </div>
+                <table id="spellblock">
+                    <tr>
+                        <th>
+                            <label>Name</label><br>
+                        </th>
+                        <th>
+                            <label>Level</label><br>
+                        </th>
+                        <th>
+                            <label>Description</label><br>
+                        </th>
+                        <th>
+                            <label>Attack</label><br>
+                        </th>
+                        <th>
+                            <label>Save</label><br>
+                        </th>
+                        <th>
+                            <label>School</label><br>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="statblock">
+                <div style="display: flex; justify-content: space-between;">
+                    <h2>Inventory</h2>
+                <button type="button" onclick="createNewItem()">Create Item</button>
+                </div>
+                <table id="inventoryblock">
+                    <tr>
+                        <th>
+                            <label>Quantity</label><br>
+                        </th>
+                        <th>
+                            <label>Name</label><br>
+                        </th>
+                        <th>
+                            <label>Description</label><br>
+                        </th>
+                        <th>
+                            <label>Weight</label><br>
                         </th>
                     </tr>
                 </table>
