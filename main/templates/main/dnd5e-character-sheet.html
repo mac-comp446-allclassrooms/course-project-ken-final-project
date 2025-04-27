@@ -2,19 +2,20 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
     <!-- {% load static %} -->
-    <script src="{% static 'menu.js' %}"></script>
+    <script src="{% static 'charactersheet.js' %}"></script>
 </head>
 
 {% include 'main/index.html' %}
 
 <body>
-    {{character.name}}
+    
     <form id="character_sheet">
         <div class="contentblock">
             <div class="statblock" id="profileblock">
-                <h2>Character Profile
+                <div style="display: flex; justify-content: space-between;">
+                    <h2>{{character.name}}'s Character Profile</h2>
                     <button type="submit" id="save-character" name="save-character">Save Character</button>
-                </h2>
+                </div>
                 <div class="contentblock" style="display: flex;">
                     <table>
                         <tr class="stat">
@@ -69,8 +70,8 @@
                     {% for ability in ability_scores %}
                         <tr>
                             <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30"></td>
-                            <td>{{skill.ability_score.score|add:'-10'}}</td>
+                            <td><input type="number" class="ability-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this , value)"></td>
+                            <td>{{skill.ability_score.score}}</td>
                         </tr>                    
                     {% endfor %}
                 </table>
@@ -87,10 +88,10 @@
                     </tr>
                     {% for skill in skills %}
                         <tr>
-                            <td>{{skill.proficiency}}</td>
+                            <td><input type="number" class='level-input' value={{skill.proficiency}}></td>
                             <td>{{skill.name}}</td>
                             <td>({{skill.ability_score.name}})</td>
-                            <td>{{skill.ability_score.score|add:'-10'}}</td>
+                            <td>{{skill.ability_score.score}}</td>
                         </tr>                    
                     {% endfor %}
                 </table>
@@ -118,12 +119,24 @@
                             <label>Range</label><br>
                         </th>
                         <th>
-                            <label>Roll</label><br>
+                            <label>Dmg Roll</label><br>
                         </th>
                         <th>
-                            <label>Type</label><br>
+                            <label>Dmg Type</label><br>
                         </th>
                     </tr>
+                    <!-- 
+                    {% for weapon in weapons %}
+                    <tr>
+                        <td>weapon.name</td>
+                        <td>weapon.type</td>
+                        <td>weapon.mod</td>
+                        <td>weapon.range</td>
+                        <td>weapon.damageroll</td>
+                        <td>weapon.damagetype</td>
+                    </tr>
+                    {% endfor %}
+                     -->
                 </table>
             </div>
             <div class="statblock">
@@ -134,10 +147,10 @@
                 <table id="spellblock">
                     <tr>
                         <th>
-                            <label>Name</label><br>
+                            <label>Level</label><br>
                         </th>
                         <th>
-                            <label>Level</label><br>
+                            <label>Name</label><br>
                         </th>
                         <th>
                             <label>Description</label><br>
