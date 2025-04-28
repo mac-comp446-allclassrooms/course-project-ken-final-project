@@ -70,7 +70,7 @@
                     {% for ability in ability_scores %}
                         <tr>
                             <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this , value)"></td>
+                            <td><input type="number" class="ability-score {{skill.ability_score.name}}-mod" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this, value)"></td>
                             <td>{{skill.ability_score.score}}</td>
                         </tr>                    
                     {% endfor %}
@@ -91,7 +91,7 @@
                             <td><input type="number" class='level-input' value={{skill.proficiency}}></td>
                             <td>{{skill.name}}</td>
                             <td>({{skill.ability_score.name}})</td>
-                            <td>{{skill.ability_score.score}}</td>
+                            <td class="{{skill.ability_score.name}}-mod">{{skill.ability_score.score}}</td>
                         </tr>                    
                     {% endfor %}
                 </table>
