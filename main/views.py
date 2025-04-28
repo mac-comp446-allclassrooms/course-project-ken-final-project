@@ -35,6 +35,20 @@ def home(request):
 
 # view page for an individual character
 def character(request):
+	# POST request, handles saving characters
+	if (request.method == 'POST'):
+		# new character
+		# get basic info, set it
+		# get all abilities scores, iterate
+		# get all skills, iterate
+		# get all items, iterate
+		# get all attacks, iterate
+		# get all spells, iterate
+		# delete old character
+		# set new character's id as current
+		return redirect('/home/')
+	
+	# GET request
 	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
 	ability_scores = character.dungeonsanddragonsfiftheditionabilityscore_set.all()
 	skills = character.dungeonsanddragonsfiftheditionskill_set.all()

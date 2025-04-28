@@ -20,37 +20,37 @@
                     <table>
                         <tr class="stat">
                             <td>Name</td>
-                            <td><input type="text" id="namedisplay" value="{{character.name}}"></td>
+                            <td><input type="text" id="namedisplay" name="character_name" value="{{character.name}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Species</td>
-                            <td><input type="text" id="speciesdisplay" value="{{character.species}}"></td>
+                            <td><input type="text" id="speciesdisplay" name="species" value="{{character.species}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Class</td>
-                            <td><input type="text" id="classdisplay" value="{{character.character_class}}"></td>
+                            <td><input type="text" id="classdisplay" name="class" value="{{character.character_class}}"></td>
                         </tr>
                     </table>
                     <table>
                         <tr class="stat">
                             <td>Level</td>
-                            <td><input type="number" id="leveldisplay" value="{{character.level}}"></td>
+                            <td><input type="number" id="leveldisplay" name="level" value="{{character.level}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Health</td>
                             <td>
-                                <input type="number" id="currhealthdisplay" value="{{character.hp_current}}">
+                                <input type="number" id="currhealthdisplay" name="hp_current" value="{{character.hp_current}}">
                                 <label>/</label>
-                                <input type="number" id="maxhealthdisplay" value="{{character.hp_maximum}}">
+                                <input type="number" id="maxhealthdisplay" name="hp_maximum" value="{{character.hp_maximum}}">
                             </td>
                         </tr>
 
                         <tr class="stat">
                             <td>Armor Class</td>
-                            <td><input type="number" id="armorclassdisplay"></td>
+                            <td><input type="number" name="armor_class" id="armorclassdisplay"></td>
                         </tr>
                     </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
