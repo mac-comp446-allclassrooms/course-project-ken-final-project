@@ -1,7 +1,7 @@
 {% block content %}
 <div class="tab" style="display: flex; justify-content: space-between;">
 	<a href='/home/'><button type="button" class="tablinks" id="characterheader">RPMe</button></a>
-	<a href='/home/'><button type="button" class="tablinks" id="usernameheader">Username</button></a>
+	<a href='/home/'><button type="button" class="tablinks" id="usernameheader">{{ user.username }}</button></a>
 	<a href='/home/'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
 	<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
 		<button type="submit" class="tablinks" id="logoutheader">Log Out</button>
