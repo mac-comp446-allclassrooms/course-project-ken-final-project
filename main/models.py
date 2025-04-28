@@ -56,6 +56,7 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 	level = models.PositiveIntegerField(default=1)
 	hp_maximum = models.PositiveIntegerField(default=0)
 	hp_current = models.PositiveIntegerField(default=0)
+	armor_class = models.PositiveIntegerField(default=10)
 
 	objects = DungeonsAndDragonsFifthEditionCharacterManager()
 
