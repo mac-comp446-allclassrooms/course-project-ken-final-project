@@ -9,7 +9,8 @@
 
 <body>
     
-    <form id="character_sheet">
+    <form id="character_sheet" method="post">
+        {% csrf_token %}
         <div class="contentblock">
             <div class="statblock" id="profileblock">
                 <div style="display: flex; justify-content: space-between;">
@@ -20,7 +21,7 @@
                     <table>
                         <tr class="stat">
                             <td>Name</td>
-                            <td><input type="text" id="namedisplay" name="character_name" value="{{character.name}}"></td>
+                            <td><input type="text" id="namedisplay" name="character-name" value="{{character.name}}"></td>
                         </tr>
 
                         <tr class="stat">
@@ -30,7 +31,7 @@
 
                         <tr class="stat">
                             <td>Class</td>
-                            <td><input type="text" id="classdisplay" name="class" value="{{character.character_class}}"></td>
+                            <td><input type="text" id="classdisplay" name="character_class" value="{{character.character_class}}"></td>
                         </tr>
                     </table>
                     <table>
@@ -42,15 +43,15 @@
                         <tr class="stat">
                             <td>Health</td>
                             <td>
-                                <input type="number" id="currhealthdisplay" name="hp_current" value="{{character.hp_current}}">
+                                <input type="number" id="currhealthdisplay" name="hp-current" value="{{character.hp_current}}">
                                 <label>/</label>
-                                <input type="number" id="maxhealthdisplay" name="hp_maximum" value="{{character.hp_maximum}}">
+                                <input type="number" id="maxhealthdisplay" name="hp-maximum" value="{{character.hp_maximum}}">
                             </td>
                         </tr>
 
                         <tr class="stat">
                             <td>Armor Class</td>
-                            <td><input type="number" name="armor_class" id="armorclassdisplay"></td>
+                            <td><input type="number" name="armor-class" id="armorclassdisplay"></td>
                         </tr>
                     </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
