@@ -2,7 +2,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
     <!-- {% load static %} -->
-    <script src="{% static 'charactersheet.js' %}"></script>
+    <script src="{% static 'charactersheet.js' %}" defer></script>
 </head>
 
 {% include 'main/index.html' %}
@@ -51,7 +51,7 @@
 
                         <tr class="stat">
                             <td>Armor Class</td>
-                            <td><input type="number" name="armor-class" id="armorclassdisplay" value="10"></td>
+                            <td><input type="number" name="armor-class" id="armorclassdisplay" value="10" required></td>
                         </tr>
                     </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
