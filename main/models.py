@@ -18,7 +18,8 @@ class Character(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
-	def create_dnd5e_character(self, current_user):
+	# Create a blank D&D 5e character model.
+	def create_blank_dnd5e_character(self, current_user):
 		character = self.create(user = current_user)
 		ability_scores = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 		for ability_score in ability_scores:
@@ -46,6 +47,46 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		for skill in skills:
 			ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=skills[skill])
 			DungeonsAndDragonsFifthEditionSkill.objects.create(name=skill, ability_score=ability_score, character=character)
+
+		return character
+	
+	# Create
+	def save_dnd5e_character(self, current_user, form_data):
+		# Create a new D&D 5e character sheet using information from an HTML form POST request.
+		character = self.create(user = current_user)
+		character.name = form_data.get('character-name')
+		character.species = form_data.get('species')
+		character.character_class = form_data.get('character_class')
+		character.hp_current = form_data.get('hp-current')
+		character.hp_maximum = form_data.get('hp-maximum')
+		character.armor_class = form_data.get('armor-class')
+
+		# ability_scores = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+		# for ability_score in ability_scores:
+		# 	DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score, character=character)
+
+		# skills = {
+		# 	"Athletics": "Strength",
+		# 	"Acrobatics": "Dexterity",
+		# 	"Sleight of Hand": "Dexterity",
+		# 	"Stealth": "Dexterity",
+		# 	"Arcana": "Intelligence",
+		# 	"History": "Intelligence",
+		# 	"Investigation": "Intelligence",
+		# 	"Nature": "Intelligence",
+		# 	"Religion": "Intelligence",
+		# 	"Animal Handling": "Wisdom",
+		# 	"Insight": "Wisdom",
+		# 	"Perception": "Wisdom",
+		# 	"Survival": "Wisdom",
+		# 	"Deception": "Charisma",
+		# 	"Intimidation": "Charisma",
+		# 	"Performance": "Charisma",
+		# 	"Persuasion": "Charisma",
+		# }
+		# for skill in skills:
+		# 	ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=skills[skill])
+		# 	DungeonsAndDragonsFifthEditionSkill.objects.create(name=skill, ability_score=ability_score, character=character)
 
 		return character
 

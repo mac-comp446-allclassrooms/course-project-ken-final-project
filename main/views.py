@@ -21,7 +21,7 @@ def home(request):
 			return redirect('/home/')
 		elif 'new-character' in request.POST:
 			print("new character!")
-			new_character = DungeonsAndDragonsFifthEditionCharacter.objects.create_dnd5e_character(request.user) # Currently creates a 5e character, does not support dynamic templating at the moment.
+			new_character = DungeonsAndDragonsFifthEditionCharacter.objects.create_blank_dnd5e_character(request.user) # Currently creates a 5e character, does not support dynamic templating at the moment.
 			print("opening new character")
 			request.session['character-id'] = new_character.id
 			return redirect('/character/')
@@ -38,16 +38,19 @@ def character(request):
 	# POST request, handles saving characters
 	if (request.method == 'POST'):
 		# new character
-		updated_character = DungeonsAndDragonsFifthEditionCharacter.objects.create_dnd5e_character(request.user) # Currently saves 5e characters, does not support dynamic templating at the moment.
+		updated_character = DungeonsAndDragonsFifthEditionCharacter.objects.save_dnd5e_character(request.user, request.POST) # Currently saves 5e characters, does not support dynamic templating at the moment.
 		print("saving character")
 		# get basic info, set it
-		updated_character.name = request.POST.get('character-name')
-		updated_character.species = request.POST.get('species')
-		updated_character.character_class = request.POST.get('character_class')
-		updated_character.hp_current = request.POST.get('hp-current')
-		updated_character.hp_maximum = request.POST.get('hp-maximum')
-		updated_character.armor_class = request.POST.get('armor-class')
-		# get all abilities scores, iterate
+		# updated_character.name = request.POST.get('character-name')
+		# updated_character.species = request.POST.get('species')
+		# updated_character.character_class = request.POST.get('character_class')
+		# updated_character.hp_current = request.POST.get('hp-current')
+		# updated_character.hp_maximum = request.POST.get('hp-maximum')
+		# updated_character.armor_class = request.POST.get('armor-class')
+		# # get all abilities scores, iterate
+		# ability_scores = request.POST.getlist('ability-scores')
+		# for ability_score in ability_scores:
+
 		# get all skills, iterate
 		# get all items, iterate
 		# get all attacks, iterate
