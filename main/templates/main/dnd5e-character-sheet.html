@@ -16,7 +16,6 @@
             <div class="statblock" id="profileblock">
                 <div style="display: flex; justify-content: space-between;">
                     <h2>{{character.name}}'s Character Profile</h2>
-                    <button type="submit" id="save-character" name="save-character">Save Character</button>
                     <div>
                         <button type="submit" id="save-character" name="save-character">Save Character</button>
                         <!-- <button id="delete-button" type='submit' name="delete">Delete</button> -->
@@ -76,7 +75,7 @@
                     {% for ability in ability_scores %}
                         <tr>
                             <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this, value)"></td>
+                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
                             <td>{{skill.ability_score.score}}</td>
                         </tr>
                     {% endfor %}
