@@ -79,11 +79,35 @@ function deleteItem(loc) {
 // Updates Ability mod when skill input is changed
 function updateAbilityMod(loc, score) {
     let mod = calculateMod(score); 
-    console.log("Changed ABILITY " + score + mod);     
+    let name = loc.parentNode.parentNode.firstChild.nextSibling.textContent;
+    // console.log("Changed ABILITY " + name + score + mod);     
     let currtar = loc.parentNode.nextSibling.nextSibling;
-    console.log(loc + currtar);
-    console.log(currtar.innerHTML)
+    let skillList = document.getElementsByClassName(name+"-skill");
+    // console.log(skillList);
+    for (let index = 0; index < skillList.item.length; index++) {
+        updateSkillMod(skillList[index], mod)
+        // updateSkillMod(skill, 0)
+    }
+
+
+    // console.log(loc + currtar);
+    // console.log(currtar.innerHTML)
     currtar.innerHTML = mod;
+}
+
+function updateSkillMod(skill, mod) {
+    // console.log(skill + " " + mod);
+    let proficiency = skill.parentNode.firstChild.nextSibling.firstChild.value;
+    // newmod = skill.parentNode.firstChild.nextSibling.classList;
+    let newmod = parseInt(mod) + parseInt(proficiency);
+    if (newmod >= 0) {
+        moddisplay = "+" + newmod;
+    } else {
+        moddisplay = newmod;
+    } 
+
+    console.log(newmod);
+    skill.innerHTML = moddisplay;
 }
 
 // Calculates mod from a given score
