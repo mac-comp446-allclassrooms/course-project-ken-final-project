@@ -1,5 +1,6 @@
 <head>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
     <link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
     <!-- {% load static %} -->
     <script src="{% static 'charactersheet.js' %}" defer></script>
@@ -16,42 +17,46 @@
                 <div style="display: flex; justify-content: space-between;">
                     <h2>{{character.name}}'s Character Profile</h2>
                     <button type="submit" id="save-character" name="save-character">Save Character</button>
+                    <div>
+                        <button type="submit" id="save-character" name="save-character">Save Character</button>
+                        <!-- <button id="delete-button" type='submit' name="delete">Delete</button> -->
+                    </div>
                 </div>
                 <div class="contentblock" style="display: flex;">
                     <table>
                         <tr class="stat">
                             <td>Name</td>
-                            <td><input type="text" id="namedisplay" name="character-name" value="{{character.name}}" required></td>
+                            <td><input type="text" id="name-display" name="character-name" value="{{character.name}}" required></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Species</td>
-                            <td><input type="text" id="speciesdisplay" name="species" value="{{character.species}}" required></td>
+                            <td><input type="text" id="species-display" name="species" value="{{character.species}}" required></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Class</td>
-                            <td><input type="text" id="classdisplay" name="character_class" value="{{character.character_class}}" required></td>
+                            <td><input type="text" id="class-display" name="character_class" value="{{character.character_class}}" required></td>
                         </tr>
                     </table>
                     <table>
                         <tr class="stat">
                             <td>Level</td>
-                            <td><input type="number" id="leveldisplay" name="level" value="{{character.level}}"></td>
+                            <td><input type="number" id="level-display" name="level" value="{{character.level}}"></td>
                         </tr>
 
                         <tr class="stat">
                             <td>Health</td>
                             <td>
-                                <input type="number" id="currhealthdisplay" name="hp-current" value="{{character.hp_current}}">
+                                <input type="number" id="currhealth-display" name="hp-current" value="{{character.hp_current}}" style="width: 44%;">
                                 <label>/</label>
-                                <input type="number" id="maxhealthdisplay" name="hp-maximum" value="{{character.hp_maximum}}">
+                                <input type="number" id="maxhealth-display" name="hp-maximum" value="{{character.hp_maximum}}" style="width: 44%;">
                             </td>
                         </tr>
 
                         <tr class="stat">
                             <td>Armor Class</td>
-                            <td><input type="number" name="armor-class" id="armorclassdisplay" value="10" required></td>
+                            <td><input type="number" name="armor-class" id="armorclass-display" value="10" required></td>
                         </tr>
                     </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
@@ -59,7 +64,7 @@
             </div>
         </div>
             
-        <div class="contentblock" style="display: grid; grid-template-columns: 1fr 2fr; grid-gap: 10px;">
+        <div class="contentblock" style="display: grid; grid-template-columns: 1fr 1.5fr; grid-gap: 10px;">
             <div class="statblock">
                 <h2>Ability Scores</h2>
                 <table class="contentblock" id="abilityblock">
@@ -89,7 +94,7 @@
                     </tr>
                     {% for skill in skills %}
                         <tr>
-                            <td><input type="number" class='level-input' value={{skill.proficiency}}></td>
+                            <td><input type="number" class='level-input' value={{skill.proficiency}} onchange="updateAllAbilities()"></td>
                             <td>{{skill.name}}</td>
                             <td>({{skill.ability_score.name}})</td>
                             <td class="skill-score {{skill.ability_score.name}}-skill">{{skill.ability_score.score}}</td>
@@ -108,23 +113,24 @@
                 <table id="weaponblock">
                     <tr>
                         <th>
-                            <label>Name</label><br>
+                            <label>Name</label>
                         </th>
                         <th>
-                            <label>Type</label><br>
+                            <label>Type</label>
                         </th>
                         <th>
-                            <label>Mod</label><br>
+                            <label>Mod</label>
                         </th>
                         <th>
-                            <label>Range</label><br>
+                            <label>Range</label>
                         </th>
                         <th>
-                            <label>Dmg Roll</label><br>
+                            <label>Dmg Roll</label>
                         </th>
                         <th>
-                            <label>Dmg Type</label><br>
+                            <label>Dmg Type</label>
                         </th>
+                        <th></th>
                     </tr>
                     <!-- 
                     {% for weapon in weapons %}
@@ -148,23 +154,24 @@
                 <table id="spellblock">
                     <tr>
                         <th>
-                            <label>Level</label><br>
+                            <label>Level</label>
                         </th>
                         <th>
-                            <label>Name</label><br>
+                            <label>Name</label>
                         </th>
                         <th>
-                            <label>Description</label><br>
+                            <label>Description</label>
                         </th>
                         <th>
-                            <label>Attack</label><br>
+                            <label>Attack</label>
                         </th>
                         <th>
-                            <label>Save</label><br>
+                            <label>Save</label>
                         </th>
                         <th>
-                            <label>School</label><br>
+                            <label>School</label>
                         </th>
+                        <th></th>
                     </tr>
                 </table>
             </div>
@@ -176,17 +183,18 @@
                 <table id="inventoryblock">
                     <tr>
                         <th>
-                            <label>Quantity</label><br>
+                            <label>Quantity</label>
                         </th>
                         <th>
-                            <label>Name</label><br>
+                            <label>Name</label>
                         </th>
                         <th>
-                            <label>Description</label><br>
+                            <label>Description</label>
                         </th>
                         <th>
-                            <label>Weight</label><br>
+                            <label>Weight</label>
                         </th>
+                        <th></th>
                     </tr>
                 </table>
             </div>

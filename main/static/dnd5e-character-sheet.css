@@ -1,65 +1,63 @@
+/* Tags */
 body {
-    background-color: var(--primary-background);
+    background-color: white;
     /* background-color: red; */
 }
 
-/* Page */
+input {
+    font-family: var(--font);
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+table { 
+    font-family: var(--font);
+    width: 100%;
+    table-layout: fixed;
+    
+}
+
+td, th {
+    padding-inline: 0.25rem;
+    font-size: x-small;
+    align-items: center;
+    border: 1px solid;
+}
+
+td input {
+    font-size: x-small;
+    width: 100%;
+}
+
+button {
+    font-family: var(--font);
+    font-size: x-small;
+    border-radius: 10px;
+    border-width: 1px;
+    transition: background-color 0.5s;
+}
+
+
+td input {
+    width: 100%;
+}
+
+td select {
+    font-family: var(--font);
+    font-size: x-small;
+}
+
+/* Classes */
+
 .statblock {
-    border-color: var(--primary-border);
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
     padding: 10px;
     margin: 5px;
-    background-color: var(--primary-background);
-    /* background-color: red; */
+    transition: box-shadow 0.5s;
+
 }
-
-/* .contentblock {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-} */
-
-table { 
-    /* border-style: solid;
-    border-color: var(--primary-border); */
-    /* border-width: 0.5px; */
-    /* border-collapse: collapse; */
-    font-family: var(--font);
-}
-
-td {
-    padding-inline: 0.25rem;
-    /* text-align: center; */
-    /* font-family: var(--font); */
-}
-
-input {
-    font-family: inherit;
-}
-
-button {
-    font-family: var(--font);
-    border-radius: 10px;
-    border-width: 1px;
-    background-color: var(--primary-background);
-    transition: background-color 0.5s;
-}
-
-input[type=text] {
-    /* display: flex; */
-    width: 6rem;
-
-    border-width: 1px;
-    border-radius: 5px;
-}
-
-input[type=number] {
-    /* display: flex; */
-    width: 3rem;
-
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: var(--secondary-border);
+.statblock:hover {
+    box-shadow: 1.5px 1.5px 1.5px gray;
 }
