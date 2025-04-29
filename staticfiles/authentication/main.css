@@ -1,0 +1,174 @@
+:root {
+    --primary-border: black;
+    --secondary-border: lightgray;
+    --primary-text: black;
+    --secondary-text: gray;
+    --primary-background: white;
+    --secondary-background: lightgray;
+
+    /* Skill Colors */
+    --color1: #e3e3ff;
+    --color2: #dff2fd;
+    --color3: #e2fce6;
+    --color4: #fcfade;
+    --color5: #ffeee2;
+    --color6: #ffdbdb;
+
+    /* --font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    /* --font: 'Lucida Console', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    --font: monospace;    
+}
+
+/* Fonts */
+h1 {
+    font-size: 1.5rem;
+    font-family: var(--font);
+}
+h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: var(--font);
+}
+h3 {
+    font-size: 0.75rem;
+    font-family: var(--font);
+}
+
+p{
+    font-family: var(--font);
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid var(--primary-background);
+    background-color: var(--secondary-background);
+    border-radius: 10px;
+  }
+  
+.tab button {
+background-color: inherit;
+float: left;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 14px 16px;
+transition: 0.3s;
+}
+
+.tab button:hover {
+background-color: var(--primary-background);
+color: var(--primary-text);
+}
+
+.tab button.active {
+background-color: var(--secondary-background);
+color: var(--secondary-text);
+}
+
+body {
+    background-color: var(--primary-background);
+}
+
+/* Page */
+.container {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: var(--primary-background);
+}
+
+.character_thumbnail {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--primary-background);
+    /* max-width: 33%; */
+}
+
+/* Login */
+.loginblock {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--primary-background);
+    margin: 100px;
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 25%;
+    max-width: 75%;
+}
+
+.loginblock * input[type=text] {
+    border-radius: 5px;
+    width: 100px;
+}
+
+.loginblock * button {
+    border-radius: 5px;
+}
+
+/* Page */
+.statblock {
+    border-color: var(--primary-border);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    background-color: var(--primary-background);
+}
+
+/* .contentblock {
+    display: inline-grid;
+    grid-auto-flow: row;
+    grid-template-columns: 2;
+} */
+
+table { 
+    /* border-style: solid;
+    border-color: var(--primary-border); */
+    /* border-width: 0.5px; */
+    border-collapse: collapse;
+    font-family: var(--font);
+}
+
+td {
+    padding-inline: 0.5rem;
+    /* text-align: center; */
+    /* font-family: var(--font); */
+}
+.stat {
+    border-color: red;
+}
+
+input {
+    font-family: inherit;
+}
+button {
+    font-family: inherit;
+}
+input[type=text] {
+    /* display: flex; */
+    width: 6rem;
+
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.stat input[type=number] {
+    /* display: flex; */
+    width: 3rem;
+
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: var(--secondary-border);
+}
