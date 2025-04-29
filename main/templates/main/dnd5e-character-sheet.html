@@ -21,7 +21,7 @@
                     <table>
                         <tr class="stat">
                             <td>Name</td>
-                            <td><input type="text" id="namedisplay" name="character-name" value="{{character.name}}" required></td>
+                            <td><input type="text" id="namedisplay" name="character_name" value="{{character.name}}" required></td>
                         </tr>
 
                         <tr class="stat">
@@ -43,9 +43,9 @@
                         <tr class="stat">
                             <td>Health</td>
                             <td>
-                                <input type="number" id="currhealthdisplay" name="hp-current" value="{{character.hp_current}}">
+                                <input type="number" id="currhealthdisplay" name="hp_current" value="{{character.hp_current}}">
                                 <label>/</label>
-                                <input type="number" id="maxhealthdisplay" name="hp-maximum" value="{{character.hp_maximum}}">
+                                <input type="number" id="maxhealthdisplay" name="hp_maximum" value="{{character.hp_maximum}}">
                             </td>
                         </tr>
 
@@ -71,9 +71,9 @@
                     {% for ability in ability_scores %}
                         <tr>
                             <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this, value)"></td>
+                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this, value)"></td>
                             <td>{{skill.ability_score.score}}</td>
-                        </tr>                    
+                        </tr>
                     {% endfor %}
                 </table>
             </div>
