@@ -77,20 +77,19 @@ function deleteItem(loc) {
 }
 
 // Updates Ability mod when skill input is changed
-function updateAbilityMod(loc, score) {
+function updateAbilityMod(loc) {
+    let score = loc.value;
     let mod = calculateMod(score); 
     let name = loc.parentNode.parentNode.firstChild.nextSibling.textContent;
     // console.log("Changed ABILITY " + name + score + mod);     
     let currtar = loc.parentNode.nextSibling.nextSibling;
     let skillList = document.getElementsByClassName(name+"-skill");
     // console.log(skillList);
-    for (let index = 0; index < skillList.item.length; index++) {
-        updateSkillMod(skillList[index], mod)
-        // updateSkillMod(skill, 0)
+
+    for (const skill of skillList) {
+        updateSkillMod(skill, mod);
     }
 
-    // console.log(loc + currtar);
-    // console.log(currtar.innerHTML)
     currtar.innerHTML = mod;
 }
 
@@ -106,9 +105,7 @@ function updateSkillMod(skill, mod) {
         moddisplay = "+" + newmod;
     } else {
         moddisplay = newmod;
-    } 
-
-    console.log(newmod);
+    }
     skill.innerHTML = moddisplay;
 }
 
@@ -122,3 +119,17 @@ function calculateMod(score) {
     } 
     return moddisplay;
 }
+
+function updateAllAbilities() {
+    console.log("a");
+    let abilityList = document.getElementsByClassName("ability-score");
+    for (const ability of abilityList) {
+        updateAbilityMod(ability);
+    }
+}
+
+// window.onload = function() {
+//     updateAllAbilities();
+// }
+
+window.addEventListener("load", updateAllAbilities);

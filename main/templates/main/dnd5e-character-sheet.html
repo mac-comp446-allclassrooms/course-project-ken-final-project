@@ -71,7 +71,7 @@
                     {% for ability in ability_scores %}
                         <tr>
                             <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this, value)"></td>
+                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
                             <td>{{skill.ability_score.score}}</td>
                         </tr>                    
                     {% endfor %}
