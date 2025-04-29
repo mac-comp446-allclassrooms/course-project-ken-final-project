@@ -89,12 +89,14 @@ function updateAbilityMod(loc, score) {
         // updateSkillMod(skill, 0)
     }
 
-
     // console.log(loc + currtar);
     // console.log(currtar.innerHTML)
     currtar.innerHTML = mod;
 }
 
+
+// UpdatSkillMod
+// skill is skill display element, mod is parent mod (int)
 function updateSkillMod(skill, mod) {
     // console.log(skill + " " + mod);
     let proficiency = skill.parentNode.firstChild.nextSibling.firstChild.value;
