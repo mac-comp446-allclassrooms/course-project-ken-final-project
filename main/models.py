@@ -50,16 +50,42 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 
 		return character
 	
-	# Create
+	# Helper model, used to temporarily store ability scores during character saving.
+	class Ability_Score:
+			def __init__(self, field_name, display_name):
+				self.field_name = field_name
+				self.display_name = display_name
+				self.score = form_data.get(field_name)
+
+	# Create a new D&D 5e character sheet using information from an HTML form POST request.
 	def save_dnd5e_character(self, current_user, form_data):
-		# Create a new D&D 5e character sheet using information from an HTML form POST request.
 		character = self.create(user = current_user)
-		character.name = form_data.get('character-name')
+		character.name = form_data.get('character_name')
 		character.species = form_data.get('species')
 		character.character_class = form_data.get('character_class')
-		character.hp_current = form_data.get('hp-current')
-		character.hp_maximum = form_data.get('hp-maximum')
-		character.armor_class = form_data.get('armor-class')
+		character.hp_current = form_data.get('hp_current')
+		character.hp_maximum = form_data.get('hp_maximum')
+		character.armor_class = form_data.get('armor_class')
+
+		# Handles ability score generation.
+		class Ability_Score:
+			def __init__(self, field_name, display_name):
+				self.field_name = field_name
+				self.display_name = display_name
+				self.score = form_data.get(field_name)
+
+		field_names = request.POST.dict().keys()
+		ability_scores = {}
+		for field in field_names:
+			if (field.endswith("_ability_score")):
+					display_name = field.replace("_ability_score", "")
+					display_name = display_name.replace("_", " ")
+					display_name = display_name.title()
+					ability_scores.add(Ability_Score(field, display_name))
+
+		for ability_score in ability_scores:
+			ability_score.name_field 
+			DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score, character=character)
 
 		# ability_scores = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 		# for ability_score in ability_scores:

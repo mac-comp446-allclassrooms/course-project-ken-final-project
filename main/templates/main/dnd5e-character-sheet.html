@@ -26,7 +26,7 @@
                     <table>
                         <tr class="stat">
                             <td>Name</td>
-                            <td><input type="text" id="name-display" name="character-name" value="{{character.name}}" required></td>
+                            <td><input type="text" id="name-display" name="character_name" value="{{character.name}}" required></td>
                         </tr>
 
                         <tr class="stat">
@@ -48,9 +48,9 @@
                         <tr class="stat">
                             <td>Health</td>
                             <td>
-                                <input type="number" id="currhealth-display" name="hp-current" value="{{character.hp_current}}" style="width: 44%;">
+                                <input type="number" id="currhealth-display" name="hp_current" value="{{character.hp_current}}" style="width: 44%;">
                                 <label>/</label>
-                                <input type="number" id="maxhealth-display" name="hp-maximum" value="{{character.hp_maximum}}" style="width: 44%;">
+                                <input type="number" id="maxhealth-display" name="hp_maximum" value="{{character.hp_maximum}}" style="width: 44%;">
                             </td>
                         </tr>
 
@@ -76,9 +76,9 @@
                     {% for ability in ability_scores %}
                         <tr>
                             <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
+                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this, value)"></td>
                             <td>{{skill.ability_score.score}}</td>
-                        </tr>                    
+                        </tr>
                     {% endfor %}
                 </table>
             </div>
