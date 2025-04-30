@@ -75,7 +75,7 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.hp_maximum = form_data.get('hp_maximum')
 		character.armor_class = form_data.get('armor_class')
 
-		# Handles generation of ability scores.
+		# Handles generation of ability scores. Assumes the name attribute of all abilit yscore fields to be "[ability score name]_ability_score"
 		field_names = form_data.dict().keys()
 		for field in field_names:
 			if (field.endswith("_ability_score")):
@@ -84,7 +84,7 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 				display_name = display_name.title()
 				DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=display_name, character=character, score=form_data.get(field))
 
-		# Handles generation of ability scores.
+		# Handles generation of skills. Assumes the name attribute of all skill fields to be "[skill name]_[ability score]_skill"
 		for field in field_names:
 			if (field.endswith("_skill")):
 				display_name = field.replace("_skill", "")	# Removes _skill
