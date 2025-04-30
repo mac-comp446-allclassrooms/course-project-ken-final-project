@@ -12,16 +12,13 @@ function createNewAttack() {
             + "<td><input type='text' name='notes_attack' placeholder='Notes'></input></td>"
             + "<td><button type='button' onclick = 'deleteAttack(this)'>Delete</button></td>"
 
-    console.log("Weapon created");
     const statblock = document.getElementById("attackblock");
     statblock.appendChild(newAttack);
 }
 
 // Deletes weapon row in HTML weapon table
 function deleteAttack(loc) {
-    console.log("Weapon Deleted");
     grandparent = loc.parentNode.parentNode;
-    console.log("Deleted " + grandparent);
     grandparent.remove();
 }
 
@@ -37,16 +34,13 @@ function createNewSpell() {
             + "<td><input type='text' placeholder='School'></input></td>"
             + "<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>"
 
-    console.log("spell created");
     const statblock = document.getElementById("spellblock");
     statblock.appendChild(newWeapon);
 }
 
 // Deletes spell row in HTML weapon table
 function deleteSpell(loc) {
-    console.log("Spell Deleted");
     grandparent = loc.parentNode.parentNode;
-    console.log("Deleted " + grandparent);
     grandparent.remove();
 }
 
@@ -60,16 +54,13 @@ function createNewItem() {
             + "<td><input type='number' name='item_weight' value='0'></input></td>"
             + "<td><button type='button' onclick = 'deleteItem(this)'>delete</button></td>"
 
-    console.log("item created");
     const statblock = document.getElementById("inventoryblock");
     statblock.appendChild(newWeapon);
 }
 
 // Deletes spell row in HTML weapon table
 function deleteItem(loc) {
-    console.log("Item Deleted");
     grandparent = loc.parentNode.parentNode;
-    console.log("Deleted " + grandparent);
     grandparent.remove();
 }
 
@@ -86,8 +77,6 @@ function updateAbilityMod(loc) {
         updateSkillMod(skill, mod);
     }
 
-    // console.log(loc + currtar);
-    // console.log(currtar.innerHTML)
     currtar.innerHTML = mod;
     updateSavingThrows();
 }
@@ -99,7 +88,7 @@ function updateSkillMod(skill, mod) {
     let proficiency = skill.parentNode.firstChild.nextSibling.firstChild.value;
     // newmod = skill.parentNode.firstChild.nextSibling.classList;
     let newmod = parseInt(mod) + parseInt(proficiency);
-    // console.log(mod);
+    // let newmod = parseInt(mod) + (proficiency_bonus * parseInt(proficiency));
     if (newmod >= 0) {
         moddisplay = "+" + newmod;
     } else {
@@ -121,7 +110,6 @@ function calculateMod(score) {
 }
 
 function updateAllAbilities() {
-    // console.log("a");
     let abilityList = document.getElementsByClassName("ability-score");
     for (const ability of abilityList) {
         updateAbilityMod(ability);
@@ -129,7 +117,6 @@ function updateAllAbilities() {
 }
 
 function updateSavingThrows() {
-    console.log("saved!");
     // Get Table
     let savingthrowtable = document.getElementById("extra_ability_block");
     savingthrowtable.innerHTML = "<tr><th>Ability</th><th>Mod</th></tr>";
@@ -137,7 +124,6 @@ function updateSavingThrows() {
 
     for (const savingThrow of saved) {
         if (savingThrow.checked == true) {
-            console.log(savingThrow.value);
             // Gets ability name
             let abilityname = savingThrow.parentNode.parentNode.firstChild.nextSibling.textContent;
             let abilityscore = savingThrow.parentNode.previousSibling.previousSibling.textContent;
