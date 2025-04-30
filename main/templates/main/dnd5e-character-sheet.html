@@ -133,7 +133,6 @@
 						<th>
 							<label>Name</label>
 						</th>
-
 						<th>
 							<label>Range</label>
 						</th>
@@ -153,7 +152,15 @@
 					</tr>
 
 					{% for attack in attacks %}
-					<tr></tr>
+					<tr>
+						<td><input type='number' class='level-input' value='{{attack.name}}'></input></td>
+						<td> <input type='text' value='{{attack.range}}'></input></td>
+						<td><input type='text' value='{{attack.damage_amount}}'></input></td>
+						<td><input type='text' value='{{attack.attack_bonus}}'></input></td>
+						<td><input type='text' value='{{attack.damage_type}}'></input></td>
+						<td><input type='text' value='{{attack.notes}}'></input></td>
+						<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+					</tr>
 					{% endfor %}
 
 				</table>
@@ -187,7 +194,16 @@
 					</tr>
 
 					{% for spell in spells %}
-					<tr></tr>
+					<tr>
+						"<td>
+							<input type='number' class='level-input' value='{{spell.level}}'></input></td>
+							<td> <input type='text' value='{{spell.name}}'></input></td>
+							<td><input type='text' value='{{spell.description}}'></input></td>
+							<td><input type='text' value='{{spell.attack}}'></input></td>
+							<td><input type='text' value='{{spell.save}}'></input></td>
+							<td><input type='text' value='{{spell.school}}'></input></td>
+							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+						</tr>
 					{% endfor %}
 				</table>
 			</div>
