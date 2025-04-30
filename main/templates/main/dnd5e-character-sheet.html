@@ -37,8 +37,6 @@
                             <td>Class</td>
                             <td><input type="text" id="class-display" name="character_class" value="{{character.character_class}}" required></td>
                         </tr>
-                    </table>
-                    <table>
                         <tr class="stat">
                             <td>Level</td>
                             <td><input type="number" id="level-display" name="level" value="{{character.level}}"></td>
@@ -55,10 +53,19 @@
 
                         <tr class="stat">
                             <td>Armor Class</td>
-                            <td><input type="number" name="armor_class" id="armorclass-display" value="10" required></td>
+                            <td><input type="number" name="armor-class" id="armorclass-display" value="10" required></td>
                         </tr>
                     </table>
                     <textarea placeholder="Physical Description" style="resize: none;"></textarea>
+                    <div class="statblock">
+                        <h2>Wallet</h2>
+                        <!-- <table>
+                            <tr>
+                                <th style="width: 50%;">Currency</th>
+                                <th style="width: 50%;">Amount</th>
+                            </tr>
+                        </table> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,7 +108,7 @@
                     </tr>
                     {% for skill in skills %}
                         <tr>
-                            <td><input type="number" class='level-input' name="{{skill.name}}_{{skill.ability_score.name}}_skill" value={{skill.proficiency}} onchange="updateAllAbilities()"></td>
+                            <td><input type="number" class='level-input' value={{skill.proficiency}} onchange="updateAllAbilities()"></td>
                             <td>{{skill.name}}</td>
                             <td>({{skill.ability_score.name}})</td>
                             <td class="skill-score {{skill.ability_score.name}}-skill">{{skill.ability_score.score}}</td>
