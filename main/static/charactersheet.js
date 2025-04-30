@@ -79,7 +79,6 @@ function deleteItem(loc) {
 // Updates Ability mod when skill input is changed
 function updateAbilityMod(loc) {
     let score = loc.value;
-    console.log(score);
     let mod = calculateMod(score); 
     let name = loc.parentNode.parentNode.firstChild.nextSibling.textContent;
     let currtar = loc.parentNode.nextSibling.nextSibling;
@@ -93,6 +92,7 @@ function updateAbilityMod(loc) {
     // console.log(loc + currtar);
     // console.log(currtar.innerHTML)
     currtar.innerHTML = mod;
+    updateSavingThrows();
 }
 
 
@@ -124,16 +124,39 @@ function calculateMod(score) {
 }
 
 function updateAllAbilities() {
-    console.log("a");
+    // console.log("a");
     let abilityList = document.getElementsByClassName("ability-score");
     for (const ability of abilityList) {
         updateAbilityMod(ability);
-        // console.log(ability);
     }
 }
 
-// window.onload = function() {
-//     updateAllAbilities();
-// }
+function updateSavingThrows() {
+    console.log("saved!");
+    // Get Table
+    let savingthrowtable = document.getElementById("extra_ability_block");
+    savingthrowtable.innerHTML = "<tr><th>Ability</th><th>Mod</th></tr>";
+    let saved = document.getElementsByClassName("saving-check-box");
 
-window.addEventListener("load", updateAllAbilities);
+    for (const savingThrow of saved) {
+        if (savingThrow.checked == true) {
+            console.log(savingThrow.value);
+            // Gets ability name
+            let abilityname = savingThrow.parentNode.parentNode.firstChild.nextSibling.textContent;
+            let abilityscore = savingThrow.parentNode.previousSibling.previousSibling.textContent;
+            const newsave = document.createElement("tr");
+        
+            newsave.innerHTML = "<td>" + abilityname + "</td>"
+                    + "<td>" + abilityscore + "</td>"
+
+            savingthrowtable.appendChild(newsave);
+        }
+    }
+
+}
+
+function populate() {
+    updateAllAbilities();
+    updateSavingThrows();
+}
+window.addEventListener("load", populate);
