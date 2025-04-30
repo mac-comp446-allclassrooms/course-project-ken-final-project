@@ -2,25 +2,8 @@
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'main.css' %}">
 	<link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
-	<script src="{% static 'charactersheet.js' %}" defer></script>
+	<script src="{% static 'dnd5e-character-sheet.js' %}" defer></script>
 
-<script>
-	var isDirty = function() { return false; }
-
-window.onload = function() {
-	window.addEventListener("beforeunload", function (e) {
-		if (formSubmitting || !isDirty()) {
-			return undefined;
-		}
-		
-		var confirmationMessage = 'It looks like you have been editing something. '
-								+ 'If you leave before saving, your changes will be lost.';
-
-		(e || window.event).returnValue = confirmationMessage; //Gecko + IE
-		return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
-	});
-};
-</script>
 </head>
 
 {% include 'main/index.html' %}
