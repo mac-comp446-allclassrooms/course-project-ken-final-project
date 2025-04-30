@@ -1,28 +1,28 @@
 :root {
-    --font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	--font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 h1, h2, h3, p {
-    font-family: var(--font);
+	font-family: var(--font);
 }
 
 .tab {
-    overflow: hidden;
-    padding: 10px;
+	overflow: hidden;
+	padding: 10px;
 }
   
 .tablinks {
-    background-color: inherit;
-    float: left;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: large;
-    border-radius: 30px;
-    box-shadow: 1px 1px 1px black;
-    transition: 0.3s;
+	background-color: inherit;
+	float: left;
+	border: none;
+	cursor: pointer;
+	padding: 10px;
+	font-size: large;
+	border-radius: 30px;
+	box-shadow: 1px 1px 1px black;
+	transition: 0.3s;
 }
   
 .tablinks:hover {
-    background-color: lightgray;
+	background-color: lightgray;
 }
