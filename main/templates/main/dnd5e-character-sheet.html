@@ -1,217 +1,218 @@
 <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
-    <!-- {% load static %} -->
-    <script src="{% static 'charactersheet.js' %}" defer></script>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'main.css' %}">
+	<link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
+	<!-- {% load static %} -->
+	<script src="{% static 'charactersheet.js' %}" defer></script>
+
 </head>
 
 {% include 'main/index.html' %}
 
 <body>
-    
-    <form id="character_sheet" method="post">
-        {% csrf_token %}
-        <div class="contentblock">
-            <div class="statblock" id="profileblock">
-                <div style="display: flex; justify-content: space-between;">
-                    <h2>{{character.name}}'s Character Profile</h2>
-                    <div>
-                        <button type="submit" id="save-character" name="save-character">Save Character</button>
-                        <!-- <button id="delete-button" type='submit' name="delete">Delete</button> -->
-                    </div>
-                </div>
-                <div class="contentblock" style="display: flex;">
-                    <table>
-                        <tr class="stat">
-                            <td>Name</td>
-                            <td><input type="text" id="name-display" name="character_name" value="{{character.name}}" required></td>
-                        </tr>
+	
+	<form id="character_sheet" method="post">
+		{% csrf_token %}
+		<div class="contentblock">
+			<div class="statblock" id="profileblock">
+				<div style="display: flex; justify-content: space-between;">
+					<h2>{{character.name}}'s Character Profile</h2>
+					<div>
+						<button type="submit" id="save-character" name="save-character">Save Character</button>
+						<!-- <button id="delete-button" type='submit' name="delete">Delete</button> -->
+					</div>
+				</div>
+				<div class="contentblock" style="display: flex;">
+					<table>
+						<tr class="stat">
+							<td>Name</td>
+							<td><input type="text" id="name-display" name="character_name" value="{{character.name}}" required></td>
+						</tr>
 
-                        <tr class="stat">
-                            <td>Species</td>
-                            <td><input type="text" id="species-display" name="species" value="{{character.species}}" required></td>
-                        </tr>
+						<tr class="stat">
+							<td>Species</td>
+							<td><input type="text" id="species-display" name="species" value="{{character.species}}" required></td>
+						</tr>
 
-                        <tr class="stat">
-                            <td>Class</td>
-                            <td><input type="text" id="class-display" name="character_class" value="{{character.character_class}}" required></td>
-                        </tr>
-                        <tr class="stat">
-                            <td>Level</td>
-                            <td><input type="number" id="level-display" name="level" value="{{character.level}}"></td>
-                        </tr>
+						<tr class="stat">
+							<td>Class</td>
+							<td><input type="text" id="class-display" name="character_class" value="{{character.character_class}}" required></td>
+						</tr>
+						<tr class="stat">
+							<td>Level</td>
+							<td><input type="number" id="level-display" name="level" value="{{character.level}}"></td>
+						</tr>
 
-                        <tr class="stat">
-                            <td>Health</td>
-                            <td>
-                                <input type="number" id="currhealth-display" name="hp_current" value="{{character.hp_current}}" style="width: 44%;">
-                                <label>/</label>
-                                <input type="number" id="maxhealth-display" name="hp_maximum" value="{{character.hp_maximum}}" style="width: 44%;">
-                            </td>
-                        </tr>
+						<tr class="stat">
+							<td>Health</td>
+							<td>
+								<input type="number" id="currhealth-display" name="hp_current" value="{{character.hp_current}}" style="width: 44%;">
+								<label>/</label>
+								<input type="number" id="maxhealth-display" name="hp_maximum" value="{{character.hp_maximum}}" style="width: 44%;">
+							</td>
+						</tr>
 
-                        <tr class="stat">
-                            <td>Armor Class</td>
-                            <td><input type="number" name="armor-class" id="armorclass-display" value="10" required></td>
-                        </tr>
-                    </table>
-                    <textarea placeholder="Physical Description" style="resize: none;"></textarea>
-                    <div class="statblock">
-                        <h2>Wallet</h2>
-                        <!-- <table>
-                            <tr>
-                                <th style="width: 50%;">Currency</th>
-                                <th style="width: 50%;">Amount</th>
-                            </tr>
-                        </table> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-            
-        <div class="contentblock" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px;">
-            <div class="statblock">
-                <h2>Ability Scores</h2>
-                <table class="contentblock" id="abilityblock">
-                    <tr>
-                        <th style="width: 40%;">Ability</th>
-                        <th style="width: 20%;">Score</th>
-                        <th style="width: 20%;">Mod</th>
-                        <th style="width: 20%;">Saving?</th>
-                    </tr>
-                    {% for ability in ability_scores %}
-                        <tr>
-                            <td>{{ability.name}}</td>
-                            <td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
-                            <td>{{skill.ability_score.score}}</td>
-                            <td><input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td>
-                        </tr>
-                    {% endfor %}
-                </table>
+						<tr class="stat">
+							<td>Armor Class</td>
+							<td><input type="number" name="armor-class" id="armorclass-display" value="10" required></td>
+						</tr>
+					</table>
+					<textarea placeholder="Physical Description" style="resize: none;"></textarea>
+					<div class="statblock">
+						<h2>Wallet</h2>
+						<!-- <table>
+							<tr>
+								<th style="width: 50%;">Currency</th>
+								<th style="width: 50%;">Amount</th>
+							</tr>
+						</table> -->
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="contentblock" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px;">
+			<div class="statblock">
+				<h2>Ability Scores</h2>
+				<table class="contentblock" id="abilityblock">
+					<tr>
+						<th style="width: 40%;">Ability</th>
+						<th style="width: 20%;">Score</th>
+						<th style="width: 20%;">Mod</th>
+						<th style="width: 20%;">Saving?</th>
+					</tr>
+					{% for ability in ability_scores %}
+						<tr>
+							<td>{{ability.name}}</td>
+							<td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
+							<td>{{skill.ability_score.score}}</td>
+							<td><input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td>
+						</tr>
+					{% endfor %}
+				</table>
 
-                <h2>Saving Throws</h2>
-                <table id="extra_ability_block">
-                </table>
-            </div>
+				<h2>Saving Throws</h2>
+				<table id="extra_ability_block">
+				</table>
+			</div>
 
 
 
-            <div class="statblock">
-                <h2>Skill Scores</h2>
-                <table class="contentblock" id="skillblock">
-                    <tr>
-                        <th style="width: 20%;">Prof</th>
-                        <th style="width: 30%;">Skill</th>
-                        <th style="width: 30%;">Ability</th>
-                        <th style="width: 20%;">Mod</th>
-                    </tr>
-                    {% for skill in skills %}
-                        <tr>
-                            <td><input type="number" class='level-input' value={{skill.proficiency}} onchange="updateAllAbilities()"></td>
-                            <td>{{skill.name}}</td>
-                            <td>({{skill.ability_score.name}})</td>
-                            <td class="skill-score {{skill.ability_score.name}}-skill">{{skill.ability_score.score}}</td>
-                        </tr>                    
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
+			<div class="statblock">
+				<h2>Skill Scores</h2>
+				<table class="contentblock" id="skillblock">
+					<tr>
+						<th style="width: 20%;">Prof</th>
+						<th style="width: 30%;">Skill</th>
+						<th style="width: 30%;">Ability</th>
+						<th style="width: 20%;">Mod</th>
+					</tr>
+					{% for skill in skills %}
+						<tr>
+							<td><input type="number" class='level-input' value={{skill.proficiency}} onchange="updateAllAbilities()"></td>
+							<td>{{skill.name}}</td>
+							<td>({{skill.ability_score.name}})</td>
+							<td class="skill-score {{skill.ability_score.name}}-skill">{{skill.ability_score.score}}</td>
+						</tr>					
+					{% endfor %}
+				</table>
+			</div>
+		</div>
 
-        <div class="contentblock">
-            <div class="statblock">
-                <div style="display: flex; justify-content: space-between;">
-                    <h2>Weapons</h2>
-                <button type="button" onclick="createNewWeapon()">Create Weapon</button>
-                </div>
-                <table id="weaponblock">
-                    <tr>
-                        <th>
-                            <label>Name</label>
-                        </th>
-                        <th>
-                            <label>Type</label>
-                        </th>
-                        <th>
-                            <label>Mod</label>
-                        </th>
-                        <th>
-                            <label>Range</label>
-                        </th>
-                        <th>
-                            <label>Dmg Roll</label>
-                        </th>
-                        <th>
-                            <label>Dmg Type</label>
-                        </th>
-                        <th></th>
-                    </tr>
-                    <!-- 
-                    {% for weapon in weapons %}
-                    <tr>
-                        <td>weapon.name</td>
-                        <td>weapon.type</td>
-                        <td>weapon.mod</td>
-                        <td>weapon.range</td>
-                        <td>weapon.damageroll</td>
-                        <td>weapon.damagetype</td>
-                    </tr>
-                    {% endfor %}
-                     -->
-                </table>
-            </div>
-            <div class="statblock">
-                <div style="display: flex; justify-content: space-between;">
-                    <h2>Spells</h2>
-                <button type="button" onclick="createNewSpell()">Create Spell</button>
-                </div>
-                <table id="spellblock">
-                    <tr>
-                        <th>
-                            <label>Level</label>
-                        </th>
-                        <th>
-                            <label>Name</label>
-                        </th>
-                        <th>
-                            <label>Description</label>
-                        </th>
-                        <th>
-                            <label>Attack</label>
-                        </th>
-                        <th>
-                            <label>Save</label>
-                        </th>
-                        <th>
-                            <label>School</label>
-                        </th>
-                        <th></th>
-                    </tr>
-                </table>
-            </div>
-            <div class="statblock">
-                <div style="display: flex; justify-content: space-between;">
-                    <h2>Inventory</h2>
-                <button type="button" onclick="createNewItem()">Create Item</button>
-                </div>
-                <table id="inventoryblock">
-                    <tr>
-                        <th>
-                            <label>Quantity</label>
-                        </th>
-                        <th>
-                            <label>Name</label>
-                        </th>
-                        <th>
-                            <label>Description</label>
-                        </th>
-                        <th>
-                            <label>Weight</label>
-                        </th>
-                        <th></th>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </form>
+		<div class="contentblock">
+			<div class="statblock">
+				<div style="display: flex; justify-content: space-between;">
+					<h2>Weapons</h2>
+				<button type="button" onclick="createNewWeapon()">Create Weapon</button>
+				</div>
+				<table id="weaponblock">
+					<tr>
+						<th>
+							<label>Name</label>
+						</th>
+						<th>
+							<label>Type</label>
+						</th>
+						<th>
+							<label>Mod</label>
+						</th>
+						<th>
+							<label>Range</label>
+						</th>
+						<th>
+							<label>Dmg Roll</label>
+						</th>
+						<th>
+							<label>Dmg Type</label>
+						</th>
+						<th></th>
+					</tr>
+					<!-- 
+					{% for weapon in weapons %}
+					<tr>
+						<td>weapon.name</td>
+						<td>weapon.type</td>
+						<td>weapon.mod</td>
+						<td>weapon.range</td>
+						<td>weapon.damageroll</td>
+						<td>weapon.damagetype</td>
+					</tr>
+					{% endfor %}
+					 -->
+				</table>
+			</div>
+			<div class="statblock">
+				<div style="display: flex; justify-content: space-between;">
+					<h2>Spells</h2>
+				<button type="button" onclick="createNewSpell()">Create Spell</button>
+				</div>
+				<table id="spellblock">
+					<tr>
+						<th>
+							<label>Level</label>
+						</th>
+						<th>
+							<label>Name</label>
+						</th>
+						<th>
+							<label>Description</label>
+						</th>
+						<th>
+							<label>Attack</label>
+						</th>
+						<th>
+							<label>Save</label>
+						</th>
+						<th>
+							<label>School</label>
+						</th>
+						<th></th>
+					</tr>
+				</table>
+			</div>
+			<div class="statblock">
+				<div style="display: flex; justify-content: space-between;">
+					<h2>Inventory</h2>
+				<button type="button" onclick="createNewItem()">Create Item</button>
+				</div>
+				<table id="inventoryblock">
+					<tr>
+						<th>
+							<label>Quantity</label>
+						</th>
+						<th>
+							<label>Name</label>
+						</th>
+						<th>
+							<label>Description</label>
+						</th>
+						<th>
+							<label>Weight</label>
+						</th>
+						<th></th>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</form>
 </body>
