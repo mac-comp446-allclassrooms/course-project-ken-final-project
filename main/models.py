@@ -93,18 +93,15 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 				ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=ability_score_name)
 				DungeonsAndDragonsFifthEditionSkill.objects.create(name=display_name, character=character, proficiency=form_data.get(field), ability_score=ability_score)
 
-		# # Handles generation of skills.
-		# skills = set()
-		# for field in field_names:
-		# 	if (field.endswith("_skill")):
-		# 		display_name = field.replace("_skill", "")	# Removes _skill
-		# 		ability_score_name = display_name.split("_")[1].title() # Isolates and formats the ability score name from the field name
-		# 		display_name = display_name.split("_")[0].title() # Isolates the display name from the field name
-		# 		ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=ability_score_name)
-		# 		skills.add(SkillHelper5e(field, display_name, ability_score))
-
-		# for skill in skills:
-		# 	DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score.display_name, character=character, score=ability_score.score)
+		# Handles generation of items. Assumes the name attribute of all item fields to be...
+		item_quantities = form_data.getlist('item_quantity')
+		item_names = form_data.getlist('item_name')
+		print(item_names)
+		item_descriptions = form_data.getlist('item_description')
+		item_weights = form_data.getlist('item_weight')
+		for i in range(len(item_names)):
+			print("added item")
+			DungeonsAndDragonsFifthEditionItem.objects.create(name=item_names[i], character=character, amount=item_quantities[i], weight=item_weights[i], description=item_descriptions[i])
 
 		return character
 
@@ -141,6 +138,8 @@ class DungeonsAndDragonsFifthEditionSkill(models.Model):
 
 class DungeonsAndDragonsFifthEditionItem(models.Model):
 	name = models.CharField(max_length=200)
+	amount = models.IntegerField(default=0)
+	weight = models.IntegerField(default=0)
 	description = models.CharField(max_length=10000)
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
@@ -151,7 +150,9 @@ class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	name = models.CharField(max_length=200)
 	attack_bonus = models.IntegerField(default=0)
 	damage_amount = models.CharField(max_length=200)
-	damage_type = models.CharField(max_length=200)
+	damage_type = models.CharField(max_length=200, default="")
+	range = models.CharField(max_length=200, default="")
+	notes = models.CharField(max_length=1000, default="")
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
