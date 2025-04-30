@@ -121,43 +121,32 @@
 		<div class="contentblock">
 			<div class="statblock">
 				<div style="display: flex; justify-content: space-between;">
-					<h2>Weapons</h2>
-				<button type="button" onclick="createNewWeapon()">Create Weapon</button>
+					<h2>Attack</h2>
+				<button type="button" onclick="createNewAttack()">Create Attack</button>
 				</div>
-				<table id="weaponblock">
+				<table id="attackblock">
 					<tr>
 						<th>
 							<label>Name</label>
 						</th>
-						<th>
-							<label>Type</label>
-						</th>
-						<th>
-							<label>Ability Score</label>
-						</th>
+
 						<th>
 							<label>Range</label>
 						</th>
 						<th>
 							<label>Damage Roll</label>
 						</th>
+                        <th>
+							<label>Bonus</label>
+						</th>
 						<th>
 							<label>Damage Type</label>
 						</th>
+                        <th>
+                            <label>Notes</label>
+                        </th>
 						<th></th>
 					</tr>
-					<!-- 
-					{% for weapon in weapons %}
-					<tr>
-						<td>weapon.name</td>
-						<td>weapon.type</td>
-						<td>weapon.mod</td>
-						<td>weapon.range</td>
-						<td>weapon.damageroll</td>
-						<td>weapon.damagetype</td>
-					</tr>
-					{% endfor %}
-					 -->
 				</table>
 			</div>
 			<div class="statblock">
