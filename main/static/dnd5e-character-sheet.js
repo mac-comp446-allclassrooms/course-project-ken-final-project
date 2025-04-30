@@ -57,7 +57,7 @@ function createNewItem() {
     newWeapon.innerHTML = "<td><input type='number' name='item_quantity' value='1'></input></td>"
             + "<td><input type='text' name='item_name' placeholder='Item Name'></input></td>"
             + "<td><input type='text' name='item_description' placeholder='Description'></input></td>"
-            + "<td><input type='number' name='item_weight' placeholder='Weight'></input></td>"
+            + "<td><input type='number' name='item_weight' value='0'></input></td>"
             + "<td><button type='button' onclick = 'deleteItem(this)'>delete</button></td>"
 
     console.log("item created");
