@@ -51,11 +51,19 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		return character
 	
 	# Helper model, used to temporarily store ability scores during character saving.
-	class Ability_Score:
+	class AbilityScoreHelper5e:
 			def __init__(self, field_name, display_name):
 				self.field_name = field_name
 				self.display_name = display_name
 				self.score = form_data.get(field_name)
+	
+	# Helper model, used to temporarily store skills during character saving.
+	class SkillHelper5e:
+			def __init__(self, field_name, display_name, ability_score):
+				self.field_name = field_name
+				self.display_name = display_name
+				self.ability_score = ability_score
+				self.proficiency = form_data.get(field_name)
 
 	# Create a new D&D 5e character sheet using information from an HTML form POST request.
 	def save_dnd5e_character(self, current_user, form_data):
@@ -67,52 +75,36 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.hp_maximum = form_data.get('hp_maximum')
 		character.armor_class = form_data.get('armor_class')
 
-		# Handles ability score generation.
-		class Ability_Score:
-			def __init__(self, field_name, display_name):
-				self.field_name = field_name
-				self.display_name = display_name
-				self.score = form_data.get(field_name)
-
-		field_names = request.POST.dict().keys()
-		ability_scores = {}
+		# Handles generation of ability scores.
+		field_names = form_data.dict().keys()
 		for field in field_names:
 			if (field.endswith("_ability_score")):
-					display_name = field.replace("_ability_score", "")
-					display_name = display_name.replace("_", " ")
-					display_name = display_name.title()
-					ability_scores.add(Ability_Score(field, display_name))
+				display_name = field.replace("_ability_score", "")
+				display_name = display_name.replace("_", " ")
+				display_name = display_name.title()
+				DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=display_name, character=character, score=form_data.get(field))
 
-		for ability_score in ability_scores:
-			ability_score.name_field 
-			DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score, character=character)
+		# Handles generation of ability scores.
+		for field in field_names:
+			if (field.endswith("_skill")):
+				display_name = field.replace("_skill", "")	# Removes _skill
+				ability_score_name = display_name.split("_")[1].title() # Isolates and formats the ability score name from the field name
+				display_name = display_name.split("_")[0].title() # Isolates the display name from the field name
+				ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=ability_score_name)
+				DungeonsAndDragonsFifthEditionSkill.objects.create(name=display_name, character=character, proficiency=form_data.get(field), ability_score=ability_score)
 
-		# ability_scores = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
-		# for ability_score in ability_scores:
-		# 	DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score, character=character)
+		# # Handles generation of skills.
+		# skills = set()
+		# for field in field_names:
+		# 	if (field.endswith("_skill")):
+		# 		display_name = field.replace("_skill", "")	# Removes _skill
+		# 		ability_score_name = display_name.split("_")[1].title() # Isolates and formats the ability score name from the field name
+		# 		display_name = display_name.split("_")[0].title() # Isolates the display name from the field name
+		# 		ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=ability_score_name)
+		# 		skills.add(SkillHelper5e(field, display_name, ability_score))
 
-		# skills = {
-		# 	"Athletics": "Strength",
-		# 	"Acrobatics": "Dexterity",
-		# 	"Sleight of Hand": "Dexterity",
-		# 	"Stealth": "Dexterity",
-		# 	"Arcana": "Intelligence",
-		# 	"History": "Intelligence",
-		# 	"Investigation": "Intelligence",
-		# 	"Nature": "Intelligence",
-		# 	"Religion": "Intelligence",
-		# 	"Animal Handling": "Wisdom",
-		# 	"Insight": "Wisdom",
-		# 	"Perception": "Wisdom",
-		# 	"Survival": "Wisdom",
-		# 	"Deception": "Charisma",
-		# 	"Intimidation": "Charisma",
-		# 	"Performance": "Charisma",
-		# 	"Persuasion": "Charisma",
-		# }
 		# for skill in skills:
-		# 	ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=skills[skill])
-		# 	DungeonsAndDragonsFifthEditionSkill.objects.create(name=skill, ability_score=ability_score, character=character)
+		# 	DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score.display_name, character=character, score=ability_score.score)
 
 		return character
 
