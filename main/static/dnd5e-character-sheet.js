@@ -4,15 +4,15 @@ function createNewWeapon() {
     const newWeapon = document.createElement("tr");
     newWeapon.classList.add("weapon");
 
-    newWeapon.innerHTML = "<td> <input type='text' placeholder='Weapon Name'></input></td>"
-            + "<td><input type='text' placeholder='Type'></input></td>"
-            + "<td>" + "<select name='mod'>"
+    newWeapon.innerHTML = "<td> <input type='text' name='name_weapon' placeholder='Weapon Name'></input></td>"
+            + "<td><input type='text' name='type_weapon' placeholder='Type'></input></td>"
+            + "<td>" + "<select name='ability_score_weapon'>"
                     + "<option value='Dexterity'>Dex</option>"
                     + "<option value='Strength'>Str</option>"
             +" </select>" + "</td>"
-            + "<td><input type='text' placeholder='Range'></input></td>"
-            + "<td><input type='text' placeholder='Damage Roll'></input></td>"
-            + "<td><input type='text' placeholder='Damage Type'></input></td>"
+            + "<td><input type='text' name='range_weapon' placeholder='Range'></input></td>"
+            + "<td><input type='text' name='damage_roll_weapon' placeholder='Damage Roll'></input></td>"
+            + "<td><input type='text' name='damage_type_weapon' placeholder='Damage Type'></input></td>"
             + "<td><button type='button' onclick = 'deleteWeapon(this)'>delete</button></td>"
 
     console.log("Weapon created");
