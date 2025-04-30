@@ -57,13 +57,13 @@ function deleteSpell(loc) {
 function createNewItem() {
     const newWeapon = document.createElement("tr");
     newWeapon.classList.add("item");
-    newWeapon.innerHTML = "<td> <input type='number' value='1'></input></td>"
-            + "<td> <input type='text' placeholder='Item Name'></input></td>"
-            + "<td><input type='text' placeholder='Description'></input></td>"
-            + "<td><input type='text' placeholder='Weight'></input></td>"
+    newWeapon.innerHTML = "<td><input type='number' name='item_quantity' value='1'></input></td>"
+            + "<td><input type='text' name='item_name' placeholder='Item Name'></input></td>"
+            + "<td><input type='text' name='item_description' placeholder='Description'></input></td>"
+            + "<td><input type='number' name='item_weight' placeholder='Weight'></input></td>"
             + "<td><button type='button' onclick = 'deleteItem(this)'>delete</button></td>"
 
-    console.log("spell created");
+    console.log("item created");
     const statblock = document.getElementById("inventoryblock");
     statblock.appendChild(newWeapon);
 }
