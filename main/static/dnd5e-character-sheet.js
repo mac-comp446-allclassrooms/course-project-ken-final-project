@@ -4,12 +4,12 @@ function createNewAttack() {
     const newAttack = document.createElement("tr");
     newAttack.classList.add("attack");
 
-    newAttack.innerHTML = "<td> <input type='text' name='name_attack' placeholder='Name'></input></td>"
-            + "<td><input type='text' name='range_attack' placeholder='Range'></input></td>"
-            + "<td><input type='text' name='damage_roll_attack' placeholder='Damage Roll'></input></td>"
+    newAttack.innerHTML = "<td> <input type='text' name='name_attack' placeholder='Name'></td>"
+            + "<td><input type='text' name='range_attack' placeholder='Range'></td>"
+            + "<td><input type='text' name='damage_roll_attack' placeholder='Damage Roll'></td>"
             + "<td><input type='text' name='bonus_attack' placeholder='Bonus'</td>"
-            + "<td><input type='text' name='damage_type_attack' placeholder='Damage Type'></input></td>"
-            + "<td><input type='text' name='notes_attack' placeholder='Notes'></input></td>"
+            + "<td><input type='text' name='damage_type_attack' placeholder='Damage Type'></td>"
+            + "<td><input type='text' name='notes_attack' placeholder='Notes'></td>"
             + "<td><button type='button' onclick = 'deleteAttack(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("attackblock");
@@ -26,12 +26,12 @@ function deleteAttack(loc) {
 function createNewSpell() {
     const newWeapon = document.createElement("tr");
     newWeapon.classList.add("spell");
-    newWeapon.innerHTML = "<td><input type='number' class='level-input' value='0'></input></td>"
-            + "<td> <input type='text' placeholder='Spell Name'></input></td>"
-            + "<td><input type='text' placeholder='Description'></input></td>"
-            + "<td><input type='text' placeholder='Attack'></input></td>"
-            + "<td><input type='text' placeholder='Save'></input></td>"
-            + "<td><input type='text' placeholder='School'></input></td>"
+    newWeapon.innerHTML = "<td><input type='number' class='level-input' value='0'></td>"
+            + "<td> <input type='text' placeholder='Spell Name'></td>"
+            + "<td><input type='text' placeholder='Description'></td>"
+            + "<td><input type='text' placeholder='Attack'></td>"
+            + "<td><input type='text' placeholder='Save'></td>"
+            + "<td><input type='text' placeholder='School'></td>"
             + "<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("spellblock");
@@ -48,11 +48,11 @@ function deleteSpell(loc) {
 function createNewItem() {
     const newWeapon = document.createElement("tr");
     newWeapon.classList.add("item");
-    newWeapon.innerHTML = "<td><input type='number' name='item_quantity' value='1'></input></td>"
-            + "<td><input type='text' name='item_name' placeholder='Item Name'></input></td>"
-            + "<td><input type='text' name='item_description' placeholder='Description'></input></td>"
-            + "<td><input type='number' name='item_weight' value='0'></input></td>"
-            + "<td><button type='button' onclick = 'deleteItem(this)'>delete</button></td>"
+    newWeapon.innerHTML = "<td><input type='number' name='item_quantity' value='1'></td>"
+            + "<td><input type='text' name='item_name' placeholder='Item Name'></td>"
+            + "<td><input type='text' name='item_description' placeholder='Description'></td>"
+            + "<td><input type='number' name='item_weight' value='0'></td>"
+            + "<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("inventoryblock");
     statblock.appendChild(newWeapon);
@@ -64,6 +64,79 @@ function deleteItem(loc) {
     grandparent.remove();
 }
 
+// Creates new proficiency row in HTML weapon table
+function createNewProficiency() {
+    const newProficiency = document.createElement("tr");
+    newProficiency.classList.add("proficiency");
+    newProficiency.innerHTML = "<td><input type='text' name='proficiency_type' placeholder='Type'></td>"
+            + "<td><input type='text' name='proficiency_name' placeholder='Name'></td>"
+            + "<td><button type='button' onclick = 'deleteProficiency(this)'>Delete</button></td>"
+
+    const statblock = document.getElementById("proficiencyblock");
+    statblock.appendChild(newProficiency);
+}
+
+// Deletes feat row in HTML weapon table
+function deleteProficiency(loc) {
+    grandparent = loc.parentNode.parentNode;
+    grandparent.remove();
+}
+
+// Creates new feat row in HTML weapon table
+function createNewFeat() {
+    const newFeat = document.createElement("tr");
+    newFeat.classList.add("feat");
+    newFeat.innerHTML = "<td><input type='text' name='feat_name' placeholder='Name'></td>"
+            + "<td><input type='text' name='feat_description' placeholder='Description'></td>"
+            + "<td><button type='button' onclick = 'deleteFeat(this)'>Delete</button></td>"
+
+    const statblock = document.getElementById("featblock");
+    statblock.appendChild(newFeat);
+}
+
+// Deletes feat row in HTML weapon table
+function deleteFeat(loc) {
+    grandparent = loc.parentNode.parentNode;
+    grandparent.remove();
+}
+
+// Creates new feature row in HTML weapon table
+function createNewFeature() {
+    const newFeat = document.createElement("tr");
+    newFeat.classList.add("feature");
+    newFeat.innerHTML = "<td><input type='text' name='feature_name' placeholder='Name'></td>"
+            + "<td><input type='text' name='feature_description' placeholder='Description'></td>"
+            + "<td><button type='button' onclick = 'deleteFeature(this)'>Delete</button></td>"
+
+    const statblock = document.getElementById("featureblock");
+    statblock.appendChild(newFeat);
+}
+
+// Deletes feature row in HTML weapon table
+function deleteFeat(loc) {
+    grandparent = loc.parentNode.parentNode;
+    grandparent.remove();
+}
+
+// Creates new trait row in HTML weapon table
+function createNewTrait() {
+    const newTrait = document.createElement("tr");
+    newTrait.classList.add("trait");
+    newTrait.innerHTML = "<td><input type='text' name='trait_name' placeholder='Name'></td>"
+            + "<td><input type='text' name='trait_description' placeholder='Description'></td>"
+            + "<td><button type='button' onclick = 'deleteTrait(this)'>Delete</button></td>"
+
+    const statblock = document.getElementById("traitblock");
+    statblock.appendChild(newTrait);
+}
+
+// Deletes feat row in HTML weapon table
+function deleteFeat(loc) {
+    grandparent = loc.parentNode.parentNode;
+    grandparent.remove();
+}
+
+// ABILITIES AND SKILLS
 // Updates Ability mod when skill input is changed
 function updateAbilityMod(loc) {
     let score = loc.value;
@@ -78,6 +151,7 @@ function updateAbilityMod(loc) {
     }
 
     currtar.innerHTML = mod;
+
     updateSavingThrows();
 }
 
@@ -121,6 +195,12 @@ function updateSavingThrows() {
     let savingthrowtable = document.getElementById("extra_ability_block");
     savingthrowtable.innerHTML = "<tr><th>Ability</th><th>Mod</th></tr>";
     let saved = document.getElementsByClassName("saving-check-box");
+    
+    let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
+    const newsave = document.createElement("tr");
+    newsave.innerHTML = "<td> Initiative </td>"
+            + "<td>" + initiativebonus + "</td>"
+    savingthrowtable.appendChild(newsave);
 
     for (const savingThrow of saved) {
         if (savingThrow.checked == true) {

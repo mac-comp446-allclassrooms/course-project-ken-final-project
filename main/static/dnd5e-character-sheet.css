@@ -75,6 +75,11 @@ h2 {
 	float: right;
 }
 
+.stat-heading {
+	display: flex;
+	justify-content: space-between;
+}
+
 /* IDs */
 
 #abilityblock {
