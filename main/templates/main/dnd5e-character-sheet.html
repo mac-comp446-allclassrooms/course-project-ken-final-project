@@ -195,37 +195,122 @@
 				</table>
 			</div>
 			<div class="statblock">
-				<div style="display: flex; justify-content: space-between;">
-					<h2>Spells</h2>
-				<button type="button" onclick="createNewSpell()">Create Spell</button>
+				<h2>Spellcasting</h2>
+				<div class="contentblock" style="display: flex;">
+					<div class="statblock" style="width: 35%;"">
+						<table>
+							<tr>
+								<th><label>Spellcasting Ability</label></th>
+								<td>
+									<select name="spellcasting_ability">
+										<option value="none">None</option>
+										{% for ability in ability_scores %}
+											<option value="{{ability.name}}">{{ability.name}}</option>
+										{% endfor %}
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th>Spellcasting Mod</th>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th><label>Spell Save DC</label></th>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th>Spell Attack Bonus</th>
+								<td>0</td>
+							</tr>
+						</table>
+					</div>
+					<div class="statblock" style="width: 65%;">
+						<!-- <h3>Spellslots</h3> -->
+						<table>
+							<tr>
+								<th style="width: 10%;">Level</th>
+								<th style="width: 23%;">Slots</th>
+								<th style="width: 10%;">Level</th>
+								<th style="width: 23%;">Slots</th>
+								<th style="width: 10%;">Level</th>
+								<th style="width: 23%;">Slots</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+								<td>2</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+								<td>3</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+								<td>5</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+								<td>6</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+								<td>8</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+								<td>9</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<table id="spellblock">
-					<tr>
-						<th>
-							<label>Level</label>
-						</th>
-						<th>
-							<label>Name</label>
-						</th>
-						<th>
-							<label>Description</label>
-						</th>
-						<th>
-							<label>Attack</label>
-						</th>
-						<th>
-							<label>Save</label>
-						</th>
-						<th>
-							<label>School</label>
-						</th>
-						<th></th>
-					</tr>
+				<div class="statblock">
+					<div style="display: flex; justify-content: space-between;">
+						<h3>Spells</h3>
+						<button type="button" onclick="createNewSpell()">Create Spell</button>
+					</div>
+					<table id="spellblock">
+						<tr>
+							<th>
+								<label>Level</label>
+							</th>
+							<th>
+								<label>Name</label>
+							</th>
+							<th>
+								<label>Description</label>
+							</th>
+							<th>
+								<label>Attack</label>
+							</th>
+							<th>
+								<label>Save</label>
+							</th>
+							<th>
+								<label>School</label>
+							</th>
+							<th></th>
+						</tr>
 
-					{% for spell in spells %}
-					<tr>
-						"<td>
-							<input type='number' class='level-input' value='{{spell.level}}'></input></td>
+						{% for spell in spells %}
+						<tr>
+							<td><input type='number' class='level-input' value='{{spell.level}}'></input></td>
 							<td> <input type='text' value='{{spell.name}}'></input></td>
 							<td><input type='text' value='{{spell.description}}'></input></td>
 							<td><input type='text' value='{{spell.attack}}'></input></td>
@@ -233,8 +318,9 @@
 							<td><input type='text' value='{{spell.school}}'></input></td>
 							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
 						</tr>
-					{% endfor %}
-				</table>
+						{% endfor %}
+					</table>
+				</div>
 			</div>
 			<div class="statblock">
 				<div style="display: flex; justify-content: space-between;">
@@ -257,7 +343,6 @@
 						</th>
 						<th></th>
 					</tr>
-
 					{% for item in items %}
 					<tr>
 						<td><input type='number' name='item_quantity' value='{{item.amount}}'></input></td><td><input type='text' name='item_name' value="{{item.name}}"></input></td>
