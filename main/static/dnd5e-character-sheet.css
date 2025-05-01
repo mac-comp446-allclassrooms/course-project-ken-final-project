@@ -12,20 +12,27 @@ input {
 table { 
 	font-family: var(--font);
 	width: 100%;
-	table-layout: fixed;
-	
+	table-layout: fixed;	
 }
 
 td, th {
 	padding-inline: 0.25rem;
 	font-size: x-small;
 	align-items: center;
-	/* border: 1px solid; */
+	border: 1px solid;
 }
 
-td input {
+td input[type='text'] {
 	font-size: x-small;
 	width: 100%;
+	/* width: 6rem; */
+}
+
+
+td input[type='number'] {
+	font-size: x-small;
+	/* width: 100%; */
+	width: 2rem;
 }
 
 button {
@@ -40,10 +47,6 @@ button {
 button:hover {
 	background-color: lightgray;
 	box-shadow: 1px 1px 1px black;
-}
-
-td input {
-	width: 100%;
 }
 
 td select {
@@ -71,6 +74,7 @@ textarea {
 	margin: 5px;
 	transition: box-shadow 0.5s;
 	display: inline-block;
+	max-width: fit-content;
 }
 
 .statblock:hover {
@@ -86,6 +90,10 @@ textarea {
 	background-color: white;
 	transition: background-color 0.5s;
 	transition: box-shadow 0.5s;
+}
+
+.modcolumn {
+	width: 2rem;
 }
 
 /* .ability-scores-section {

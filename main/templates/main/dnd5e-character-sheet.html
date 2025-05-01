@@ -60,7 +60,10 @@
 							<td><input type="number" name="armor_class" value="{{character.armor_class}}" required></td>
 						</tr>
 					</table>
-					<div class="statblock" style="width: 50%;">
+				</div>
+		</div>
+
+					<div class="statblock">
 						<h2>Wallet</h2>
 						<table>
 							<tr>
@@ -89,8 +92,6 @@
 							</tr>
 						</table>
 					</div>
-				</div>
-			</div>
 		</div>
 			
 		<div class="contentblock" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px;">
@@ -102,8 +103,8 @@
 					<table class="contentblock" id="abilityblock">
 						<tr>
 							<th>Ability</th>
-							<th>Score</th>
-							<th>Mod</th>
+							<th class="modcolumn">Score</th>
+							<th class="modcolumn">Mod</th>
 							<th>Saving?</th>
 						</tr>
 						{% for ability in ability_scores %}
@@ -132,10 +133,10 @@
 				</div>
 				<table class="contentblock" id="skillblock">
 					<tr>
-						<th style="width: 20%;">Prof</th>
+						<th class="modcolumn">Prof</th>
 						<th style="width: 30%;">Skill</th>
 						<th style="width: 30%;">Ability</th>
-						<th style="width: 20%;">Mod</th>
+						<th class="modcolumn">Mod</th>
 					</tr>
 					{% for skill in skills %}
 						<tr>
@@ -225,61 +226,61 @@
 						<h3>Spellslots</h3>
 						<table>
 							<tr>
-								<th style="width: 10%;">Level</th>
+								<th class="modcolumn">Level</th>
 								<th>Slots</th>
 							</tr>
 							<tr>
 								<td>1</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>2</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>3</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>4</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>5</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>6</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>7</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>8</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>9</td>
 								<td><input type="number" style="width: 40%;">
-								<label>/</label>
+								/
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 						</table>
@@ -292,10 +293,10 @@
 						</div>
 						<table id="spellblock">
 							<tr>
-								<th><label>Level</label></th>
-								<th><label>Name</label></th>
-								<th><label>Description</label></th>
-								<th><label>School</label></th>
+								<th class="modcolumn">Level</th>
+								<th>Name</th>
+								<th>Description</th>
+								<th>School</th>
 								<th></th>
 							</tr>
 
@@ -429,6 +430,7 @@
 								<th></th>
 							</tr>
 						</table>
+						<textarea></textarea>
 					</div>
 				</div>
 			</div>

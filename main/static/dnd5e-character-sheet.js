@@ -228,7 +228,7 @@ function updateAllAbilities() {
 function updateSavingThrows() {
     // Get Table
     let savingthrowtable = document.getElementById("extra_ability_block");
-    savingthrowtable.innerHTML = "<tr><th>Ability</th><th>Mod</th></tr>";
+    savingthrowtable.innerHTML = "<tr><th>Ability</th><th class='modcolumn'>Mod</th></tr>";
     let saved = document.getElementsByClassName("saving-check-box");
     
     let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
