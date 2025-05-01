@@ -6,6 +6,10 @@ h1, h2, h3, p {
 	font-family: var(--font);
 }
 
+h2 {
+	margin: 0.25rem;
+}
+
 .tab {
 	overflow: hidden;
 	padding: 10px;

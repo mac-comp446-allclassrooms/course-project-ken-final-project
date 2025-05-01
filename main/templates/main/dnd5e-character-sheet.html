@@ -12,6 +12,7 @@
 	
 	<form id="character_sheet" method="post">
 		{% csrf_token %}
+		<!-- <h1>Character Sheet: {{character.name}}</h1> -->
 		<div class="contentblock">
 			<div class="statblock" id="profileblock">
 				<div style="display: flex; justify-content: space-between;">
@@ -22,7 +23,7 @@
 					</div>
 				</div>
 				<div class="contentblock" style="display: flex;">
-					<table>
+					<table style="width: 35%;">
 						<tr class="stat">
 							<td>Name</td>
 							<td><input type="text" id="name-display" name="character_name" value="{{character.name}}" required></td>
@@ -44,10 +45,10 @@
 
 						<tr class="stat">
 							<td>Health</td>
-							<td>
-								<input type="number" id="currhealth-display" name="hp_current" value="{{character.hp_current}}" style="width: 44%;">
+							<td style="display: flex; justify-content: space-between;">
+								<input type="number" id="currhealth-display" name="hp_current" value="{{character.hp_current}}" style="width: 40%;">
 								<label>/</label>
-								<input type="number" id="maxhealth-display" name="hp_maximum" value="{{character.hp_maximum}}" style="width: 44%;">
+								<input type="number" id="maxhealth-display" name="hp_maximum" value="{{character.hp_maximum}}" style="width: 40%;">
 							</td>
 						</tr>
 
@@ -56,15 +57,35 @@
 							<td><input type="number" name="armor_class" id="armorclass-display" value="10" required></td>
 						</tr>
 					</table>
-					<textarea placeholder="Physical Description" style="resize: none;"></textarea>
-					<div class="statblock">
+					<textarea placeholder="Physical Description" style="resize: none; width: 30%;"></textarea>
+					<div class="statblock" style="width: 35%;">
 						<h2>Wallet</h2>
-						<!-- <table>
+						<table>
 							<tr>
 								<th style="width: 50%;">Currency</th>
 								<th style="width: 50%;">Amount</th>
 							</tr>
-						</table> -->
+							<tr>
+								<td><label>Platinum (Pp)</label></td>
+								<td><input type="number"></td>
+							</tr>
+							<tr>
+								<td><label>Gold (Gp)</label></td>
+								<td><input type="number"></td>
+							</tr>
+							<tr>
+								<td><label>Electrum (Ep)</label></td>
+								<td><input type="number"></td>
+							</tr>
+							<tr>
+								<td><label>Silver (Sp)</label></td>
+								<td><input type="number"></td>
+							</tr>
+							<tr>
+								<td><label>Copper (Cp)</label></td>
+								<td><input type="number"></td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
