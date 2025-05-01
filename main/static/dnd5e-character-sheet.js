@@ -207,16 +207,7 @@ function updateSkillMod(skill, mod) {
     skill.innerHTML = moddisplay;
 }
 
-// Calculates mod from a given score
-function calculateMod(score) {
-    mod = Math.floor((score-10)/2);
-    if (mod >= 0) {
-        moddisplay = "+" + mod;
-    } else {
-        moddisplay = mod;
-    } 
-    return moddisplay;
-}
+
 
 function updateAllAbilities() {
     let abilityList = document.getElementsByClassName("ability-score");
@@ -234,23 +225,34 @@ function updateSavingThrows() {
     let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
     const newsave = document.createElement("tr");
     newsave.innerHTML = "<td> Initiative </td>"
-            + "<td>" + initiativebonus + "</td>"
+    + "<td>" + initiativebonus + "</td>"
     savingthrowtable.appendChild(newsave);
-
+    
     for (const savingThrow of saved) {
         if (savingThrow.checked == true) {
             // Gets ability name
             let abilityname = savingThrow.parentNode.parentNode.firstChild.nextSibling.textContent;
             let abilityscore = savingThrow.parentNode.previousSibling.previousSibling.textContent;
             const newsave = document.createElement("tr");
-        
+            
             newsave.innerHTML = "<td>" + abilityname + "</td>"
-                    + "<td>" + abilityscore + "</td>"
-
+            + "<td>" + abilityscore + "</td>"
+            
             savingthrowtable.appendChild(newsave);
         }
     }
+    
+}
 
+// Calculates mod from a given score
+function calculateMod(score) {
+    mod = Math.floor((score-10)/2);
+    if (mod >= 0) {
+        moddisplay = "+" + mod;
+    } else {
+        moddisplay = mod;
+    } 
+    return moddisplay;
 }
 
 function populate() {

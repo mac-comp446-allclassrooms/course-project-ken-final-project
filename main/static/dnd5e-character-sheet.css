@@ -12,14 +12,23 @@ input {
 table { 
 	font-family: var(--font);
 	width: 100%;
-	table-layout: fixed;	
+	border: 1px solid;
+	table-layout: fixed;
+	border-radius: 10px;
+	/* border-collapse: collapse; */
+}
+
+tr {
+	border: 1px solid;
+	border-collapse: collapse;
 }
 
 td, th {
 	padding-inline: 0.25rem;
 	font-size: x-small;
 	align-items: center;
-	border: 1px solid;
+	/* border: 1px solid; */
+	border-collapse: collapse;
 }
 
 td input[type='text'] {
