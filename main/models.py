@@ -26,23 +26,25 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 			DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=ability_score, character=character)
 
 		skills = {
-			"Athletics": "Strength",
 			"Acrobatics": "Dexterity",
-			"Sleight of Hand": "Dexterity",
-			"Stealth": "Dexterity",
-			"Arcana": "Intelligence",
-			"History": "Intelligence",
-			"Investigation": "Intelligence",
-			"Nature": "Intelligence",
-			"Religion": "Intelligence",
 			"Animal Handling": "Wisdom",
-			"Insight": "Wisdom",
-			"Perception": "Wisdom",
-			"Survival": "Wisdom",
+			"Arcana": "Intelligence",
+			"Athletics": "Strength",
 			"Deception": "Charisma",
+			"History": "Intelligence",
+			"Insight": "Wisdom",
 			"Intimidation": "Charisma",
+			"Investigation": "Intelligence",
+			"Medicine": "Wisdom",
+			"Nature": "Intelligence",
+			"Perception": "Wisdom",
 			"Performance": "Charisma",
 			"Persuasion": "Charisma",
+			"Religion": "Intelligence",
+			"Sleight of Hand": "Dexterity",
+			"Stealth": "Dexterity",
+			"Survival": "Wisdom",
+
 		}
 		for skill in skills:
 			ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=skills[skill])

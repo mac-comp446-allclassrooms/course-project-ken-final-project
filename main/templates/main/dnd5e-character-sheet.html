@@ -242,17 +242,17 @@
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
-								<td>2</td>
+								<td>4</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
-								<td>3</td>
+								<td>7</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
-								<td>4</td>
+								<td>2</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
@@ -260,17 +260,17 @@
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
-								<td>6</td>
+								<td>8</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
-								<td>7</td>
+								<td>3</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
-								<td>8</td>
+								<td>6</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
@@ -285,7 +285,7 @@
 				<div class="statblock">
 					<div class="stat-heading">
 						<h3>Spells</h3>
-						<button type="button" onclick="createNewSpell()">Create Spell</button>
+						<button type="button" onclick="createNewSpell()">New Spell</button>
 					</div>
 					<table id="spellblock">
 						<tr>
@@ -327,7 +327,7 @@
 			<div class="statblock">
 				<div class="stat-heading">
 					<h2>Inventory</h2>
-					<button type="button" onclick="createNewItem()">Create Item</button>
+					<button type="button" onclick="createNewItem()">New Item</button>
 				</div>
 				<table id="inventoryblock">
 					<tr>
@@ -359,7 +359,7 @@
 				<div class="statblock">
 					<div class="stat-heading">
 						<h2>Proficiencies</h2>
-						<button type="button" onclick="createNewProficiency()">Create Proficiency</button>
+						<button type="button" onclick="createNewProficiency()">New Proficiency</button>
 					</div>
 					<table id="proficiencyblock">
 						<tr>
@@ -380,7 +380,7 @@
 				<div class="statblock">
 					<div class="stat-heading">
 						<h2>Feats</h2>
-						<button type="button" onclick="createNewFeat()">Create Feat</button>
+						<button type="button" onclick="createNewFeat()">New Feat</button>
 					</div>
 					<table id="featblock">
 						<tr>
@@ -399,7 +399,7 @@
 				<div class="statblock">
 					<div class="stat-heading">
 						<h2>Features</h2>
-						<button type="button" onclick="createNewFeature()">Create Feature</button>
+						<button type="button" onclick="createNewFeature()">New Feature</button>
 					</div>
 					<table id="featureblock">
 						<tr>
@@ -412,7 +412,7 @@
 				<div class="statblock">
 					<div class="stat-heading">
 						<h2>Traits</h2>
-						<button type="button" onclick="createNewTrait()">Create Trait</button>
+						<button type="button" onclick="createNewTrait()">New Trait</button>
 					</div>
 					<table id="traitblock">
 						<tr>
@@ -421,6 +421,41 @@
 							<th></th>
 						</tr>
 					</table>
+				</div>
+			</div>
+
+			<div class="statblock">
+				<div class="stat-heading">
+					<h2>Character Description</h2>
+				</div>
+				<div class="contentblock" style="display: flex;">
+					<div class="statblock">
+						<div class="stat-heading">
+							<h3>Physical</h3>
+							<button type="button" onclick="createNewPhysicalTrait()">New Physical Trait</button>
+						</div>
+						<!-- <textarea placeholder="Description"></textarea> -->
+						<table id="physicaldescriptionblock">
+							<tr>
+								<th><label>Trait</label></th>
+								<th><label>Description</label></th>
+								<th></th>
+							</tr>
+						</table>
+					</div>
+					<div class="statblock">
+						<div class="stat-heading">
+							<h2>Personality</h2>
+							<button type="button" onclick="createNewPersonalityTrait()">New Personality Trait</button>
+						</div>
+						<table id="personalityblock">
+							<tr>
+								<th><label>Trait</label></th>
+								<th><label>Description</label></th>
+								<th></th>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

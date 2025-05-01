@@ -34,8 +34,13 @@ button {
 	border-radius: 10px;
 	border-width: 1px;
 	transition: background-color 0.5s;
+	transition: box-shadow 0.5s;
 }
 
+button:hover {
+	background-color: lightgray;
+	box-shadow: 1px 1px 1px black;
+}
 
 td input {
 	width: 100%;
@@ -61,11 +66,23 @@ h2 {
 	transition: box-shadow 0.5s;
 	display: inline-block;
 }
+
 .statblock:hover {
 	box-shadow: 1.5px 1.5px 1.5px gray;
 }
 
-.ability-scores-section {
+textarea {
+	resize: none;
+	width: 100%;
+}
+
+.stat-heading {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+/* .ability-scores-section {
 	display: inline-block;
 	float: left;
 }
@@ -73,16 +90,11 @@ h2 {
 .saving-throws-section {
 	display: inline-block;
 	float: right;
-}
-
-.stat-heading {
-	display: flex;
-	justify-content: space-between;
-}
+} */
 
 /* IDs */
 
-#abilityblock {
+/* #abilityblock {
 	display: inline-block;
 	float: left;
 }
@@ -90,4 +102,4 @@ h2 {
 #extra_ability_block {
 	display: inline-block;
 	float: right;
-}
+} */

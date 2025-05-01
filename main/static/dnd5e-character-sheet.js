@@ -130,8 +130,45 @@ function createNewTrait() {
     statblock.appendChild(newTrait);
 }
 
-// Deletes feat row in HTML weapon table
-function deleteFeat(loc) {
+// Deletes trait row in HTML weapon table
+function deleteTrait(loc) {
+    grandparent = loc.parentNode.parentNode;
+    grandparent.remove();
+}
+
+// Creates new physical trait row in HTML weapon table
+function createNewPhysicalTrait() {
+    const newPhysicalTrait = document.createElement("tr");
+    newPhysicalTrait.classList.add("trait");
+    newPhysicalTrait.innerHTML = "<td><input type='text' name='physicaltrait_name' placeholder='Trait'></td>"
+            + "<td><input type='text' name='physicaltrait_description' placeholder='Description'></td>"
+            + "<td><button type='button' onclick = 'deletePhysicalTrait(this)'>Delete</button></td>"
+
+    const statblock = document.getElementById("physicaldescriptionblock");
+    statblock.appendChild(newPhysicalTrait);
+}
+
+// Deletes physical trait row in HTML weapon table
+function deletePhysicalTrait(loc) {
+    grandparent = loc.parentNode.parentNode;
+    grandparent.remove();
+}
+
+
+// Creates new physical trait row in HTML weapon table
+function createNewPersonalityTrait() {
+    const newPersonalityTrait = document.createElement("tr");
+    newPersonalityTrait.classList.add("trait");
+    newPersonalityTrait.innerHTML = "<td><input type='text' name='physicaltrait_name' placeholder='Trait'></td>"
+            + "<td><input type='text' name='physicaltrait_description' placeholder='Description'></td>"
+            + "<td><button type='button' onclick = 'deletePhysicalTrait(this)'>Delete</button></td>"
+
+    const statblock = document.getElementById("personalityblock");
+    statblock.appendChild(newPersonalityTrait);
+}
+
+// Deletes physical trait row in HTML weapon table
+function deletePhysicalTrait(loc) {
     grandparent = loc.parentNode.parentNode;
     grandparent.remove();
 }
