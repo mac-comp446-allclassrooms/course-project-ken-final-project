@@ -36,10 +36,10 @@
 							<th>Class</th>
 							<td><input type="text" name="character_class" value="{{character.character_class}}" required></td>
 						</tr>
-						<tr class="stat">
+						<!-- <tr class="stat">
 							<th>Subclass</th>
 							<td><input type="text" name="character_subclass" value="{{character.character_subclass}}" required></td>
-						</tr>
+						</tr> -->
 
 						<tr class="stat">
 							<th>Level</th>
@@ -96,7 +96,9 @@
 		<div class="contentblock" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px;">
 			<div class="statblock">
 				<div class='ability-scores-section'>
-					<h2>Ability Scores</h2>
+					<div class="stat-heading">
+						<h2>Ability Scores</h2>
+					</div>
 					<table class="contentblock" id="abilityblock">
 						<tr>
 							<th>Ability</th>
@@ -125,7 +127,9 @@
 
 
 			<div class="statblock">
-				<h2>Skill Scores</h2>
+				<div class="stat-heading">
+					<h2>Skill Scores</h2>
+				</div>
 				<table class="contentblock" id="skillblock">
 					<tr>
 						<th style="width: 20%;">Prof</th>
@@ -161,31 +165,19 @@
 				</div>
 				<table id="attackblock">
 					<tr>
-						<th>
-							<label>Name</label>
-						</th>
-						<th>
-							<label>Range</label>
-						</th>
-						<th>
-							<label>Damage Roll</label>
-						</th>
-                        <th>
-							<label>Bonus</label>
-						</th>
-						<th>
-							<label>Damage Type</label>
-						</th>
-                        <th>
-                            <label>Notes</label>
-                        </th>
+						<th><label>Name</label></th>
+						<th><label>Range</label></th>
+						<th><label>Damage Roll</label></th>
+                        <th><label>Bonus</label></th>
+						<th><label>Damage Type</label></th>
+                        <th><label>Notes</label></th>
 						<th></th>
 					</tr>
 
 					{% for attack in attacks %}
 					<tr>
-						<td><input type='number' class='level-input' value='{{attack.n</td>
-						<td> <input type='text' value='{{attack.range}}'></td>
+						<td><input type='number' class='level-input' value='{{attack.name}}</td>
+						<td><input type='text' value='{{attack.range}}'></td>
 						<td><input type='text' value='{{attack.damage_amount}}'></td>
 						<td><input type='text' value='{{attack.attack_bonus}}'></td>
 						<td><input type='text' value='{{attack.damage_type}}'></td>
@@ -197,15 +189,17 @@
 				</table>
 			</div>
 			<div class="statblock">
-				<h2>Spellcasting</h2>
+				<div class="stat-heading">
+					<h2>Spells</h2>
+				</div>
 				<div class="contentblock" style="display: flex;">
-					<div class="statblock" style="width: 35%;"">
+					<div class="statblock" style="width: 30%;"">
+						<h3>Spellcasting</h3>
 						<table>
 							<tr>
-								<th><label>Spellcasting Ability</label></th>
+								<th width="40%"><label>Ability</label></th>
 								<td>
-									<select name="spellcasting_ability">
-										<option value="none">None</option>
+									<select name="spellcasting_ability" id="spellcasting-ability">
 										{% for ability in ability_scores %}
 											<option value="{{ability.name}}">{{ability.name}}</option>
 										{% endfor %}
@@ -215,38 +209,27 @@
 							<tr>
 								<th>Spellcasting Mod</th>
 								<td>0</td>
+								<!-- Ability mod -->
 							</tr>
 							<tr>
 								<th><label>Spell Save DC</label></th>
 								<td>0</td>
+								<!-- 8 + proficiency bonus + ability modifier -->
 							</tr>
 							<tr>
 								<th>Spell Attack Bonus</th>
 								<td>0</td>
+								<!-- ability modifier + Caster's level -->
 							</tr>
 						</table>
-					</div>
-					<div class="statblock" style="width: 65%;">
-						<!-- <h3>Spellslots</h3> -->
+						<h3>Spellslots</h3>
 						<table>
 							<tr>
 								<th style="width: 10%;">Level</th>
-								<th style="width: 23%;">Slots</th>
-								<th style="width: 10%;">Level</th>
-								<th style="width: 23%;">Slots</th>
-								<th style="width: 10%;">Level</th>
-								<th style="width: 23%;">Slots</th>
+								<th>Slots</th>
 							</tr>
 							<tr>
 								<td>1</td>
-								<td><input type="number" style="width: 40%;">
-								<label>/</label>
-								<input type="number" style="width: 40%;"></td>
-								<td>4</td>
-								<td><input type="number" style="width: 40%;">
-								<label>/</label>
-								<input type="number" style="width: 40%;"></td>
-								<td>7</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
@@ -256,24 +239,44 @@
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
-								<td>5</td>
-								<td><input type="number" style="width: 40%;">
-								<label>/</label>
-								<input type="number" style="width: 40%;"></td>
-								<td>8</td>
-								<td><input type="number" style="width: 40%;">
-								<label>/</label>
-								<input type="number" style="width: 40%;"></td>
 							</tr>
 							<tr>
 								<td>3</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
 								<td>6</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
 								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td><input type="number" style="width: 40%;">
+								<label>/</label>
+								<input type="number" style="width: 40%;"></td>
+							</tr>
+							<tr>
 								<td>9</td>
 								<td><input type="number" style="width: 40%;">
 								<label>/</label>
@@ -281,47 +284,34 @@
 							</tr>
 						</table>
 					</div>
-				</div>
-				<div class="statblock">
-					<div class="stat-heading">
-						<h3>Spells</h3>
-						<button type="button" onclick="createNewSpell()">New Spell</button>
-					</div>
-					<table id="spellblock">
-						<tr>
-							<th>
-								<label>Level</label>
-							</th>
-							<th>
-								<label>Name</label>
-							</th>
-							<th>
-								<label>Description</label>
-							</th>
-							<th>
-								<label>Attack</label>
-							</th>
-							<th>
-								<label>Save</label>
-							</th>
-							<th>
-								<label>School</label>
-							</th>
-							<th></th>
-						</tr>
+					
+					<div class="statblock" style="width: 60%;">
+						<div class="stat-heading">
+							<h3>Spell List</h3>
+							<button type="button" onclick="createNewSpell()">New Spell</button>
+						</div>
+						<table id="spellblock">
+							<tr>
+								<th><label>Level</label></th>
+								<th><label>Name</label></th>
+								<th><label>Description</label></th>
+								<th><label>School</label></th>
+								<th></th>
+							</tr>
 
-						{% for spell in spells %}
-						<tr>
-							<td><input type='number' class='level-input' value='{{spell.level}}'></td>
-							<td> <input type='text' value='{{spell.name}}'></td>
-							<td><input type='text' value='{{spell.description}}'></td>
-							<td><input type='text' value='{{spell.attack}}'></td>
-							<td><input type='text' value='{{spell.save}}'></td>
-							<td><input type='text' value='{{spell.school}}'></td>
-							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
-						</tr>
-						{% endfor %}
-					</table>
+							{% for spell in spells %}
+							<tr>
+								<td><input type='number' class='level-input' value='{{spell.level}}'></td>
+								<td> <input type='text' value='{{spell.name}}'></td>
+								<td><input type='text' value='{{spell.description}}'></td>
+								<td><input type='text' value='{{spell.attack}}'></td>
+								<td><input type='text' value='{{spell.save}}'></td>
+								<td><input type='text' value='{{spell.school}}'></td>
+								<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="statblock">
@@ -331,18 +321,10 @@
 				</div>
 				<table id="inventoryblock">
 					<tr>
-						<th>
-							<label>Quantity</label>
-						</th>
-						<th>
-							<label>Name</label>
-						</th>
-						<th>
-							<label>Description</label>
-						</th>
-						<th>
-							<label>Weight</label>
-						</th>
+						<th><label>Quantity</label></th>
+						<th><label>Name</label></th>
+						<th><label>Description</label></th>
+						<th><label>Weight</label></th>
 						<th></th>
 					</tr>
 					{% for item in items %}
@@ -363,12 +345,8 @@
 					</div>
 					<table id="proficiencyblock">
 						<tr>
-							<th>
-								<label>Type</label>
-							</th>
-							<th>
-								<label>Name</label>
-							</th>
+							<th><label>Type</label</th>
+							<th><label>Name</label</th>
 							<th></th>
 						</tr>
 						{% for proficiency in proficiencies %}
@@ -384,12 +362,8 @@
 					</div>
 					<table id="featblock">
 						<tr>
-							<th>
-								<label>Name</label>
-							</th>
-							<th>
-								<label>Description</label>
-							</th>
+							<th><label>Name</label></th>
+							<th><label>Description</label></th>
 							<th></th>
 						</tr>
 					</table>

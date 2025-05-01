@@ -55,6 +55,12 @@ h2 {
 	display: inline-block;
 }
 
+textarea {
+	font-size: x-small;
+	resize: none;
+	width: 100%;
+}
+
 /* Classes */
 
 .statblock {
@@ -68,18 +74,18 @@ h2 {
 }
 
 .statblock:hover {
-	box-shadow: 1.5px 1.5px 1.5px gray;
-}
-
-textarea {
-	resize: none;
-	width: 100%;
+	box-shadow: 1.5px 1.5px 5px gray;
 }
 
 .stat-heading {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
+	border-radius: 10px;
+	/* border: solid 1px; */
+	background-color: white;
+	transition: background-color 0.5s;
+	transition: box-shadow 0.5s;
 }
 
 /* .ability-scores-section {

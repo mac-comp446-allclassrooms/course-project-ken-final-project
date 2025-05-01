@@ -4,6 +4,11 @@
 
 h1, h2, h3, p {
 	font-family: var(--font);
+	margin: 0.1rem;
+}
+
+h1 {
+	font-size: x-large;
 }
 
 h2 {
@@ -26,13 +31,16 @@ h3 {
 	float: left;
 	border: none;
 	cursor: pointer;
-	padding: 10px;
-	font-size: large;
+	padding: 5px;
+	padding-inline: 20px;
+	font-size: medium;
 	border-radius: 30px;
-	box-shadow: 1px 1px 1px black;
-	transition: 0.3s;
+	box-shadow: 1px 1px 1px gray;
+	transition: background-color 0.5s;
+	transition: box-shadow 0.5s;
 }
   
 .tablinks:hover {
 	background-color: lightgray;
+	box-shadow: 1.5px 1.5px 5px black;
 }

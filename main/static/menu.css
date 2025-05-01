@@ -68,7 +68,7 @@ button:hover {
 }
 
 .character-thumbnail:hover {
-  box-shadow: 2.5px 2.5px 2.5px black;
+	box-shadow: 1.5px 1.5px 5px gray;
 }
 
 .character-thumbnail button {

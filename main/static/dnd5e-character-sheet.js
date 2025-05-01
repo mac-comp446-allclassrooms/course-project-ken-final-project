@@ -27,10 +27,8 @@ function createNewSpell() {
     const newWeapon = document.createElement("tr");
     newWeapon.classList.add("spell");
     newWeapon.innerHTML = "<td><input type='number' class='level-input' value='0'></td>"
-            + "<td> <input type='text' placeholder='Spell Name'></td>"
-            + "<td><input type='text' placeholder='Description'></td>"
-            + "<td><input type='text' placeholder='Attack'></td>"
-            + "<td><input type='text' placeholder='Save'></td>"
+            + "<td> <input type='text' placeholder='Name'></td>"
+            + "<td><textarea placeholder='Description'></textarea></td>"
             + "<td><input type='text' placeholder='School'></td>"
             + "<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>"
 
