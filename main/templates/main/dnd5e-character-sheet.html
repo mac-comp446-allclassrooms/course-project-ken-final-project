@@ -168,8 +168,8 @@
 					<tr>
 						<th><label>Name</label></th>
 						<th><label>Range</label></th>
+                        <th><label>Attack Bonus</label></th>
 						<th><label>Damage Roll</label></th>
-                        <th><label>Bonus</label></th>
 						<th><label>Damage Type</label></th>
                         <th><label>Notes</label></th>
 						<th></th>
@@ -177,12 +177,12 @@
 
 					{% for attack in attacks %}
 					<tr>
-						<td><input type='number' class='level-input' value='{{attack.name}}</td>
-						<td><input type='text' value='{{attack.range}}'></td>
-						<td><input type='text' value='{{attack.damage_amount}}'></td>
-						<td><input type='text' value='{{attack.attack_bonus}}'></td>
-						<td><input type='text' value='{{attack.damage_type}}'></td>
-						<td><input type='text' value='{{attack.notes}}'></td>
+						<td><input type='text' name='attack_name' value='{{attack.name}}'></td>
+						<td><input type='text' name='attack_range' value='{{attack.range}}'></td>
+                        <td><input type='text' name='attack_bonus' value='{{attack.attack_bonus}}'></td>
+						<td><input type='text' name='attack_damage_roll' value='{{attack.damage_roll}}'></td>
+						<td><input type='text' name='attack_damage_type' value='{{attack.damage_type}}'></td>
+						<td><input type='text' name='attack_notes' value='{{attack.notes}}'></td>
 						<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
 					</tr>
 					{% endfor %}

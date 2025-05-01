@@ -4,12 +4,12 @@ function createNewAttack() {
     const newAttack = document.createElement("tr");
     newAttack.classList.add("attack");
 
-    newAttack.innerHTML = "<td> <input type='text' name='name_attack' placeholder='Name'></td>"
-            + "<td><input type='text' name='range_attack' placeholder='Range'></td>"
-            + "<td><input type='text' name='damage_roll_attack' placeholder='Damage Roll'></td>"
-            + "<td><input type='text' name='bonus_attack' placeholder='Bonus'</td>"
-            + "<td><input type='text' name='damage_type_attack' placeholder='Damage Type'></td>"
-            + "<td><input type='text' name='notes_attack' placeholder='Notes'></td>"
+    newAttack.innerHTML = "<td> <input type='text' name='attack_name' placeholder='Name'></td>"
+            + "<td><input type='text' name='attack_range' placeholder='Range'></td>"
+            + "<td><input type='text' name='attack_bonus' placeholder='Bonus'</td>"
+            + "<td><input type='text' name='attack_damage_roll' placeholder='Damage Roll'></td>"
+            + "<td><input type='text' name='attack_damage_type' placeholder='Damage Type'></td>"
+            + "<td><input type='text' name='attack_notes' placeholder='Notes'></td>"
             + "<td><button type='button' onclick = 'deleteAttack(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("attackblock");

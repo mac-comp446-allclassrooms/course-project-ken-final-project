@@ -95,15 +95,24 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 				ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=ability_score_name)
 				DungeonsAndDragonsFifthEditionSkill.objects.create(name=display_name, character=character, proficiency=form_data.get(field), ability_score=ability_score)
 
-		# Handles generation of items. Assumes the name attribute of all item fields to be...
+		# Handles generation of items.
 		item_quantities = form_data.getlist('item_quantity')
 		item_names = form_data.getlist('item_name')
-		print(item_names)
 		item_descriptions = form_data.getlist('item_description')
 		item_weights = form_data.getlist('item_weight')
 		for i in range(len(item_names)):
-			print("added item")
 			DungeonsAndDragonsFifthEditionItem.objects.create(name=item_names[i], character=character, amount=item_quantities[i], weight=item_weights[i], description=item_descriptions[i])
+
+		# Handles generation of attacks.
+		attack_names = form_data.getlist('attack_name')
+		attack_ranges = form_data.getlist('attack_range')
+		attack_bonuses = form_data.getlist('attack_bonus')
+		attack_damage_rolls = form_data.getlist('attack_damage_roll')
+		attack_damage_types = form_data.getlist('attack_damage_type')
+		attack_notes = form_data.getlist('attack_notes')
+		for i in range(len(attack_names)):
+			print("added item")
+			DungeonsAndDragonsFifthEditionAttack.objects.create(name=attack_names[i], range=attack_ranges[i], attack_bonus=attack_bonuses[i], damage_roll=attack_damage_rolls[i], damage_type=attack_damage_types[i], notes=attack_notes[i], character=character)
 
 		return character
 
@@ -124,6 +133,7 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 class DungeonsAndDragonsFifthEditionAbilityScore(models.Model):
 	name = models.CharField(max_length=200)
 	score = models.PositiveIntegerField(default=10)
+	saving_throw = models.BooleanField(default=False)
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
@@ -150,8 +160,8 @@ class DungeonsAndDragonsFifthEditionItem(models.Model):
 
 class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	name = models.CharField(max_length=200)
-	attack_bonus = models.IntegerField(default=0)
-	damage_amount = models.CharField(max_length=200)
+	attack_bonus = models.CharField(max_length=200)
+	damage_roll = models.CharField(max_length=200)
 	damage_type = models.CharField(max_length=200, default="")
 	range = models.CharField(max_length=200, default="")
 	notes = models.CharField(max_length=1000, default="")
