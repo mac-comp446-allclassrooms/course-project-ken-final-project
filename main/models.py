@@ -51,21 +51,6 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 			DungeonsAndDragonsFifthEditionSkill.objects.create(name=skill, ability_score=ability_score, character=character)
 
 		return character
-	
-	# Helper model, used to temporarily store ability scores during character saving.
-	class AbilityScoreHelper5e:
-			def __init__(self, field_name, display_name):
-				self.field_name = field_name
-				self.display_name = display_name
-				self.score = form_data.get(field_name)
-	
-	# Helper model, used to temporarily store skills during character saving.
-	class SkillHelper5e:
-			def __init__(self, field_name, display_name, ability_score):
-				self.field_name = field_name
-				self.display_name = display_name
-				self.ability_score = ability_score
-				self.proficiency = form_data.get(field_name)
 
 	# Create a new D&D 5e character sheet using information from an HTML form POST request.
 	def save_dnd5e_character(self, current_user, form_data):
@@ -76,6 +61,13 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.hp_current = form_data.get('hp_current')
 		character.hp_maximum = form_data.get('hp_maximum')
 		character.armor_class = form_data.get('armor_class')
+
+		# Handles coins.
+		character.coins_platinum = form_data.get('coins_platinum')
+		character.coins_gold = form_data.get('coins_gold')
+		character.coins_electrum = form_data.get('coins_electrum')
+		character.coins_silver = form_data.get('coins_silver')
+		character.coins_copper = form_data.get('coins_copper')
 
 		# Handles spellcasting information.
 		character.spellcasting_ability = form_data.get('spellcasting_ability')
@@ -154,6 +146,17 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 	hp_current = models.PositiveIntegerField(default=0)
 	armor_class = models.PositiveIntegerField(default=10)
 
+	description_physical = models.CharField(max_length=20000, default="")
+	description_personality = models.CharField(max_length=20000, default="")
+
+	proficiencies = models.CharField(max_length=20000, default="")
+
+	coins_platinum = models.IntegerField(default=0)
+	coins_gold = models.IntegerField(default=0)
+	coins_electrum = models.IntegerField(default=0)
+	coins_silver = models.IntegerField(default=0)
+	coins_copper = models.IntegerField(default=0)
+
 	spellcasting_ability = models.CharField(max_length=200, default="")
 	spell_slots_level1_current = models.PositiveIntegerField(default=0)
 	spell_slots_level1_maximum = models.PositiveIntegerField(default=0)
@@ -201,7 +204,7 @@ class DungeonsAndDragonsFifthEditionItem(models.Model):
 	name = models.CharField(max_length=200)
 	amount = models.IntegerField(default=0)
 	weight = models.IntegerField(default=0)
-	description = models.CharField(max_length=10000)
+	description = models.CharField(max_length=10000, default="")
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):
@@ -214,6 +217,14 @@ class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	damage_type = models.CharField(max_length=200, default="")
 	range = models.CharField(max_length=200, default="")
 	notes = models.CharField(max_length=1000, default="")
+	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.character.name + "'s " + self.name
+	
+class DungeonsAndDragonsFifthEditionFeature(models.Model):
+	name = models.CharField(max_length=200)
+	description = models.CharField(max_length=20000)
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):

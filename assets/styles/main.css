@@ -1,20 +1,39 @@
 :root {
 	--font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	--dark-bg: #2d2d2d;
+	--dark-tx: #fff;
+	--dark-bd: #fff;
+
+	--light-bg: #fff;
+	--light-tx: #000;
+	--light:bd: #000;
+
+	--hds-bg: red;
+	--hds-tx: yellow;
+	--hds-bd: lime;
+
+	--nb-bg: tan;
+	--nb-tx: brown;
+	--nb-bd: brown;
+
+	--ft-bg: lightgreen;
+	--ft-tx: darkgreen;
+	--ft-bd: darkgreen;
 }
 
 body.dark-theme {
-	background-color: #2d2d2d;
-	color: #fff;
+	background-color: var(--dark-bg);
+	color: var(--dark-tx);
 }
 
 body.light-theme {
-	background-color: #fff;
-	color: #000;
+	background-color: var(--light-bg);
+	color: var(--light-tx);
 }
 
 body.hot-dog-theme {
-	background-color: red;
-	color: yellow;
+	background-color: var(--hds-bg);
+	color: var(--hds-tx);
 }
 
 h1, h2, h3, p {
@@ -60,6 +79,9 @@ h3 {
 }
   
 .tablinks:hover {
-	background-color: green;
+	background-color: lightgray;
 	box-shadow: 1.5px 1.5px 5px black;
 }
+
+option.dark-theme {
+	background-color
