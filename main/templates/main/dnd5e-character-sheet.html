@@ -126,9 +126,9 @@
 				<div class="stat-heading">
 					<h2>Skill Scores</h2>
 				</div>
-				<table class="contentblock" id="skillblock">
+				<table id="skillblock">
 					<tr>
-						<th class="largecolumn">Prof</th>
+						<th class="smallcolumn">Prof</th>
 						<th class="mediumcolumn">Skill</th>
 						<th class="mediumcolumn">Ability</th>
 						<th class="smallcolumn">Mod</th>
@@ -160,12 +160,12 @@
 			</div>
 			<table id="attackblock">
 				<tr>
-					<th>Name</th>
-					<th>Range</th>
-					<th>Attack Bonus</th>
-					<th>Damage Roll</th>
-					<th>Damage Type</th>
-					<th>Notes</th>
+					<th class="mediumcolumn">Name</th>
+					<th class="mediumcolumn">Range</th>
+					<th class="mediumcolumn">Attack Bonus</th>
+					<th class="mediumcolumn">Damage Roll</th>
+					<th class="mediumcolumn">Damage Type</th>
+					<th class="mediumcolumn">Notes</th>
 					<th class="mediumcolumn"></th>
 				</tr>
 
@@ -194,14 +194,14 @@
 					<th class="largecolumn">Name</th>
 					<th class="largecolumn">Description</th>
 					<th class="mediumcolumn">Weight</th>
-					<th class="smallcolumn"></th>
+					<th class="mediumcolumn"></th>
 				</tr>
 				{% for item in items %}
 				<tr>
 					<td><input type='number' name='item_quantity' value='{{item.amount}}'></td><td><input type='text' name='item_name' value="{{item.name}}"></input></td>
 					<td><input type='text' name='item_description' value="{{item.description}}"></td>
 					<td><input type='text' name='item_weight' value="{{item.weight}}"></td>
-					<td><button type='button' onclick = 'deleteItem(this)'>delete</button></td>
+					<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>
 				</tr>
 				{% endfor %}
 			</table>
