@@ -86,8 +86,8 @@ function deleteProficiency(loc) {
 function createNewTrait() {
     const newTrait = document.createElement("tr");
     newTrait.classList.add("trait");
-    newTrait.innerHTML = "<td><input type='text' name='trait_name' placeholder='Name'></td>"
-            + "<td><textarea name='trait_description' placeholder='Description'></textarea></td>"
+    newTrait.innerHTML = "<td><input type='text' name='trait_name' placeholder='Name'>"
+            + "<textarea name='trait_description' placeholder='Description'></textarea></td>"
             + "<td><button type='button' onclick = 'deleteTrait(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("traitblock");

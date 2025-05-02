@@ -38,11 +38,15 @@
 							<th>Subclass</th>
 							<td><input type="text" name="character_subclass" value="{{character.character_subclass}}" required></td>
 						</tr> -->
-					</table>
-					<table>
 						<tr class="stat">
 							<th>Level</th>
 							<td><input type="number" id="character_level" name="character_level" value="{{character.level}}"" onchange="updateProficiencyBonus()"></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<th class="mediumcolumn">Proficiency Bonus</th>
+							<td class="largecolumn">+4</td>
 						</tr>
 
 						<tr class="stat">
@@ -156,8 +160,7 @@
 					</div>
 					<table id="traitblock">
 						<tr>
-							<th class="mediumcolumn">Name</th>
-							<th class="largecolumn">Description</th>
+							<th class="extralargecolumn"></th>
 							<th class="mediumcolumn"></th>
 						</tr>
 					</table>
