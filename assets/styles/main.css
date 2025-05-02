@@ -38,7 +38,11 @@ h3 {
 
 .tab {
 	overflow: hidden;
-	padding: 10px;
+	padding: 5px;
+	/* position: fixed; */
+	position: sticky;
+	top: 0;
+	background-color: white;
 }
   
 .tablinks {
@@ -56,6 +60,6 @@ h3 {
 }
   
 .tablinks:hover {
-	background-color: green //lightgray;
+	background-color: green;
 	box-shadow: 1.5px 1.5px 5px black;
 }

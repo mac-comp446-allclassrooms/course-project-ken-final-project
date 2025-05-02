@@ -1,12 +1,12 @@
 
-// Creates new weapon row in HTML weapon table
+// Creates new attack row in HTML weapon table
 function createNewAttack() {
     const newAttack = document.createElement("tr");
     newAttack.classList.add("attack");
 
     newAttack.innerHTML = "<td> <input type='text' name='attack_name' placeholder='Name'></td>"
             + "<td><input type='text' name='attack_range' placeholder='Range'></td>"
-            + "<td><input type='text' name='attack_bonus' placeholder='Bonus'</td>"
+            + "<td><input type='text' name='attack_bonus' placeholder='Attack Bonus'</td>"
             + "<td><input type='text' name='attack_damage_roll' placeholder='Damage Roll'></td>"
             + "<td><input type='text' name='attack_damage_type' placeholder='Damage Type'></td>"
             + "<td><input type='text' name='attack_notes' placeholder='Notes'></td>"
@@ -16,7 +16,7 @@ function createNewAttack() {
     statblock.appendChild(newAttack);
 }
 
-// Deletes weapon row in HTML weapon table
+// Deletes attack row in HTML weapon table
 function deleteAttack(loc) {
     grandparent = loc.parentNode.parentNode;
     grandparent.remove();
@@ -49,7 +49,7 @@ function createNewItem() {
     newWeapon.innerHTML = "<td><input type='number' name='item_quantity' value='1'></td>"
             + "<td><input type='text' name='item_name' placeholder='Item Name'></td>"
             + "<td><input type='text' name='item_description' placeholder='Description'></td>"
-            + "<td><input type='number' name='item_weight' value='0'></td>"
+            + "<td><input type='text' name='item_weight' value='0'></td>"
             + "<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("inventoryblock");
@@ -219,7 +219,7 @@ function updateAllAbilities() {
 function updateSavingThrows() {
     // Get Table
     let savingthrowtable = document.getElementById("extra_ability_block");
-    savingthrowtable.innerHTML = "<tr><th>Ability</th><th class='modcolumn'>Mod</th></tr>";
+    savingthrowtable.innerHTML = "<tr><th class='mediumcolumn'>Ability</th><th class='smallcolumn'>Mod</th></tr>";
     let saved = document.getElementsByClassName("saving-check-box");
     
     let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
@@ -255,8 +255,15 @@ function calculateMod(score) {
     return moddisplay;
 }
 
+function updateProficiencyBonus() {
+    let level = document.getElementById('character_level').value;
+    let bonus = Math.ceil(level/4)+1;
+    console.log(bonus);
+}
+
 function populate() {
     updateAllAbilities();
     updateSavingThrows();
+    updateProficiencyBonus();
 }
 window.addEventListener("load", populate);

@@ -1,7 +1,7 @@
 /* Tags */
-body {
-//	background-color: white;
-}
+/* body {
+ background-color: white;
+} */
 
 input {
 	font-family: var(--font);
@@ -11,11 +11,12 @@ input {
 
 table { 
 	font-family: var(--font);
-	width: 100%;
+	/* width: 100%; */
 	border: 1px solid;
 	table-layout: fixed;
 	border-radius: 10px;
 	/* border-collapse: collapse; */
+	width: fit-content;
 }
 
 tr {
@@ -28,7 +29,7 @@ td, th {
 	font-size: x-small;
 	align-items: center;
 	/* border: 1px solid; */
-	border-collapse: collapse;
+	/* border-collapse: collapse; */
 }
 
 td input[type='text'] {
@@ -40,8 +41,8 @@ td input[type='text'] {
 
 td input[type='number'] {
 	font-size: x-small;
-	/* width: 100%; */
-	width: 2rem;
+	width: 100%;
+	/* width: 2rem; */
 }
 
 button {
@@ -56,6 +57,13 @@ button {
 button:hover {
 	background-color: lightgray;
 	box-shadow: 1px 1px 1px black;
+}
+
+select {
+	font-family: var(--font);
+	font-size: small;
+	border-radius: 10px;
+	border-width: 1px;
 }
 
 td select {
@@ -84,6 +92,7 @@ textarea {
 	transition: box-shadow 0.5s;
 	display: inline-block;
 	max-width: fit-content;
+	width: fit-content;
 }
 
 .statblock:hover {
@@ -101,10 +110,23 @@ textarea {
 	transition: box-shadow 0.5s;
 }
 
-.modcolumn {
+.smallcolumn {
 	width: 2rem;
 }
 
+.mediumcolumn {
+	width: 4rem;
+}
+
+.largecolumn {
+	width: 6rem;
+}
+
+.contentblock {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
 /* .ability-scores-section {
 	display: inline-block;
 	float: left;
