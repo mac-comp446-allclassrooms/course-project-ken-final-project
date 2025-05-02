@@ -5,10 +5,11 @@
 	<a href='/home/'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
 	
 	<select name='theme' id='theme'>
-		<option value='dark-theme' id='dark-theme'>Dark</option>
-		<option value='light-theme' id='light-theme'>Light</option>
-		<option value='hot-dog-theme' id='hot-dog-theme'>Hot Dog Stand</option>
+		<option value='dark-theme' class='dark-theme' id='dark-theme'>Dark</option>
+		<option value='light-theme' class='light-theme' id='light-theme'>Light</option>
+		<option value='hot-dog-theme' class='hot-dog-theme' id='hot-dog-theme'>Hot Dog Stand</option>
 	</select>
+
 
 	<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
 		<button type="submit" class="tablinks" id="logoutheader">Log Out</button>
