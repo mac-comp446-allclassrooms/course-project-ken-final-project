@@ -12,7 +12,7 @@ function createNewAttack() {
             + "<td><input type='text' name='attack_notes' placeholder='Notes'></td>"
             + "<td><button type='button' onclick = 'deleteAttack(this)'>Delete</button></td>"
 
-    const statblock = document.getElementById("attackblock");
+    const statblock = document.getElementById("attack-block");
     statblock.appendChild(newAttack);
 }
 
@@ -32,7 +32,7 @@ function createNewSpell() {
             + "<td><input type='text' name='spell_school' placeholder='School'></td>"
             + "<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>"
 
-    const statblock = document.getElementById("spellblock");
+    const statblock = document.getElementById("spell-block");
     statblock.appendChild(newWeapon);
 }
 
@@ -53,7 +53,7 @@ function createNewItem() {
             + "<td><input type='text' name='item_weight' value='0' placeholder='Weight'></td>"
             + "<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>"
 
-    const statblock = document.getElementById("inventoryblock");
+    const statblock = document.getElementById("inventory-block");
     statblock.appendChild(newWeapon);
 }
 
@@ -71,7 +71,7 @@ function createNewProficiency() {
             + "<td><input type='text' name='proficiency_name' placeholder='Name'></td>"
             + "<td><button type='button' onclick = 'deleteProficiency(this)'>Delete</button></td>"
 
-    const statblock = document.getElementById("proficiencyblock");
+    const statblock = document.getElementById("proficiency-block");
     statblock.appendChild(newProficiency);
 }
 
@@ -90,7 +90,7 @@ function createNewTrait() {
             + "<textarea name='trait_description' placeholder='Description'></textarea></td>"
             + "<td><button type='button' onclick = 'deleteTrait(this)'>Delete</button></td>"
 
-    const statblock = document.getElementById("traitblock");
+    const statblock = document.getElementById("trait-block");
     statblock.appendChild(newTrait);
 }
 
@@ -147,8 +147,8 @@ function updateAllAbilities() {
 
 function updateSavingThrows() {
     // Get Table
-    let savingthrowtable = document.getElementById("extra_ability_block");
-    savingthrowtable.innerHTML = "<tr><th class='mediumcolumn'>Ability</th><th class='smallcolumn'>Mod</th></tr>";
+    let savingthrowtable = document.getElementById("extra-ability-block");
+    savingthrowtable.innerHTML = "<tr><th class='medium-column'>Ability</th><th class='small-column'>Mod</th></tr>";
     let saved = document.getElementsByClassName("saving-check-box");
     
     let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
@@ -185,7 +185,7 @@ function calculateMod(score) {
 }
 
 function updateProficiencyBonus() {
-    let level = document.getElementById('character_level').value;
+    let level = document.getElementById('character-level').value;
     let bonus = Math.ceil(level/4)+1;
     console.log(bonus);
 }

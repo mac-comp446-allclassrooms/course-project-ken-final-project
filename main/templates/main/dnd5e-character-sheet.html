@@ -13,18 +13,18 @@
 	<form id="character_sheet" method="post">
 		{% csrf_token %}
 		<!-- <h1>Character Sheet: {{character.name}}</h1> -->
-		<div class="contentblock">
-			<div class="statblock" id="profileblock">
+		<div class="content-block">
+			<div class="stat-block" id="profile-block">
 				<div class="stat-heading">
 					<h2>{{character.name}}'s Character Profile</h2>
 					<button type="submit" id="save-character" name="save-character">Save Character</button>
 					<!-- <button id="delete-button" type='submit' name="delete">Delete</button> -->
 				</div>
-				<div class="contentblock">
+				<div class="content-block">
 					<table>
 						<tr class="stat">
-							<th class="mediumcolumn">Name</th>
-							<td><input class="largecolumn" type="text" name="character_name" value="{{character.name}}" required></td>
+							<th class="medium-column">Name</th>
+							<td><input class="large-column" type="text" name="character_name" value="{{character.name}}" required></td>
 						</tr>
 						<tr class="stat">
 							<th>Species</th>
@@ -45,8 +45,8 @@
 					</table>
 					<table>
 						<tr>
-							<th class="mediumcolumn">Proficiency Bonus</th>
-							<td class="largecolumn">+4</td>
+							<th class="medium-column">Proficiency Bonus</th>
+							<td class="large-column">+4</td>
 						</tr>
 
 						<tr class="stat">
@@ -64,18 +64,18 @@
 					</table>
 				</div>
 			</div>
-			<div class="statblock">
+			<div class="stat-block">
 				<div class="stat-heading">
 					<h2>Character Description</h2>
 				</div>
-				<div class="contentblock" style="display: flex;">
-					<div class="statblock">
+				<div class="content-block" style="display: flex;">
+					<div class="stat-block">
 						<div class="stat-heading">
 							<h3>Physical</h3>
 						</div>
 						<textarea placeholder="Physical Description" name="description_physical">{{character.description_physical}}</textarea>
 					</div>
-					<div class="statblock">
+					<div class="stat-block">
 						<div class="stat-heading">
 							<h2>Personality</h2>
 						</div>
@@ -85,18 +85,18 @@
 			</div>
 		</div>
 			
-		<div class="contentblock">
-			<div class="statblock">
+		<div class="content-block">
+			<div class="stat-block">
 				<div class='ability-scores-section'>
 					<div class="stat-heading">
 						<h2>Abilities</h2>
 					</div>
-					<table class="contentblock" id="abilityblock">
+					<table class="content-block" id="ability-block">
 						<tr>
-							<th class="mediumcolumn">Ability</th>
-							<th class="smallcolumn">Score</th>
-							<th class="smallcolumn">Mod</th>
-							<th class="mediumcolumn">Saving?</th>
+							<th class="medium-column">Ability</th>
+							<th class="small-column">Score</th>
+							<th class="small-column">Mod</th>
+							<th class="medium-column">Saving?</th>
 						</tr>
 						{% for ability in ability_scores %}
 							<tr>
@@ -111,21 +111,21 @@
 
 				<div class='saving-throws-section'>
 					<h2>Saving Throws</h2>
-					<table id="extra_ability_block">
+					<table id="extra-ability-block">
 					</table>
 				</div>
 			</div>
 
-			<div class="statblock">
+			<div class="stat-block">
 				<div class="stat-heading">
 					<h2>Skills</h2>
 				</div>
-				<table id="skillblock">
+				<table id="skill-block">
 					<tr>
-						<th class="smallcolumn">Prof</th>
-						<th class="mediumcolumn">Skill</th>
-						<th class="mediumcolumn">Ability</th>
-						<th class="smallcolumn">Mod</th>
+						<th class="small-column">Prof</th>
+						<th class="medium-column">Skill</th>
+						<th class="medium-column">Ability</th>
+						<th class="small-column">Mod</th>
 					</tr>
 					{% for skill in skills %}
 					<tr>
@@ -146,41 +146,41 @@
 				</table>
 			</div>
 
-			<div class="contentblock">
-				<div class="statblock">
+			<div class="content-block">
+				<div class="stat-block">
 					<div class="stat-heading">
 						<h2>Proficiencies</h2>
 					</div>
 					<textarea name="proficiencies">{{character.proficiencies}}</textarea>
 				</div>
-				<div class="statblock">
+				<div class="stat-block">
 					<div class="stat-heading">
 						<h2>Traits & Features</h2>
 						<button type="button" onclick="createNewTrait()">New Trait</button>
 					</div>
-					<table id="traitblock">
+					<table id="trait-block">
 						<tr>
-							<th class="extralargecolumn"></th>
-							<th class="mediumcolumn"></th>
+							<th class="extralarge-column"></th>
+							<th class="medium-column"></th>
 						</tr>
 					</table>
 				</div>
 			</div>
 
-			<div class="statblock">
+			<div class="stat-block">
 				<div class="stat-heading">
 					<h2>Attack</h2>
 					<button type="button" onclick="createNewAttack()">New Attack</button>
 				</div>
-				<table id="attackblock">
+				<table id="attack-block">
 					<tr>
-						<th class="mediumcolumn">Name</th>
-						<th class="mediumcolumn">Range</th>
-						<th class="mediumcolumn">Attack Bonus</th>
-						<th class="mediumcolumn">Damage Roll</th>
-						<th class="mediumcolumn">Damage Type</th>
-						<th class="mediumcolumn">Notes</th>
-						<th class="mediumcolumn"></th>
+						<th class="medium-column">Name</th>
+						<th class="medium-column">Range</th>
+						<th class="medium-column">Attack Bonus</th>
+						<th class="medium-column">Damage Roll</th>
+						<th class="medium-column">Damage Type</th>
+						<th class="medium-column">Notes</th>
+						<th class="medium-column"></th>
 					</tr>
 
 					{% for attack in attacks %}
@@ -198,20 +198,20 @@
 				</table>
 			</div>
 		</div>
-		<div class="contentblock">
-			<div class="statblock">
+		<div class="content-block">
+			<div class="stat-block">
 				<div class="stat-heading">
 					<h2>Inventory</h2>
 					<button type="button" onclick="createNewItem()">New Item</button>
 				</div>
-				<table id="inventoryblock">
+				<table id="inventory-block">
 					<tr>
-						<th class="mediumcolumn">Equipped?</th>
-						<th class="largecolumn">Quantity</th>
-						<th class="largecolumn">Name</th>
-						<th class="largecolumn">Description</th>
-						<th class="mediumcolumn">Weight</th>
-						<th class="mediumcolumn"></th>
+						<th class="medium-column">Equipped?</th>
+						<th class="large-column">Quantity</th>
+						<th class="large-column">Name</th>
+						<th class="large-column">Description</th>
+						<th class="medium-column">Weight</th>
+						<th class="medium-column"></th>
 					</tr>
 					{% for item in items %}
 					<tr>
@@ -224,12 +224,12 @@
 					{% endfor %}
 				</table>
 			</div>
-			<div class="statblock">
+			<div class="stat-block">
 				<h2>Wallet</h2>
 				<table>
 					<tr>
-						<th class="mediumcolumn">Currency</th>
-						<th class="mediumcolumn">Amount</th>
+						<th class="medium-column">Currency</th>
+						<th class="medium-column">Amount</th>
 					</tr>
 					<tr>
 						<td>Platinum (Pp)</td>
@@ -254,12 +254,12 @@
 				</table>
 			</div>
 		</div>
-		<div class="statblock">
+		<div class="stat-block">
 			<div class="stat-heading">
 				<h2>Spells</h2>
 			</div>
-			<div class="contentblock">
-				<div class="statblock">
+			<div class="content-block">
+				<div class="stat-block">
 					<div class="stat-heading">
 						<h3>Spellcasting</h3>
 						<select name="spellcasting_ability" id="spellcasting-ability">
@@ -271,8 +271,8 @@
 					</div>
 					<table>
 						<tr>
-							<th class="largecolumn">Spellcasting Mod</th>
-							<td class="smallcolumn">0</td>
+							<th class="large-column">Spellcasting Mod</th>
+							<td class="small-column">0</td>
 							<!-- Ability mod -->
 						</tr>
 						<tr>
@@ -289,8 +289,8 @@
 					<h3>Spellslots</h3>
 					<table>
 						<tr>
-							<th class="smallcolumn">Level</th>
-							<th class="largecolumn">Slots</th>
+							<th class="small-column">Level</th>
+							<th class="large-column">Slots</th>
 						</tr>
 						<tr>
 							<td>1</td>
@@ -349,18 +349,18 @@
 					</table>
 				</div>
 				
-				<div class="statblock">
+				<div class="stat-block">
 					<div class="stat-heading">
 						<h3>Spell List</h3>
 						<button type="button" onclick="createNewSpell()">New Spell</button>
 					</div>
-					<table id="spellblock">
+					<table id="spell-block">
 						<tr>
-							<th class="smallcolumn">Level</th>
-							<th class="largecolumn">Name</th>
-							<th class="largecolumn">Description</th>
-							<th class="mediumcolumn">School</th>
-							<th class="mediumcolumn"></th>
+							<th class="small-column">Level</th>
+							<th class="large-column">Name</th>
+							<th class="large-column">Description</th>
+							<th class="medium-column">School</th>
+							<th class="medium-column"></th>
 						</tr>
 
 						{% for spell in spells %}

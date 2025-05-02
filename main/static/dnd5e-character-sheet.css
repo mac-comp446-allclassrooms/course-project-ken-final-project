@@ -80,12 +80,15 @@ h2 {
 textarea {
 	font-size: x-small;
 	resize: none;
+	/* resize: vertical; */
 	width: 100%;
+	min-width: 150px;
+	/* height: 100%; */
 }
 
 /* Classes */
 
-.statblock {
+.stat-block {
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 10px;
@@ -98,7 +101,7 @@ textarea {
 	width: fit-content;
 }
 
-.statblock:hover {
+.stat-block:hover {
 	box-shadow: 1.5px 1.5px 5px gray;
 }
 
@@ -113,29 +116,27 @@ textarea {
 	transition: box-shadow 0.5s;
 }
 
-.smallcolumn {
+.small-column {
 	width: 2rem;
 }
 
-.mediumcolumn {
+.medium-column {
 	width: 4rem;
 }
 
-.largecolumn {
+.large-column {
 	width: 6rem;
 }
 
-.extralargecolumn {
+.extralarge-column {
 	width: 8rem;
 }
 
-.contentblock {
-	/* display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 10px; */
+.content-block {
 	display: flex;
 	flex-wrap: wrap;
 }
+
 /* .ability-scores-section {
 	display: inline-block;
 	float: left;
