@@ -218,8 +218,9 @@
 						<h3>Spellcasting</h3>
 						<select name="spellcasting_ability" id="spellcasting-ability">
 							{% for ability in ability_scores %}
-								<option value="{{ability.name}}">{{ability.name}}</option>
+								<option value="{{ability.name}}" {% if character.spellcasting_ability == ability.name %}selected{% endif %}>{{ability.name}}</option>
 							{% endfor %}
+                            <option value="" {% if character.spellcasting_ability == "" %}selected{% endif %}>---</option>
 						</select>
 					</div>
 					<table>

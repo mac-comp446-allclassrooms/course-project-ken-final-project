@@ -76,6 +76,8 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.hp_current = form_data.get('hp_current')
 		character.hp_maximum = form_data.get('hp_maximum')
 		character.armor_class = form_data.get('armor_class')
+		character.spellcasting_ability = form_data.get('spellcasting_ability')
+		print(character.spellcasting_ability)
 
 		# Handles generation of ability scores. Assumes the name attribute of all abilit yscore fields to be "[ability score name]_ability_score"
 		field_names = form_data.dict().keys()
@@ -111,7 +113,6 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		attack_damage_types = form_data.getlist('attack_damage_type')
 		attack_notes = form_data.getlist('attack_notes')
 		for i in range(len(attack_names)):
-			print("added item")
 			DungeonsAndDragonsFifthEditionAttack.objects.create(name=attack_names[i], range=attack_ranges[i], attack_bonus=attack_bonuses[i], damage_roll=attack_damage_rolls[i], damage_type=attack_damage_types[i], notes=attack_notes[i], character=character)
 
 		return character
@@ -124,6 +125,7 @@ class DungeonsAndDragonsFifthEditionCharacter(Character):
 	hp_maximum = models.PositiveIntegerField(default=0)
 	hp_current = models.PositiveIntegerField(default=0)
 	armor_class = models.PositiveIntegerField(default=10)
+	spellcasting_ability = models.CharField(max_length=200, default="")
 
 	objects = DungeonsAndDragonsFifthEditionCharacterManager()
 
