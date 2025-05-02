@@ -68,30 +68,14 @@
 					<div class="statblock">
 						<div class="stat-heading">
 							<h3>Physical</h3>
-							<button type="button" onclick="createNewPhysicalTrait()">New Physical Trait</button>
 						</div>
-						<!-- <textarea placeholder="Description"></textarea> -->
-						<table id="physicaldescriptionblock">
-							<tr>
-								<th class="mediumcolumn">Trait</th>
-								<th class="largecolumn">Description</th>
-								<th class="mediumcolumn"></th>
-							</tr>
-						</table>
+						<textarea placeholder="Physical Description"></textarea>
 					</div>
 					<div class="statblock">
 						<div class="stat-heading">
 							<h2>Personality</h2>
-							<button type="button" onclick="createNewPersonalityTrait()">New Personality Trait</button>
 						</div>
-						<table id="personalityblock">
-							<tr>
-								<th class="mediumcolumn">Trait</th>
-								<th class="largecolumn">Description</th>
-								<th class="mediumcolumn"></th>
-							</tr>
-						</table>
-						<textarea></textarea>
+						<textarea placeholder="Personality"></textarea>
 					</div>
 				</div>
 			</div>
@@ -101,7 +85,7 @@
 			<div class="statblock">
 				<div class='ability-scores-section'>
 					<div class="stat-heading">
-						<h2>Ability Scores</h2>
+						<h2>Abilities</h2>
 					</div>
 					<table class="contentblock" id="abilityblock">
 						<tr>
@@ -130,7 +114,7 @@
 
 			<div class="statblock">
 				<div class="stat-heading">
-					<h2>Skill Scores</h2>
+					<h2>Skills</h2>
 				</div>
 				<table id="skillblock">
 					<tr>
@@ -157,6 +141,29 @@
 					{% endfor %}
 				</table>
 			</div>
+
+			<div class="contentblock">
+				<div class="statblock">
+					<div class="stat-heading">
+						<h2>Proficiencies</h2>
+					</div>
+					<textarea></textarea>
+				</div>
+				<div class="statblock">
+					<div class="stat-heading">
+						<h2>Traits & Features</h2>
+						<button type="button" onclick="createNewTrait()">New Trait</button>
+					</div>
+					<table id="traitblock">
+						<tr>
+							<th class="mediumcolumn">Name</th>
+							<th class="largecolumn">Description</th>
+							<th class="mediumcolumn"></th>
+						</tr>
+					</table>
+				</div>
+			</div>
+
 			<div class="statblock">
 				<div class="stat-heading">
 					<h2>Attack</h2>
@@ -196,6 +203,7 @@
 				</div>
 				<table id="inventoryblock">
 					<tr>
+						<th class="mediumcolumn">Equipped?</th>
 						<th class="largecolumn">Quantity</th>
 						<th class="largecolumn">Name</th>
 						<th class="largecolumn">Description</th>
@@ -204,6 +212,7 @@
 					</tr>
 					{% for item in items %}
 					<tr>
+						<td><input type="checkbox" name='item_equipped'></td>
 						<td><input type='number' name='item_quantity' value='{{item.amount}}'></td><td><input type='text' name='item_name' value="{{item.name}}"></input></td>
 						<td><input type='text' name='item_description' value="{{item.description}}"></td>
 						<td><input type='text' name='item_weight' value="{{item.weight}}"></td>
@@ -238,64 +247,6 @@
 					<tr>
 						<td>Copper (Cp)</td>
 						<td><input type="number"></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="contentblock">
-			<div class="statblock">
-				<div class="stat-heading">
-					<h2>Proficiencies</h2>
-					<button type="button" onclick="createNewProficiency()">New Proficiency</button>
-				</div>
-				<table id="proficiencyblock">
-					<tr>
-						<th class="mediumcolumn">Type</th>
-						<th class="mediumcolumn">Name</th>
-						<th class="mediumcolumn"></th>
-					</tr>
-					{% for proficiency in proficiencies %}
-					<tr>
-					</tr>
-					{% endfor %}
-				</table>
-			</div>
-			<div class="statblock">
-				<div class="stat-heading">
-					<h2>Feats</h2>
-					<button type="button" onclick="createNewFeat()">New Feat</button>
-				</div>
-				<table id="featblock">
-					<tr>
-						<th class="mediumcolumn">Name</th>
-						<th class="largecolumn">Description</th>
-						<th class="mediumcolumn"></th>
-					</tr>
-				</table>
-			</div>
-			<div class="statblock">
-				<div class="stat-heading">
-					<h2>Features</h2>
-					<button type="button" onclick="createNewFeature()">New Feature</button>
-				</div>
-				<table id="featureblock">
-					<tr>
-						<th class="mediumcolumn">Name</th>
-						<th class="largecolumn">Description</th>
-						<th class="mediumcolumn"></th>
-					</tr>
-				</table>
-			</div>
-			<div class="statblock">
-				<div class="stat-heading">
-					<h2>Traits</h2>
-					<button type="button" onclick="createNewTrait()">New Trait</button>
-				</div>
-				<table id="traitblock">
-					<tr>
-						<th class="mediumcolumn">Name</th>
-						<th class="largecolumn">Description</th>
-						<th class="mediumcolumn"></th>
 					</tr>
 				</table>
 			</div>
