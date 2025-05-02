@@ -3,7 +3,7 @@
 	<link rel="stylesheet" href="{% static 'main.css' %}">
 	<link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
 	<script src="{% static 'dnd5e-character-sheet.js' %}" defer></script>
-
+	{% block theme_css %}{% endblock %}
 </head>
 
 {% include 'main/index.html' %}

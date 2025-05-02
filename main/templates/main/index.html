@@ -3,8 +3,31 @@
 	<a href='/home/'><button type="button" class="tablinks" id="characterheader">RPMe</button></a>
 	<a href='/home/'><button type="button" class="tablinks" id="usernameheader">{{ user.username }}</button></a>
 	<a href='/home/'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
+	
+	<select name='theme' id='theme'>
+		<option value='dark-theme' id='dark-theme'>Dark</option>
+		<option value='light-theme' id='light-theme'>Light</option>
+		<option value='hot-dog-theme' id='hot-dog-theme'>Hot Dog Stand</option>
+	</select>
+
 	<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
 		<button type="submit" class="tablinks" id="logoutheader">Log Out</button>
 	</form>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const themeSelect = document.getElementById('theme');
+	var body = document.body;
+
+	themeSelect.addEventListener('change', function() {
+		console.log(body.classList);
+		body.classList.remove('dark-theme');
+		body.classList.remove('light-theme');
+		body.classList.remove('hot-dog-theme');
+		console.log(body.classList);
+		body.classList.add(themeSelect.value);
+		console.log(body.classList);
+	});
+});
+</script>
 {% endblock %}
