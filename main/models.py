@@ -62,6 +62,11 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.hp_maximum = form_data.get('hp_maximum')
 		character.armor_class = form_data.get('armor_class')
 
+		character.description_physical = form_data.get('description_physical')
+		character.description_personality = form_data.get('description_personality')
+
+		character.proficiencies = form_data.get('proficiencies')
+
 		# Handles coins.
 		character.coins_platinum = form_data.get('coins_platinum')
 		character.coins_gold = form_data.get('coins_gold')
