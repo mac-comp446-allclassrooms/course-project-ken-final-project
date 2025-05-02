@@ -125,6 +125,10 @@ textarea {
 	width: 6rem;
 }
 
+.extralargecolumn {
+	width: 8rem;
+}
+
 .contentblock {
 	/* display: grid;
 	grid-template-columns: 1fr 1fr;
