@@ -135,6 +135,14 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		for i in range(len(attack_names)):
 			DungeonsAndDragonsFifthEditionAttack.objects.create(name=attack_names[i], range=attack_ranges[i], attack_bonus=attack_bonuses[i], damage_roll=attack_damage_rolls[i], damage_type=attack_damage_types[i], notes=attack_notes[i], character=character)
 
+		# Handles generation of spells.
+		spell_names = form_data.getlist('spell_name')
+		spell_levels = form_data.getlist('spell_level')
+		spell_descriptions = form_data.getlist('spell_description')
+		spell_schools = form_data.getlist('spell_school')
+		for i in range(len(spell_names)):
+			DungeonsAndDragonsFifthEditionSpell.objects.create(name=spell_names[i], level=spell_levels[i], description=spell_descriptions[i], school=spell_schools[i], character=character)
+
 		return character
 
 class DungeonsAndDragonsFifthEditionCharacter(Character):
@@ -206,6 +214,16 @@ class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	damage_type = models.CharField(max_length=200, default="")
 	range = models.CharField(max_length=200, default="")
 	notes = models.CharField(max_length=1000, default="")
+	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.character.name + "'s " + self.name
+	
+class DungeonsAndDragonsFifthEditionSpell(models.Model):
+	name = models.CharField(max_length=200)
+	level = models.PositiveIntegerField(default=0)
+	description = models.CharField(max_length=10000)
+	school = models.CharField(max_length=200)
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
 	def __str__(self):

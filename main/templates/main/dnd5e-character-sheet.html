@@ -319,12 +319,10 @@
 
 						{% for spell in spells %}
 						<tr>
-							<td><input type='number' class='level-input' value='{{spell.level}}'></td>
-							<td><input type='text' value='{{spell.name}}'></td>
-							<td><input type='text' value='{{spell.description}}'></td>
-							<td><input type='text' value='{{spell.attack}}'></td>
-							<td><input type='text' value='{{spell.save}}'></td>
-							<td><input type='text' value='{{spell.school}}'></td>
+							<td><input type='number' class='level-input' name='spell_level' value='{{spell.level}}' min="0"></td>
+							<td><input type='text' name='spell_name' value='{{spell.name}}'></td>
+							<td><input type='text' name='spell_description' value='{{spell.description}}'></td>
+							<td><input type='text' name='spell_school' value='{{spell.school}}'></td>
 							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
 						</tr>
 						{% endfor %}

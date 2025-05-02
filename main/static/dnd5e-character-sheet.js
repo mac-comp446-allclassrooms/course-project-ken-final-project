@@ -26,10 +26,10 @@ function deleteAttack(loc) {
 function createNewSpell() {
     const newWeapon = document.createElement("tr");
     newWeapon.classList.add("spell");
-    newWeapon.innerHTML = "<td><input type='number' class='level-input' value='0'></td>"
-            + "<td> <input type='text' placeholder='Name'></td>"
-            + "<td><textarea placeholder='Description'></textarea></td>"
-            + "<td><input type='text' placeholder='School'></td>"
+    newWeapon.innerHTML = "<td><input type='number' class='level-input' name='spell_level' value='0' min='0'></td>"
+            + "<td> <input type='text' name='spell_name' placeholder='Name'></td>"
+            + "<td><textarea name='spell_description' placeholder='Description'></textarea></td>"
+            + "<td><input type='text' name='spell_school' placeholder='School'></td>"
             + "<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("spellblock");

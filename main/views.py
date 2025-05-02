@@ -55,13 +55,15 @@ def character(request):
 	skills = character.dungeonsanddragonsfiftheditionskill_set.all()
 	items = character.dungeonsanddragonsfiftheditionitem_set.all()
 	attacks = character.dungeonsanddragonsfiftheditionattack_set.all()
+	spells = character.dungeonsanddragonsfiftheditionspell_set.all()
 
 	context = {
 		"character" : character,
 		"ability_scores" : ability_scores,
 		"skills" : skills,
 		"items" : items,
-		"attacks" : attacks
+		"attacks" : attacks,
+		"spells" : spells
 	}
 	try:
 		if character.system == "D&D 5e":
