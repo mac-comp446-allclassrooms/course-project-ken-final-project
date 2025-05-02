@@ -114,6 +114,12 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 				ability_score = DungeonsAndDragonsFifthEditionAbilityScore.objects.get(character=character, name=ability_score_name)
 				DungeonsAndDragonsFifthEditionSkill.objects.create(name=display_name, character=character, proficiency=form_data.get(field), ability_score=ability_score)
 
+		# Handles generation of traits/features.
+		trait_names = form_data.getlist('trait_name')
+		trait_descriptions = form_data.getlist('trait_description')
+		for i in range(len(trait_names)):
+			DungeonsAndDragonsFifthEditionTrait.objects.create(name=trait_names[i], description=trait_descriptions[i], character=character)
+
 		# Handles generation of items.
 		item_quantities = form_data.getlist('item_quantity')
 		item_names = form_data.getlist('item_name')
@@ -227,7 +233,7 @@ class DungeonsAndDragonsFifthEditionAttack(models.Model):
 	def __str__(self):
 		return self.character.name + "'s " + self.name
 	
-class DungeonsAndDragonsFifthEditionFeature(models.Model):
+class DungeonsAndDragonsFifthEditionTrait(models.Model):
 	name = models.CharField(max_length=200)
 	description = models.CharField(max_length=20000)
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)

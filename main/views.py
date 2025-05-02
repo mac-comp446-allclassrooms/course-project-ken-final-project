@@ -53,6 +53,7 @@ def character(request):
 	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
 	ability_scores = character.dungeonsanddragonsfiftheditionabilityscore_set.all()
 	skills = character.dungeonsanddragonsfiftheditionskill_set.all()
+	traits = character.dungeonsanddragonsfiftheditiontrait_set.all()
 	items = character.dungeonsanddragonsfiftheditionitem_set.all()
 	attacks = character.dungeonsanddragonsfiftheditionattack_set.all()
 	spells = character.dungeonsanddragonsfiftheditionspell_set.all()
@@ -61,6 +62,7 @@ def character(request):
 		"character" : character,
 		"ability_scores" : ability_scores,
 		"skills" : skills,
+		"traits" : traits,
 		"items" : items,
 		"attacks" : attacks,
 		"spells" : spells

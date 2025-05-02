@@ -163,6 +163,13 @@
 							<th class="extralargecolumn"></th>
 							<th class="mediumcolumn"></th>
 						</tr>
+						{% for trait in traits %}
+							<tr class="trait">
+								<td><input type='text' name='trait_name' placeholder='Name' value="{{trait.name}}">
+								<textarea name='trait_description' placeholder='Description'>{{trait.description}}</textarea></td>
+								<td><button type='button' onclick = 'deleteTrait(this)'>Delete</button></td>
+							</tr>
+						{% endfor %}
 					</table>
 				</div>
 			</div>
