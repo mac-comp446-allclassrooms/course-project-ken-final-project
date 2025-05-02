@@ -60,38 +60,9 @@
 					</table>
 				</div>
 			</div>
-			<div class="statblock">
-				<h2>Wallet</h2>
-				<table>
-					<tr>
-						<th class="mediumcolumn">Currency</th>
-						<th class="mediumcolumn">Amount</th>
-					</tr>
-					<tr>
-						<td>Platinum (Pp)</td>
-						<td><input type="number"></td>
-					</tr>
-					<tr>
-						<td>Gold (Gp)</td>
-						<td><input type="number"></td>
-					</tr>
-					<tr>
-						<td>Electrum (Ep)</td>
-						<td><input type="number"></td>
-					</tr>
-					<tr>
-						<td>Silver (Sp)</td>
-						<td><input type="number"></td>
-					</tr>
-					<tr>
-						<td>Copper (Cp)</td>
-						<td><input type="number"></td>
-					</tr>
-				</table>
-			</div>
 		</div>
 			
-		<div class="contentblock" style="grid-template-columns: 1fr 1fr;">
+		<div class="contentblock">
 			<div class="statblock">
 				<div class='ability-scores-section'>
 					<div class="stat-heading">
@@ -156,7 +127,7 @@
 		<div class="statblock">
 			<div class="stat-heading">
 				<h2>Attack</h2>
-				<button type="button" onclick="createNewAttack()">Create Attack</button>
+				<button type="button" onclick="createNewAttack()">New Attack</button>
 			</div>
 			<table id="attackblock">
 				<tr>
@@ -183,28 +154,59 @@
 
 			</table>
 		</div>
-		<div class="statblock">
-			<div class="stat-heading">
-				<h2>Inventory</h2>
-				<button type="button" onclick="createNewItem()">New Item</button>
+		<div class="contentblock">
+			<div class="statblock">
+				<div class="stat-heading">
+					<h2>Inventory</h2>
+					<button type="button" onclick="createNewItem()">New Item</button>
+				</div>
+				<table id="inventoryblock">
+					<tr>
+						<th class="largecolumn">Quantity</th>
+						<th class="largecolumn">Name</th>
+						<th class="largecolumn">Description</th>
+						<th class="mediumcolumn">Weight</th>
+						<th class="mediumcolumn"></th>
+					</tr>
+					{% for item in items %}
+					<tr>
+						<td><input type='number' name='item_quantity' value='{{item.amount}}'></td><td><input type='text' name='item_name' value="{{item.name}}"></input></td>
+						<td><input type='text' name='item_description' value="{{item.description}}"></td>
+						<td><input type='text' name='item_weight' value="{{item.weight}}"></td>
+						<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>
+					</tr>
+					{% endfor %}
+				</table>
 			</div>
-			<table id="inventoryblock">
-				<tr>
-					<th class="largecolumn">Quantity</th>
-					<th class="largecolumn">Name</th>
-					<th class="largecolumn">Description</th>
-					<th class="mediumcolumn">Weight</th>
-					<th class="mediumcolumn"></th>
-				</tr>
-				{% for item in items %}
-				<tr>
-					<td><input type='number' name='item_quantity' value='{{item.amount}}'></td><td><input type='text' name='item_name' value="{{item.name}}"></input></td>
-					<td><input type='text' name='item_description' value="{{item.description}}"></td>
-					<td><input type='text' name='item_weight' value="{{item.weight}}"></td>
-					<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>
-				</tr>
-				{% endfor %}
-			</table>
+			<div class="statblock">
+				<h2>Wallet</h2>
+				<table>
+					<tr>
+						<th class="mediumcolumn">Currency</th>
+						<th class="mediumcolumn">Amount</th>
+					</tr>
+					<tr>
+						<td>Platinum (Pp)</td>
+						<td><input type="number"></td>
+					</tr>
+					<tr>
+						<td>Gold (Gp)</td>
+						<td><input type="number"></td>
+					</tr>
+					<tr>
+						<td>Electrum (Ep)</td>
+						<td><input type="number"></td>
+					</tr>
+					<tr>
+						<td>Silver (Sp)</td>
+						<td><input type="number"></td>
+					</tr>
+					<tr>
+						<td>Copper (Cp)</td>
+						<td><input type="number"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<div class="statblock">
 			<div class="stat-heading">
@@ -241,7 +243,7 @@
 					<table>
 						<tr>
 							<th class="smallcolumn">Level</th>
-							<th class="mediumcolumn">Slots</th>
+							<th class="largecolumn">Slots</th>
 						</tr>
 						<tr>
 							<td>1</td>
@@ -330,7 +332,7 @@
 			</div>
 		</div>
 
-		<div class="contentblock" style="display: flex;">
+		<div class="contentblock">
 			<div class="statblock">
 				<div class="stat-heading">
 					<h2>Proficiencies</h2>
@@ -362,7 +364,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="contentblock" style="display: flex;">
+		<div class="contentblock">
 			<div class="statblock">
 				<div class="stat-heading">
 					<h2>Features</h2>
