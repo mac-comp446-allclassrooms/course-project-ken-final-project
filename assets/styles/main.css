@@ -83,5 +83,17 @@ h3 {
 	box-shadow: 1.5px 1.5px 5px black;
 }
 
-option.dark-theme {
-	background-color
+#dark-theme {
+	background-color: var(--dark-bg);
+	color: var(--dark-tx);
+}
+
+option.light-theme {
+	background-color: var(--light-bg);
+	color: var(--light-tx);
+}
+
+option.hot-dog-theme {
+	background-color: var(--hds-bg);
+	color: var(--hds-tx);
+}
