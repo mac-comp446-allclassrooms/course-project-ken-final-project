@@ -185,9 +185,17 @@ function calculateMod(score) {
 }
 
 function updateProficiencyBonus() {
-    let level = document.getElementById('character-level').value;
+    let level = document.getElementById("character-level").value;
     let bonus = Math.ceil(level/4)+1;
-    console.log(bonus);
+
+    if (bonus >= 0) {
+        bonusdisplay = "+" + bonus;
+    } else {
+        bonusdisplay = bonus;
+    }
+    let profbonus = document.getElementById("proficiency-bonus")
+    profbonus.innerHTML = bonusdisplay;
+    console.log(level);
 }
 
 function populate() {
