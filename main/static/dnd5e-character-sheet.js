@@ -125,7 +125,8 @@ function updateAbilityMod(loc) {
 function updateSkillMod(skill, mod) {
     let proficiency = skill.parentNode.firstChild.nextSibling.firstChild.value;
     // newmod = skill.parentNode.firstChild.nextSibling.classList;
-    let newmod = parseInt(mod) + parseInt(proficiency);
+    let profbonus = document.getElementById("proficiency-bonus").innerHTML;
+    let newmod = parseInt(mod) + (profbonus * parseFloat(proficiency));
     // let newmod = parseInt(mod) + (proficiency_bonus * parseInt(proficiency));
     if (newmod >= 0) {
         moddisplay = "+" + newmod;
@@ -150,11 +151,12 @@ function updateSavingThrows() {
     let savingthrowtable = document.getElementById("extra-ability-block");
     savingthrowtable.innerHTML = "<tr><th class='medium-column'>Ability</th><th class='small-column'>Mod</th></tr>";
     let saved = document.getElementsByClassName("saving-check-box");
-    
+    let profbonus = document.getElementById("proficiency-bonus").innerHTML;
+
     let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
-    const newsave = document.createElement("tr");
+    let newsave = document.createElement("tr");
     newsave.innerHTML = "<td> Initiative </td>"
-    + "<td>" + initiativebonus + "</td>"
+    + "<td>" + (parseInt(initiativebonus)+parseInt(profbonus)) + "</td>"
     savingthrowtable.appendChild(newsave);
     
     for (const savingThrow of saved) {
@@ -162,10 +164,10 @@ function updateSavingThrows() {
             // Gets ability name
             let abilityname = savingThrow.parentNode.parentNode.firstChild.nextSibling.textContent;
             let abilityscore = savingThrow.parentNode.previousSibling.previousSibling.textContent;
-            const newsave = document.createElement("tr");
+            newsave = document.createElement("tr");
             
             newsave.innerHTML = "<td>" + abilityname + "</td>"
-            + "<td>" + abilityscore + "</td>"
+            + "<td>" + (parseInt(profbonus) + parseInt(abilityscore)) + "</td>"
             
             savingthrowtable.appendChild(newsave);
         }
@@ -193,14 +195,16 @@ function updateProficiencyBonus() {
     } else {
         bonusdisplay = bonus;
     }
-    let profbonus = document.getElementById("proficiency-bonus")
+    let profbonus = document.getElementById("proficiency-bonus");
     profbonus.innerHTML = bonusdisplay;
     console.log(level);
+    updateAllAbilities();
+    updateSavingThrows();
 }
 
 function populate() {
-    updateAllAbilities();
-    updateSavingThrows();
     updateProficiencyBonus();
+    // updateAllAbilities();
+    // updateSavingThrows();
 }
 window.addEventListener("load", populate);
