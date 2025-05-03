@@ -61,6 +61,7 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.hp_current = form_data.get('hp_current')
 		character.hp_maximum = form_data.get('hp_maximum')
 		character.armor_class = form_data.get('armor_class')
+		character.level = form_data.get('character_level')
 
 		character.description_physical = form_data.get('description_physical')
 		character.description_personality = form_data.get('description_personality')
