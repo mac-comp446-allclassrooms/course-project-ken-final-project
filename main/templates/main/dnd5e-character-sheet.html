@@ -103,7 +103,15 @@
 								<td>{{ability.name}}</td>
 								<td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
 								<td>{{skill.ability_score.score}}</td>
-								<td><input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td>
+								<td>{{ability.saving_throw}}
+								{% if ability.saving_throw %}
+									<input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" checked="checked" onchange="updateSavingThrows()"></td>
+								{% endif %}
+
+								{% if not ability.saving_throw %}
+									<input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td>
+								{% endif %}
+								<!-- <td><input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td> -->
 							</tr>
 						{% endfor %}
 					</table>
