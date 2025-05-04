@@ -1,15 +1,14 @@
-<head>
+{% extends 'main/index.html' %}
+
+{% block title %}{{ character.name }}{% endblock %}
+
+{% block page_css %}
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'main.css' %}">
 	<link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
 	<script src="{% static 'dnd5e-character-sheet.js' %}" defer></script>
-	{% block theme_css %}{% endblock %}
-</head>
+{% endblock %}
 
-{% include 'main/index.html' %}
-
-<body>
-	
+{% block content %}
 	<form id="character_sheet" method="post">
 		{% csrf_token %}
 		<!-- <h1>Character Sheet: {{character.name}}</h1> -->
@@ -385,4 +384,4 @@
 		</div>
 
 	</form>
-</body>
+{% endblock %}

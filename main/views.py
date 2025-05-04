@@ -27,9 +27,11 @@ def home(request):
 			return redirect('/character/')
 
 	# GET request
+	theme = request.session.get('theme', 'light-theme')
 	characters = Character.objects.filter(user=request.user).select_subclasses()
 	context = {
-		"characters" : characters
+		"characters" : characters,
+		'theme': theme
 	}
 	return render(request, 'main/menu.html', context)
 
@@ -57,6 +59,7 @@ def character(request):
 	items = character.dungeonsanddragonsfiftheditionitem_set.all()
 	attacks = character.dungeonsanddragonsfiftheditionattack_set.all()
 	spells = character.dungeonsanddragonsfiftheditionspell_set.all()
+	theme = request.session.get('theme', 'dark-theme')
 
 	context = {
 		"character" : character,
@@ -65,7 +68,8 @@ def character(request):
 		"traits" : traits,
 		"items" : items,
 		"attacks" : attacks,
-		"spells" : spells
+		"spells" : spells,
+		'theme': theme,
 	}
 	try:
 		if character.system == "D&D 5e":
@@ -74,6 +78,23 @@ def character(request):
 			raise Http404("Game system not found!")
 	except:
 		raise Http404("Character not found!")
+
+
+def themeToLight(request):
+	# current_theme = request.session.get('theme', 'light') # the second value is the default if one isn't present
+	request.session['theme'] = 'light-theme'
+	request.session.save()
+	return HttpResponse('Theme set to light')
+
+def themeToDark(request):
+	request.session['theme'] = 'dark-theme'
+	request.session.save()
+	return HttpResponse('Theme set to dark')
+
+def themeToHotDog(request):
+	request.session['theme'] = 'hot-dog-theme'
+	request.session.save()
+	return HttpResponse('Theme set to hot dog stand')
 
 
 def index(request):

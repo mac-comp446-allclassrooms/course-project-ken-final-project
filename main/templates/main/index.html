@@ -1,34 +1,48 @@
-{% block content %}
-<div class="tab" style="display: flex; justify-content: space-between;">
-	<a href='/home/'><button type="button" class="tablinks" id="characterheader">RPMe</button></a>
-	<a href='/home/'><button type="button" class="tablinks" id="usernameheader">{{ user.username }}</button></a>
-	<a href='/home/'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
-	
-	<select name='theme' id='theme'>
-		<option value='dark-theme' class='dark-theme' id='dark-theme'>Dark</option>
-		<option value='light-theme' class='light-theme' id='light-theme'>Light</option>
-		<option value='hot-dog-theme' class='hot-dog-theme' id='hot-dog-theme'>Hot Dog Stand</option>
-	</select>
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>{% block title %}Test Page{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+	{% block page_css %}{% endblock %}
+	{% block theme_css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{{theme}}{% endblock %}">
+{% block navbar %}
+	<div class="tab" style="display: flex; justify-content: space-between;">
+		<a href='/home/'><button type="button" class="tablinks" id="characterheader">RPMe</button></a>
+		<a href='/home/'><button type="button" class="tablinks" id="usernameheader">{{ user.username }}</button></a>
+		<a href='/home/'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
+		
+		<select name='theme' id='theme'>
+			<option value='light-theme' class='light-theme' id='light-theme' {% if theme == 'light-theme' %}selected='selected'{% endif %}>Light</option>
+			<option value='dark-theme' class='dark-theme' id='dark-theme {% if theme == 'dark-theme' %}selected='selected'{% endif %}'>Dark</option>
+			<option value='hot-dog-theme' class='hot-dog-theme' id='hot-dog-theme' {% if theme == 'hot-dog-theme' %}selected='selected'{% endif %}>Hot Dog Stand</option>
+		</select>
 
 
-	<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
-		<button type="submit" class="tablinks" id="logoutheader">Log Out</button>
-	</form>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-	const themeSelect = document.getElementById('theme');
-	var body = document.body;
-
-	themeSelect.addEventListener('change', function() {
-		console.log(body.classList);
-		body.classList.remove('dark-theme');
-		body.classList.remove('light-theme');
-		body.classList.remove('hot-dog-theme');
-		console.log(body.classList);
-		body.classList.add(themeSelect.value);
-		console.log(body.classList);
-	});
-});
-</script>
+		<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
+			<button type="submit" class="tablinks" id="logoutheader">Log Out</button>
+		</form>
+	</div>
 {% endblock %}
+
+{% block content %}
+<p>Current theme: {{ theme }}</p>
+{% endblock %}
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const themeSelect = document.getElementById('theme');
+		var body = document.body;
+
+		themeSelect.addEventListener('change', function() {
+			body.classList.remove('dark-theme');
+			body.classList.remove('light-theme');
+			body.classList.remove('hot-dog-theme');
+			body.classList.add(themeSelect.value);
+		});
+	});
+</script>
+</body>
+</html>
