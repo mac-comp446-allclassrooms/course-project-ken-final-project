@@ -164,6 +164,7 @@ function updateSavingThrows() {
             // Gets ability name
             let abilityname = savingThrow.parentNode.parentNode.firstChild.nextSibling.textContent;
             let abilityscore = savingThrow.parentNode.previousSibling.previousSibling.textContent;
+            console.log(abilityname);
             newsave = document.createElement("tr");
             
             newsave.innerHTML = "<td>" + abilityname + "</td>"
