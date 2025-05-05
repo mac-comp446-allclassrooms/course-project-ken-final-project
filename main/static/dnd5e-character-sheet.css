@@ -12,11 +12,11 @@ input {
 table { 
 	font-family: var(--font);
 	/* width: 100%; */
-	border: 1px solid;
+	/* border: 1px solid; */
 	table-layout: fixed;
 	border-radius: 10px;
 	/* border-collapse: collapse; */
-	width: fit-content;
+	/* width: fit-content; */
 }
 
 tr {
@@ -82,7 +82,7 @@ textarea {
 	resize: none;
 	/* resize: vertical; */
 	width: 100%;
-	min-width: 150px;
+	min-width: 100px;
 	/* height: 100%; */
 }
 
