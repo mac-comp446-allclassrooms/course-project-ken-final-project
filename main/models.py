@@ -221,7 +221,7 @@ class DungeonsAndDragonsFifthEditionAbilityScore(models.Model):
 
 class DungeonsAndDragonsFifthEditionSkill(models.Model):
 	name = models.CharField(max_length=200)
-	proficiency = models.PositiveIntegerField(default=0) # 0 for not proficient, 1 if proficient, 2 if expertise, 0.5 if jack of all trades
+	proficiency = models.DecimalField(default=0, max_digits=2, decimal_places=1) # 0 for not proficient, 1 if proficient, 2 if expertise, 0.5 if jack of all trades
 	ability_score = models.ForeignKey(DungeonsAndDragonsFifthEditionAbilityScore, on_delete=models.CASCADE)
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 
