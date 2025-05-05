@@ -15,7 +15,7 @@
 		<a href='/home/'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
 	
 		<form name='theme-form' id='theme-form' method='post'>
-			{% csrf token %}
+			{% csrf_token %}
 			<select name='theme' id='theme'>
 				<option value='light-theme' class='light-theme' id='light-theme' {% if theme == 'light-theme' %}selected='selected'{% endif %}>Light</option>
 				<option value='dark-theme' class='dark-theme' id='dark-theme {% if theme == 'dark-theme' %}selected='selected'{% endif %}'>Dark</option>

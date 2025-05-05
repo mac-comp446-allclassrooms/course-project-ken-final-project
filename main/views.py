@@ -10,7 +10,10 @@ from main.models import Character, DungeonsAndDragonsFifthEditionCharacter
 def home(request):
 	# POST request, handles opening and deleting characters
 	if (request.method == 'POST'):
-		if 'open' in request.POST:
+		if 'theme-submit' in request.POST:
+			changeTheme(request)
+			return redirect('/home/')
+		elif 'open' in request.POST:
 			opened_character = Character.objects.get(user=request.user, id=request.POST.get('character-id'))
 			print("open: " + opened_character.name)
 			request.session['character-id'] = request.POST.get('character-id')
@@ -40,17 +43,22 @@ def home(request):
 def character(request):
 	# POST request, handles saving characters
 	if (request.method == 'POST'):
-		# Gets system string of opened character.
-		system = Character.objects.get_subclass(user=request.user, id=request.session['character-id']).system
-		if (system == "D&D 5e"):
-			updated_character = DungeonsAndDragonsFifthEditionCharacter.objects.save_dnd5e_character(request.user, request.POST)
+		if 'theme-submit' in request.POST:
+			changeTheme(request)
+			print(request.session.get('theme'))
+			return redirect('/character/')
 		else:
-			raise Http404("Game system not found!")
-		print("saving character")
-		updated_character.save()
-		Character.objects.get_subclass(user=request.user, id=request.session['character-id']).delete()
-		request.session['character-id'] = updated_character.id	# set new character's id as current
-		return redirect('/home/')
+			# Gets system string of opened character.
+			system = Character.objects.get_subclass(user=request.user, id=request.session['character-id']).system
+			if (system == "D&D 5e"):
+				updated_character = DungeonsAndDragonsFifthEditionCharacter.objects.save_dnd5e_character(request.user, request.POST)
+			else:
+				raise Http404("Game system not found!")
+			print("saving character")
+			updated_character.save()
+			Character.objects.get_subclass(user=request.user, id=request.session['character-id']).delete()
+			request.session['character-id'] = updated_character.id	# set new character's id as current
+			return redirect('/home/')
 	
 	# GET request
 	character = Character.objects.get_subclass(user=request.user, id=request.session['character-id'])
@@ -101,3 +109,9 @@ def themeToHotDog(request):
 def index(request):
 	template_name='index.html'
 	return render(request, 'main/index.html')
+
+
+# NOT A VIEW, JUST A HELPER FUNCTION
+def changeTheme(request):
+	request.session['theme'] = request.POST.get('theme')
+	request.session.save()
