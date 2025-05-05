@@ -97,7 +97,7 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 		character.spell_slots_level9_maximum = form_data.get('spell_slots_level9_maximum')
 		
 
-		# Handles generation of ability scores. Assumes the name attribute of all abilit yscore fields to be "[ability score name]_ability_score"
+		# Handles generation of ability scores. Assumes the name attribute of all ability score fields to be "[ability score name]_ability_score"
 		field_names = form_data.dict().keys()
 		for field in field_names:
 			if (field.endswith("_ability_score")):
@@ -105,6 +105,22 @@ class DungeonsAndDragonsFifthEditionCharacterManager(models.Manager):
 				display_name = display_name.replace("_", " ")
 				display_name = display_name.title()
 				DungeonsAndDragonsFifthEditionAbilityScore.objects.create(name=display_name, character=character, score=form_data.get(field))
+
+		# Handles generation of saving throws. Assumes the name attribute of all saving throw fields to be "[ability score name]_saving_throw"
+		ability_scores = character.dungeonsanddragonsfiftheditionabilityscore_set.all()
+		for field in field_names:
+			if (field.endswith("_saving_throw")):
+				print("found save")
+				display_name = field.replace("_saving_throw", "")
+				display_name = display_name.replace("_", " ")
+				display_name = display_name.title()
+				print(display_name)
+				for ability_score in ability_scores:
+					if (ability_score.name == display_name):
+						print("it matches!")
+						ability_score.saving_throw = True
+						ability_score.save()
+						print(ability_score.saving_throw)
 
 		# Handles generation of skills. Assumes the name attribute of all skill fields to be "[skill name]_[ability score]_skill"
 		for field in field_names:
