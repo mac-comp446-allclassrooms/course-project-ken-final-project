@@ -9,7 +9,7 @@ function createNewAttack() {
             + "<td><input type='text' name='attack_bonus' placeholder='Attack Bonus'</td>"
             + "<td><input type='text' name='attack_damage_roll' placeholder='Damage Roll'></td>"
             + "<td><input type='text' name='attack_damage_type' placeholder='Damage Type'></td>"
-            + "<td><input type='text' name='attack_notes' placeholder='Notes'></td>"
+            + "<td><textarea name='attack_notes' placeholder='Notes'></textarea></td>"
             + "<td><button type='button' onclick = 'deleteAttack(this)'>Delete</button></td>"
 
     const statblock = document.getElementById("attack-block");
@@ -49,7 +49,7 @@ function createNewItem() {
     newWeapon.innerHTML = "<td><input name='item_equipped' type='checkbox'></td>"
             + "<td><input type='number' name='item_quantity' value='1'></td>"
             + "<td><input type='text' name='item_name' placeholder='Item Name'></td>"
-            + "<td><input type='text' name='item_description' placeholder='Description'></td>"
+            + "<td><textarea name='item_description' placeholder='Description'></textarea></td>"
             + "<td><input type='text' name='item_weight' value='0' placeholder='Weight'></td>"
             + "<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>"
 
@@ -128,13 +128,8 @@ function updateSkillMod(skill, mod) {
     let profbonus = document.getElementById("proficiency-bonus").innerHTML;
     let newmod = parseInt(mod) + (profbonus * parseFloat(proficiency));
     // let newmod = parseInt(mod) + (proficiency_bonus * parseInt(proficiency));
-    if (newmod >= 0) {
-        moddisplay = "+" + newmod;
-    } else {
-        moddisplay = newmod;
-    } 
 
-    skill.innerHTML = moddisplay;
+    skill.innerHTML = plusMinus(newmod);
 }
 
 
@@ -144,6 +139,23 @@ function updateAllAbilities() {
     for (const ability of abilityList) {
         updateAbilityMod(ability);
     }
+    updateSpellcasting();
+}
+
+function updateSpellcasting() {
+    let abilityName = document.getElementById("spellcasting-ability").value;
+    let abilityMod = parseInt(document.getElementsByClassName("ability-score " + abilityName + "-score")[0].parentNode.nextSibling.nextSibling.innerText);
+
+    let profbonus = parseInt(document.getElementById("proficiency-bonus").innerHTML);
+    let level = parseInt(document.getElementById("character-level").value);
+
+
+    let mod = document.getElementById("spell-mod");
+    mod.innerHTML = plusMinus(abilityMod);
+    let spelldc = document.getElementById("spell-save-dc");
+    spelldc.innerHTML = (8 + profbonus + abilityMod);
+    let spellattack = document.getElementById("spell-attack-bonus");
+    spellattack.innerHTML = plusMinus(abilityMod + level);
 }
 
 function updateSavingThrows() {
@@ -164,7 +176,6 @@ function updateSavingThrows() {
             // Gets ability name
             let abilityname = savingThrow.parentNode.parentNode.firstChild.nextSibling.textContent;
             let abilityscore = savingThrow.parentNode.previousSibling.previousSibling.textContent;
-            console.log(abilityname);
             newsave = document.createElement("tr");
             
             newsave.innerHTML = "<td>" + abilityname + "</td>"
@@ -179,28 +190,26 @@ function updateSavingThrows() {
 // Calculates mod from a given score
 function calculateMod(score) {
     mod = Math.floor((score-10)/2);
-    if (mod >= 0) {
-        moddisplay = "+" + mod;
-    } else {
-        moddisplay = mod;
-    } 
-    return moddisplay;
+    return plusMinus(mod);
 }
 
 function updateProficiencyBonus() {
     let level = document.getElementById("character-level").value;
     let bonus = Math.ceil(level/4)+1;
 
-    if (bonus >= 0) {
-        bonusdisplay = "+" + bonus;
-    } else {
-        bonusdisplay = bonus;
-    }
     let profbonus = document.getElementById("proficiency-bonus");
-    profbonus.innerHTML = bonusdisplay;
-    console.log(level);
+    profbonus.innerHTML = plusMinus(bonus);
     updateAllAbilities();
     updateSavingThrows();
+}
+
+function plusMinus(num) {
+    if (num >= 0) {
+        numdisplay = "+" + num;
+    } else {
+        numdisplay = num;
+    }
+    return numdisplay;
 }
 
 function populate() {
