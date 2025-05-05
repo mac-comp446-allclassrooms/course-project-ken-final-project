@@ -33,6 +33,7 @@ def home(request):
 		"characters" : characters,
 		'theme': theme
 	}
+	request.session['theme'] = theme
 	return render(request, 'main/menu.html', context)
 
 # view page for an individual character
@@ -59,7 +60,7 @@ def character(request):
 	items = character.dungeonsanddragonsfiftheditionitem_set.all()
 	attacks = character.dungeonsanddragonsfiftheditionattack_set.all()
 	spells = character.dungeonsanddragonsfiftheditionspell_set.all()
-	theme = request.session.get('theme', 'dark-theme')
+	theme = request.session.get('theme', 'light-theme')
 
 	context = {
 		"character" : character,

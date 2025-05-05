@@ -280,7 +280,7 @@
 							{% for ability in ability_scores %}
 							<option value="{{ability.name}}" {% if character.spellcasting_ability == ability.name %}selected{% endif %}>{{ability.name}}</option>
 							{% endfor %}
-                            <option value="" {% if character.spellcasting_ability == "" %}selected{% endif %}>---</option>
+							<option value="" {% if character.spellcasting_ability == "" %}selected{% endif %}>---</option>
 						</select>
 					</div>
 					<table>
@@ -315,50 +315,50 @@
 						<tr>
 							<td>2</td>
 							<td><input type="number" name="spell_slots_level2_current" value="{{character.spell_slots_level2_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level2_maximum" value="{{character.spell_slots_level2_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level2_maximum" value="{{character.spell_slots_level2_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>3</td>
 							<td><input type="number" name="spell_slots_level3_current" value="{{character.spell_slots_level3_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level3_maximum" value="{{character.spell_slots_level3_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level3_maximum" value="{{character.spell_slots_level3_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>4</td>
 							<td><input type="number" name="spell_slots_level4_current" value="{{character.spell_slots_level4_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level4_maximum" value="{{character.spell_slots_level4_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level4_maximum" value="{{character.spell_slots_level4_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>5</td>
 							<td><input type="number" name="spell_slots_level5_current" value="{{character.spell_slots_level5_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level5_maximum" value="{{character.spell_slots_level5_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level5_maximum" value="{{character.spell_slots_level5_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>6</td>
 							<td><input type="number" name="spell_slots_level6_current" value="{{character.spell_slots_level6_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level6_maximum" value="{{character.spell_slots_level6_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level6_maximum" value="{{character.spell_slots_level6_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>7</td>
 							<td><input type="number" name="spell_slots_level7_current" value="{{character.spell_slots_level7_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level7_maximum" value="{{character.spell_slots_level7_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level7_maximum" value="{{character.spell_slots_level7_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>8</td>
 							<td><input type="number" name="spell_slots_level8_current" value="{{character.spell_slots_level8_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level8_maximum" value="{{character.spell_slots_level8_maximum}}" min="0" style="width: 40%;"></td>
+							/
+							<input type="number" name="spell_slots_level8_maximum" value="{{character.spell_slots_level8_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 						<tr>
 							<td>9</td>
-                            <td><input type="number" name="spell_slots_level9_current" value="{{character.spell_slots_level9_current}}" min="0" style="width: 40%;">
-                            /
-                            <input type="number" name="spell_slots_level9_maximum" value="{{character.spell_slots_level9_maximum}}" min="0" style="width: 40%;"></td>
+							<td><input type="number" name="spell_slots_level9_current" value="{{character.spell_slots_level9_current}}" min="0" style="width: 40%;">
+							/
+							<input type="number" name="spell_slots_level9_maximum" value="{{character.spell_slots_level9_maximum}}" min="0" style="width: 40%;"></td>
 						</tr>
 					</table>
 				</div>
