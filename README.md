@@ -1,18 +1,10 @@
-# Project Title Goes Here
+# RPMe: A Character Manage for Tabletop Roleplaying Games
 
-Info about your project goes here
+This is a web-based app for creating character sheets for tabletop roleplaying games, which can be persistently saved to a server (project is not yet deployed, so they are saved locally).
 
-1.Keep in mind the structure of this directory and organize your project files properly. Feel free to add more folders as needed for your app.
-
-2.Delete the empty markdown (.md) files in each of these folders, they are only there as placeholder!
-
-3.Then change this README at the end of the project based on the guidelines.
+It was developed at Macalester College, during the 2025 Spring semester, by Ev K., Nick D., and Kaliana A.
 
 ## Documentation
-
-Info about your project goes here
-
-## Developer Guide
 
 ### Running Dev Server
 1.cd into django_auth
@@ -22,9 +14,16 @@ Info about your project goes here
  - $ source .venv/bin/activate
  - (.venv) $ python3 -m pip install -r requirements.txt
  - python manage.py runserver
-4.Open the link
+4.Open the link printed by the console
 
+### Tech Stack
 
-## More information
+It uses Django as the primary component of the tech stack, and to handle the backend database where characters are stored.
 
-Info about your project goes here
+HTML and CSS are used, with some additional Django-specific features (i.e. Django Templating Language).
+
+JS is used for some interactivity, particularly when adding new elements to an opened character sheet.
+
+## Developer Guide
+
+This app is intended to be open-source, wherein new types of character sheets can be added fairly easily. This functionally isn't fully implemented yet.
