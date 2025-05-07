@@ -83,7 +83,12 @@ textarea {
 	/* resize: vertical; */
 	width: 100%;
 	min-width: 100px;
+	min-height: 100px;
 	/* height: 100%; */
+}
+
+td > textarea {
+	min-height: 50px;
 }
 
 /* Classes */
@@ -99,6 +104,10 @@ textarea {
 	display: inline-block;
 	max-width: fit-content;
 	width: fit-content;
+}
+
+.trait * textarea {
+	min-height: 100px;
 }
 
 .stat-block:hover {
@@ -129,7 +138,7 @@ textarea {
 }
 
 .extralarge-column {
-	width: 8rem;
+	width: 10rem;
 }
 
 .content-block {
