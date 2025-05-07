@@ -11,19 +11,17 @@
 {% block content %}
 	<form id="character_sheet" method="post">
 		{% csrf_token %}
-		<!-- <h1>Character Sheet: {{character.name}}</h1> -->
 		<div class="content-block">
 			<div class="stat-block" id="profile-block">
 				<div class="stat-heading">
 					<h2>{{character.name}}'s Character Profile</h2>
 					<button type="submit" id="save-character" name="save-character">Save Character</button>
-					<!-- <button id="delete-button" type='submit' name="delete">Delete</button> -->
 				</div>
 				<div class="content-block">
 					<table>
 						<tr class="stat">
 							<th class="medium-column">Name</th>
-							<td><input class="large-column" type="text" name="character_name" value="{{character.name}}" required></td>
+							<td class="large-column"><input type="text" name="character_name" value="{{character.name}}" required></td>
 						</tr>
 						<tr class="stat">
 							<th>Species</th>
@@ -82,9 +80,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		<!-- </div>
 			
-		<div class="content-block">
+		<div class="content-block"> -->
 			<div class="stat-block">
 				<div class='ability-scores-section'>
 					<div class="stat-heading">
@@ -110,7 +108,6 @@
 								{% if not ability.saving_throw %}
 									<input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td>
 								{% endif %}
-								<!-- <td><input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td> -->
 							</tr>
 						{% endfor %}
 					</table>
@@ -126,10 +123,15 @@
 			<div class="stat-block">
 				<div class="stat-heading">
 					<h2>Skills</h2>
+					<div>
+						<p class="description">
+							Not Proficient = ○ / Proficient = ●
+						</p>
+						<p class="description">
+							Expert = ◆ / Jack of All Trades = ▲
+						</p>
+					</div>
 				</div>
-				<p class="description">
-					Not Proficient = ○ / Proficient = ● / Expertese = ◆ / Jack of All Trades = ▲
-				</p>
 				<table id="skill-block">
 					<tr>
 						<th class="small-column">Prof</th>
@@ -160,7 +162,7 @@
 					<div class="stat-heading">
 						<h2>Proficiencies</h2>
 					</div>
-					<textarea name="proficiencies">{{character.proficiencies}}</textarea>
+					<textarea id="proficiencies" name="proficiencies">{{character.proficiencies}}</textarea>
 				</div>
 				<div class="stat-block">
 					<div class="stat-heading">
@@ -183,38 +185,38 @@
 				</div>
 			</div>
 				
-		<div class="content-block">
-			<div class="stat-block">
-				<div class="stat-heading">
-					<h2>Attack</h2>
-					<button type="button" onclick="createNewAttack()">New Attack</button>
+			<div class="content-block">
+				<div class="stat-block">
+					<div class="stat-heading">
+						<h2>Attack</h2>
+						<button type="button" onclick="createNewAttack()">New Attack</button>
+					</div>
+					<table id="attack-block">
+						<tr>
+							<th class="medium-column">Name</th>
+							<th class="medium-column">Range</th>
+							<th class="medium-column">Attack Bonus</th>
+							<th class="medium-column">Damage Roll</th>
+							<th class="medium-column">Damage Type</th>
+							<th class="medium-column">Notes</th>
+							<th class="medium-column"></th>
+						</tr>
+
+						{% for attack in attacks %}
+						<tr>
+							<td><input type='text' name='attack_name' value='{{attack.name}}'></td>
+							<td><input type='text' name='attack_range' value='{{attack.range}}'></td>
+							<td><input type='text' name='attack_bonus' value='{{attack.attack_bonus}}'></td>
+							<td><input type='text' name='attack_damage_roll' value='{{attack.damage_roll}}'></td>
+							<td><input type='text' name='attack_damage_type' value='{{attack.damage_type}}'></td>
+							<td><textarea name='attack_notes'>{{attack.notes}}</textarea></td>
+							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+						</tr>
+						{% endfor %}
+
+					</table>
 				</div>
-				<table id="attack-block">
-					<tr>
-						<th class="medium-column">Name</th>
-						<th class="medium-column">Range</th>
-						<th class="medium-column">Attack Bonus</th>
-						<th class="medium-column">Damage Roll</th>
-						<th class="medium-column">Damage Type</th>
-						<th class="medium-column">Notes</th>
-						<th class="medium-column"></th>
-					</tr>
-
-					{% for attack in attacks %}
-					<tr>
-						<td><input type='text' name='attack_name' value='{{attack.name}}'></td>
-						<td><input type='text' name='attack_range' value='{{attack.range}}'></td>
-						<td><input type='text' name='attack_bonus' value='{{attack.attack_bonus}}'></td>
-						<td><input type='text' name='attack_damage_roll' value='{{attack.damage_roll}}'></td>
-						<td><input type='text' name='attack_damage_type' value='{{attack.damage_type}}'></td>
-						<td><textarea name='attack_notes'>{{attack.notes}}</textarea></td>
-						<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
-					</tr>
-					{% endfor %}
-
-				</table>
 			</div>
-		</div>
 			<div class="stat-block">
 				<div class="stat-heading">
 					<h2>Inventory</h2>
@@ -276,8 +278,8 @@
 				<div class="content-block">
 					<div class="stat-block">
 						<div class="stat-heading">
-						<h3>Spellcasting</h3>
-					</div>
+							<h3>Spellcasting</h3>
+						</div>
 						<select name="spellcasting_ability" id="spellcasting-ability" onchange="updateSpellcasting()">
 							{% for ability in ability_scores %}
 							<option value="{{ability.name}}" {% if character.spellcasting_ability == ability.name %}selected{% endif %}>{{ability.name}}</option>
@@ -288,17 +290,14 @@
 							<tr>
 								<th class="large-column">Spellcasting Mod</th>
 								<td class="small-column" id="spell-mod">0</td>
-								<!-- Ability mod -->
 							</tr>
 							<tr>
 								<th>Spell Save DC</th>
 								<td id="spell-save-dc">0</td>
-								<!-- 8 + proficiency bonus + ability modifier -->
 							</tr>
 							<tr>
 								<th>Spell Attack Bonus</th>
 								<td id="spell-attack-bonus">0</td>
-								<!-- ability modifier + Caster's level -->
 							</tr>
 						</table>
 						<h3>Spellslots</h3>
@@ -313,86 +312,84 @@
 									/
 									<input type="number" name="spell_slots_level1_maximum" value="{{character.spell_slots_level1_maximum}}" min="0" style="width: 35%;"></td>
 								</tr>
-						<tr>
-							<td>2</td>
-							<td><input type="number" name="spell_slots_level2_current" value="{{character.spell_slots_level2_current}}" min="0" style="width: 35%;">
-								/
-							<input type="number" name="spell_slots_level2_maximum" value="{{character.spell_slots_level2_maximum}}" min="0" style="width: 35%;"></td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td><input type="number" name="spell_slots_level3_current" value="{{character.spell_slots_level3_current}}" min="0" style="width: 35%;">
-								/
-								<input type="number" name="spell_slots_level3_maximum" value="{{character.spell_slots_level3_maximum}}" min="0" style="width: 35%;"></td>
+							<tr>
+								<td>2</td>
+								<td><input type="number" name="spell_slots_level2_current" value="{{character.spell_slots_level2_current}}" min="0" style="width: 35%;">
+									/
+								<input type="number" name="spell_slots_level2_maximum" value="{{character.spell_slots_level2_maximum}}" min="0" style="width: 35%;"></td>
 							</tr>
 							<tr>
-								<td>4</td>
-								<td><input type="number" name="spell_slots_level4_current" value="{{character.spell_slots_level4_current}}" min="0" style="width: 35%;">
+								<td>3</td>
+								<td><input type="number" name="spell_slots_level3_current" value="{{character.spell_slots_level3_current}}" min="0" style="width: 35%;">
 									/
-									<input type="number" name="spell_slots_level4_maximum" value="{{character.spell_slots_level4_maximum}}" min="0" style="width: 35%;"></td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td><input type="number" name="spell_slots_level5_current" value="{{character.spell_slots_level5_current}}" min="0" style="width: 35%;">
+									<input type="number" name="spell_slots_level3_maximum" value="{{character.spell_slots_level3_maximum}}" min="0" style="width: 35%;"></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td><input type="number" name="spell_slots_level4_current" value="{{character.spell_slots_level4_current}}" min="0" style="width: 35%;">
+										/
+										<input type="number" name="spell_slots_level4_maximum" value="{{character.spell_slots_level4_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><input type="number" name="spell_slots_level5_current" value="{{character.spell_slots_level5_current}}" min="0" style="width: 35%;">
 								/
 								<input type="number" name="spell_slots_level5_maximum" value="{{character.spell_slots_level5_maximum}}" min="0" style="width: 35%;"></td>
 							</tr>
 							<tr>
 								<td>6</td>
 								<td><input type="number" name="spell_slots_level6_current" value="{{character.spell_slots_level6_current}}" min="0" style="width: 35%;">
-									/
-							<input type="number" name="spell_slots_level6_maximum" value="{{character.spell_slots_level6_maximum}}" min="0" style="width: 35%;"></td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td><input type="number" name="spell_slots_level7_current" value="{{character.spell_slots_level7_current}}" min="0" style="width: 35%;">
+										/
+								<input type="number" name="spell_slots_level6_maximum" value="{{character.spell_slots_level6_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td><input type="number" name="spell_slots_level7_current" value="{{character.spell_slots_level7_current}}" min="0" style="width: 35%;">
 								/
-							<input type="number" name="spell_slots_level7_maximum" value="{{character.spell_slots_level7_maximum}}" min="0" style="width: 35%;"></td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td><input type="number" name="spell_slots_level8_current" value="{{character.spell_slots_level8_current}}" min="0" style="width: 35%;">
+								<input type="number" name="spell_slots_level7_maximum" value="{{character.spell_slots_level7_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td><input type="number" name="spell_slots_level8_current" value="{{character.spell_slots_level8_current}}" min="0" style="width: 35%;">
 								/
 								<input type="number" name="spell_slots_level8_maximum" value="{{character.spell_slots_level8_maximum}}" min="0" style="width: 35%;"></td>
-							</tr>
+								</tr>
 							<tr>
 								<td>9</td>
 								<td><input type="number" name="spell_slots_level9_current" value="{{character.spell_slots_level9_current}}" min="0" style="width: 35%;">
-									/
-									<input type="number" name="spell_slots_level9_maximum" value="{{character.spell_slots_level9_maximum}}" min="0" style="width: 35%;"></td>
-						</tr>
-					</table>
-				</div>
-				
-				<div class="stat-block">
-					<div class="stat-heading">
-						<h3>Spell List</h3>
-						<button type="button" onclick="createNewSpell()">New Spell</button>
+								/
+								<input type="number" name="spell_slots_level9_maximum" value="{{character.spell_slots_level9_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+						</table>
 					</div>
-					<table id="spell-block">
-						<tr>
-							<th class="small-column">Level</th>
-							<th class="large-column">Name</th>
-							<th class="large-column">Description</th>
-							<th class="medium-column">School</th>
-							<th class="medium-column"></th>
-						</tr>
+					<div class="stat-block">
+						<div class="stat-heading">
+							<h3>Spell List</h3>
+							<button type="button" onclick="createNewSpell()">New Spell</button>
+						</div>
+						<table id="spell-block">
+							<tr>
+								<th class="small-column">Level</th>
+								<th class="large-column">Name</th>
+								<th class="large-column">Description</th>
+								<th class="medium-column">School</th>
+								<th class="medium-column"></th>
+							</tr>
 
-						{% for spell in spells %}
-						<tr>
-							<td><input type='number' class='level-input' name='spell_level' value='{{spell.level}}' min="0"></td>
-							<td><input type='text' name='spell_name' value='{{spell.name}}'></td>
-							<td><textarea type='text' name='spell_description'>{{spell.description}}</textarea></td>
-							<td><input type='text' name='spell_school' value='{{spell.school}}'></td>
-							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
-						</tr>
-						{% endfor %}
-					</table>
+							{% for spell in spells %}
+							<tr>
+								<td><input type='number' class='level-input' name='spell_level' value='{{spell.level}}' min="0"></td>
+								<td><input type='text' name='spell_name' value='{{spell.name}}'></td>
+								<td><textarea type='text' name='spell_description'>{{spell.description}}</textarea></td>
+								<td><input type='text' name='spell_school' value='{{spell.school}}'></td>
+								<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
 	</form>
 	{% endblock %}
 	

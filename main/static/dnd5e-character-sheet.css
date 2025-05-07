@@ -107,7 +107,7 @@ td > textarea {
 }
 
 .trait * textarea {
-	min-height: 100px;
+	min-height: 200px;
 }
 
 .stat-block:hover {
@@ -150,24 +150,7 @@ td > textarea {
 	font-size: xx-small;
 	font-style: italic;
 }
-/* .ability-scores-section {
-	display: inline-block;
-	float: left;
+ /* IDs */
+#proficiencies {
+	height: 200px;
 }
-
-.saving-throws-section {
-	display: inline-block;
-	float: right;
-} */
-
-/* IDs */
-
-/* #abilityblock {
-	display: inline-block;
-	float: left;
-}
-
-#extra_ability_block {
-	display: inline-block;
-	float: right;
-} */
