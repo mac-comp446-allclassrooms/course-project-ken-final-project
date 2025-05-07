@@ -123,11 +123,11 @@ function updateAbilityMod(loc) {
 // UpdatSkillMod
 // skill is skill display element, mod is parent mod (int)
 function updateSkillMod(skill, mod) {
-    let proficiency = skill.parentNode.firstChild.nextSibling.firstChild.value;
-    // newmod = skill.parentNode.firstChild.nextSibling.classList;
+
+    let proficiency = skill.parentNode.firstChild.nextSibling.firstChild.nextSibling.value;
     let profbonus = document.getElementById("proficiency-bonus").innerHTML;
     let newmod = parseInt(mod) + (profbonus * parseFloat(proficiency));
-    // let newmod = parseInt(mod) + (proficiency_bonus * parseInt(proficiency));
+    console.log(newmod)
 
     skill.innerHTML = plusMinus(newmod);
 }

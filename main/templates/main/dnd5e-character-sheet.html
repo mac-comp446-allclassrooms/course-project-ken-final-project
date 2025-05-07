@@ -127,6 +127,9 @@
 				<div class="stat-heading">
 					<h2>Skills</h2>
 				</div>
+				<p class="description">
+					Not Proficient = ○ / Proficient = ● / Expertese = ◆ / Jack of All Trades = ▲
+				</p>
 				<table id="skill-block">
 					<tr>
 						<th class="small-column">Prof</th>
@@ -136,15 +139,14 @@
 					</tr>
 					{% for skill in skills %}
 					<tr>
-						<td><input type="number" class='level-input'  name="{{skill.name}}_{{skill.ability_score.name}}_skill" value={{skill.proficiency}} min="0" max="2" step="0.5" onchange="updateAllAbilities()"></td>
-						<!-- <td>
-							<select class='level-input'  name="{{skill.name}}_{{skill.ability_score.name}}_skill" onchange="updateAllAbilities()">
-								<option value=0>0</option>
-								<option value=1>1</option>
-								<option value=2>2</option>
-								<option value=0.5>0.5</option>
+						<td>
+							<select class='level-input' id="{{skill.name}}_row" name="{{skill.name}}_{{skill.ability_score.name}}_skill" onchange="updateAllAbilities()">
+								<option value="0" {% if skill.proficiency == 0 %} selected {% endif %}>○</option>
+								<option value="1" {% if skill.proficiency == 1 %} selected {% endif %}>●</option>
+								<option value="2" {% if skill.proficiency == 2 %} selected {% endif %}>◆</option>
+								<option value="0.5" {% if skill.proficiency == 0.5 %} selected {% endif %}>▲</option>
 							</select>
-						</td> -->
+						</td>
 						<td>{{skill.name}}</td>
 						<td><i>({{skill.ability_score.name}})</i></td>
 						<td class="skill-score {{skill.ability_score.name}}-skill">{{skill.ability_score.score}}</td>

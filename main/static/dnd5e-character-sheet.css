@@ -146,6 +146,10 @@ td > textarea {
 	flex-wrap: wrap;
 }
 
+.description {
+	font-size: xx-small;
+	font-style: italic;
+}
 /* .ability-scores-section {
 	display: inline-block;
 	float: left;
