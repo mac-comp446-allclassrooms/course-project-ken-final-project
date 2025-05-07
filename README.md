@@ -7,14 +7,16 @@ It was developed at Macalester College, during the 2025 Spring semester, by Ev K
 ## Documentation
 
 ### Running Dev Server
-1.cd into django_auth
-2.Create a virtual environment that will exist on your machine (only do this once, this is automatically gitignored):
- - $ python -m venv .venv
-3.Run these:
- - $ source .venv/bin/activate
- - (.venv) $ python3 -m pip install -r requirements.txt
- - python manage.py runserver
-4.Open the link printed by the console
+1. cd into the main directory for this application (course-project-ken-final-project)
+2. Create a virtual environment that will exist on your machine (only do this once, this is automatically gitignored. Creating a virtual environment might look differently depending on your OS, look it up if you get an error):
+    - python -m venv .venv
+3. Activate the virtual enviroment that you just created:
+    - source .venv/bin/activate
+4. Install the requirements (unless you make any changes to the code, you should only have to do this once):
+    - python3 -m pip install -r requirements.txt
+5. Start a local server by running:
+    - python manage.py runserver
+6. Open the link printed by the console
 
 ### Tech Stack
 
