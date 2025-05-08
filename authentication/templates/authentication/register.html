@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang='en'>
+{% extends 'authentication/base.html' %}
 
-<head>
+{% block title %}Registration Form{% endblock %}
+{% block page_css %}
 	{% load static %}
 	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/loginpage.css' %}">
 	
 	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/main.css' %}">
+{% endblock %}
 
-	<title>Registration Form</title>
-</head>
-
-<body>
-	<div class = "loginblock">
+{% block content %}
+	<div class = "loginblock {{theme}}">
 		<h1>Create New Account</h1>
 		<form method='post' enctype='multipart/form-data'>
 			{% csrf_token %}
@@ -45,5 +43,4 @@
 			</div>
 		</form>
 	</div>
-</body>
-</html>
+{% endblock %}

@@ -17,6 +17,32 @@
     /* --font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
     /* --font: 'Lucida Console', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     --font: monospace;    
+
+	/* theme stuff */
+	--dark-bg: #2d2d2d;
+	--dark-bg2: #dddddd;
+	--dark-tx: #fff;
+	--dark-bd: #fff;
+
+	--light-bg: #fff;
+	--light-bg2: #eee;
+	--light-tx: #000;
+	--light-bd: #000;
+
+	--hds-bg: red;
+	--hds-bg2: orangered;
+	--hds-tx: yellow;
+	--hds-bd: lime;
+
+	--nb-bg: tan;
+	--nb-bg2: chocolate;
+	--nb-tx: brown;
+	--nb-bd: brown;
+
+	--ft-bg: lightgreen;
+	--ft-bg2: darkolivegreen;
+	--ft-tx: darkgreen;
+	--ft-bd: darkgreen;
 }
 
 /* Fonts */
@@ -40,36 +66,72 @@ p{
 
 .tab {
     overflow: hidden;
-    border: 1px solid var(--primary-background);
-    background-color: var(--secondary-background);
+    border: 1px solid;
     border-radius: 10px;
-  }
-  
+}
+
+.tab.dark-theme {
+	border: 1px solid var(--dark-bd);
+	background-color: var(--dark-bg);
+}
+.tab.light-theme {
+	border: 1px solid var(--light-bd);
+	background-color: var(--light-bg);
+}
+.tab.hot-dog-theme {
+	border: 1px solid var(--hds-bd);
+	background-color: var(--hds-bg);
+}
+
 .tab button {
-background-color: inherit;
-float: left;
-border: none;
-outline: none;
-cursor: pointer;
-padding: 14px 16px;
-transition: 0.3s;
+	background-color: inherit;
+	color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
 }
 
-.tab button:hover {
-background-color: var(--primary-background);
-color: var(--primary-text);
+.tab.light-theme button:hover {
+	background-color: var(--light-bg);
+	color: var(--light-tx);
+}
+.tab.dark-theme button:hover {
+	background-color: var(--dark-bg);
+	color: var(--dark-tx);
+}
+.tab.hot-dog-theme button:hover {
+	background-color: var(--hds-bg);
+	color: var(--hds-tx);
 }
 
-.tab button.active {
-background-color: var(--secondary-background);
-color: var(--secondary-text);
+.tab.light-theme button.active {
+	background-color: var(--light-bg2);
+	color: var(--light-tx);
+}
+.tab.dark-theme button.active {
+	background-color: var(--dark-bg2);
+	color: var(--dark-tx);
+}
+.tab.hot-dog-theme button.active {
+	background-color: var(--hds-bg2);
+	color: var(--hds-tx);
 }
 
-body {
-    background-color: var(--primary-background);
+body.light-theme {
+    background-color: var(--light-bg);
+}
+body.dark-theme {
+    background-color: var(--dark-bg);
+}
+body.hot-dog-theme {
+    background-color: var(--hds-bg);
 }
 
-/* Page */
+/* Probably unnecessary
+/* Page 
 .container {
     border-color: var(--primary-border);
     border-style: solid;
@@ -87,17 +149,16 @@ body {
     padding: 10px;
     margin: 10px;
     background-color: var(--primary-background);
-    /* max-width: 33%; */
+    /* max-width: 33%; 
 }
+*/
 
 /* Login */
 .loginblock {
-    border-color: var(--primary-border);
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
     padding: 10px;
-    background-color: var(--primary-background);
     margin: 100px;
     
     justify-content: center;
@@ -105,6 +166,18 @@ body {
     text-align: center;
     height: 25%;
     max-width: 75%;
+}
+.loginblock.light-theme {
+    border-color: var(--light-bd);
+    background-color: var(--light-bg);
+}
+.loginblock.dark-theme {
+    border-color: var(--dark-bd);
+    background-color: var(--dark-bg);
+}
+.loginblock.hot-dog-theme {
+	border-color: var(--hds-bd);
+	background-color: var(--hds-bg);
 }
 
 .loginblock * input[type=text] {
@@ -116,7 +189,8 @@ body {
     border-radius: 5px;
 }
 
-/* Page */
+/*
+/* Page 
 .statblock {
     border-color: var(--primary-border);
     border-style: solid;
@@ -131,20 +205,20 @@ body {
     display: inline-grid;
     grid-auto-flow: row;
     grid-template-columns: 2;
-} */
+}
 
 table { 
     /* border-style: solid;
-    border-color: var(--primary-border); */
-    /* border-width: 0.5px; */
+    border-color: var(--primary-border); 
+    /* border-width: 0.5px; 
     border-collapse: collapse;
     font-family: var(--font);
 }
 
 td {
     padding-inline: 0.5rem;
-    /* text-align: center; */
-    /* font-family: var(--font); */
+    /* text-align: center;
+    /* font-family: var(--font);
 }
 .stat {
     border-color: red;
@@ -157,7 +231,7 @@ button {
     font-family: inherit;
 }
 input[type=text] {
-    /* display: flex; */
+    /* display: flex;
     width: 6rem;
 
     border-width: 1px;
@@ -165,10 +239,11 @@ input[type=text] {
 }
 
 .stat input[type=number] {
-    /* display: flex; */
+    /* display: flex;
     width: 3rem;
 
     border-width: 1px;
     border-radius: 5px;
     border-color: var(--secondary-border);
 }
+*/

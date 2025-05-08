@@ -12,6 +12,10 @@ from .models import *
 # make a view request for the login page
 def login_page(request):
 	if request.method == 'POST':
+		if 'theme-submit' in request.POST:
+			changeTheme(request)
+			return redirect('/login/')
+
 		un = request.POST.get('username')
 		pw = request.POST.get('password')
 
@@ -31,11 +35,17 @@ def login_page(request):
 		login(request, user)
 		return redirect('/home/')
 	#GET request
-	return render(request, 'authentication/login.html')
+	theme = request.session.get('theme', 'light-theme')
+	context = {'theme': theme}
+	return render(request, 'authentication/login.html', context)
 
 # make view function for registration page
 def register_page(request):
 	if request.method == 'POST':
+		if 'theme-submit' in request.POST:
+			changeTheme(request)
+			return redirect('/register/')
+
 		fn = ''
 		ln = ''
 		un = request.POST.get('username')
@@ -55,7 +65,14 @@ def register_page(request):
 		messages.info(request, 'Account created successfully!')
 		return redirect('/login/')
 	# this is a a get request
-	return render(request, 'authentication/register.html')
+	theme = request.session.get('theme', 'light-theme')
+	context = {'theme': theme}
+	return render(request, 'authentication/register.html', context)
 
+
+# NOT A VIEW, JUST A HELPER FUNCTION
+def changeTheme(request):
+	request.session['theme'] = request.POST.get('theme')
+	request.session.save()
 
 # much of this was helped by https://www.geeksforgeeks.org/user-authentication-system-using-django/

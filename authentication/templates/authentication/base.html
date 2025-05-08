@@ -2,18 +2,14 @@
 <html lang='en'>
 <head>
 	<title>{% block title %}Test Page{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'main.css' %}">
 	{% block page_css %}{% endblock %}
 	{% block theme_css %}{% endblock %}
 </head>
 <body class="{% block body_class %}{{theme}}{% endblock %}">
 {% block navbar %}
 	<div id='navbar' class="tab {{theme}}" style="display: flex; justify-content: space-between;">
-		<h1>RPMe</h1>
-		<h1>{{ user.username }}</h1>
-		<a href='/home/' class='no-style-link'><button type="button" class="tablinks" id="characterheader">Characters</button></a>
-	
 		<form name='theme-form' id='theme-form' method='post'>
 			{% csrf_token %}
 			<select name='theme' id='theme'>
@@ -22,11 +18,6 @@
 				<option value='hot-dog-theme' class='hot-dog-theme' id='hot-dog-theme' {% if theme == 'hot-dog-theme' %}selected='selected'{% endif %}>Hot Dog Stand</option>
 			</select>
 			<button type='submit' id='theme-submit' name='theme-submit'>Save Theme</button>
-		</form>
-
-
-		<form action="{% url 'logout' %}" method="post"> {% csrf_token %}
-			<button type="submit" class="tablinks" id="logoutheader">Log Out</button>
 		</form>
 	</div>
 {% endblock %}
@@ -40,10 +31,9 @@
 		const themeSelect = document.getElementById('theme');
 		var body = document.body;
 		var nav = document.getElementById('navbar');
-		var tabl = document.getElementsByClassName('tablinks')[0];
-		var logout = document.getElementsByClassName('tablinks')[1];
+		var login = document.getElementsByClassName('loginblock')[0];
 		
-		const apply = [body, nav, tabl, logout];
+		const apply = [body, nav, login];
 		const themes = ['dark-theme', 'light-theme', 'hot-dog-theme'];
 
 		themeSelect.addEventListener('change', function() {
@@ -55,7 +45,6 @@
 			}
 		});
 	});
-
 </script>
 </body>
 </html>
