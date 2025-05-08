@@ -139,7 +139,7 @@
 						<th class="medium-column">Ability</th>
 						<th class="small-column">Mod</th>
 					</tr>
-					{% for skill in skills %}
+					{% for skill in skills|dictsort:"name"  %}
 					<tr>
 						<td>
 							<select class='level-input' id="{{skill.name}}_row" name="{{skill.name}}_{{skill.ability_score.name}}_skill" onchange="updateAllAbilities()">
