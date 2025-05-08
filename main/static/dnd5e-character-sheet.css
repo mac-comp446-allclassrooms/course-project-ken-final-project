@@ -1,6 +1,6 @@
 /* Tags */
 /* body {
- background-color: white;
+	background-color: white;
 } */
 
 input {
@@ -100,6 +100,9 @@ textarea {
 	max-width: fit-content;
 	width: fit-content;
 }
+.stat-block.light-theme {
+	background-color: var(--light-bg);
+}
 
 .stat-block:hover {
 	box-shadow: 1.5px 1.5px 5px gray;
@@ -111,7 +114,7 @@ textarea {
 	margin-bottom: 10px;
 	border-radius: 10px;
 	/* border: solid 1px; */
-	background-color: white;
+	/* background-color: white; */
 	transition: background-color 0.5s;
 	transition: box-shadow 0.5s;
 }

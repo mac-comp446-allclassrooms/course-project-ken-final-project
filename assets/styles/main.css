@@ -1,22 +1,27 @@
 :root {
 	--font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	--dark-bg: #2d2d2d;
+	--dark-bg2: #dddddd;
 	--dark-tx: #fff;
 	--dark-bd: #fff;
 
 	--light-bg: #fff;
+	--light-bg2: #eee;
 	--light-tx: #000;
-	--light:bd: #000;
+	--light-bd: #000;
 
 	--hds-bg: red;
+	--hds-bg2: orangered;
 	--hds-tx: yellow;
 	--hds-bd: lime;
 
 	--nb-bg: tan;
+	--nb-bg2: chocolate;
 	--nb-tx: brown;
 	--nb-bd: brown;
 
 	--ft-bg: lightgreen;
+	--ft-bg2: darkolivegreen;
 	--ft-tx: darkgreen;
 	--ft-bd: darkgreen;
 }
@@ -34,6 +39,11 @@ body.light-theme {
 body.hot-dog-theme {
 	background-color: var(--hds-bg);
 	color: var(--hds-tx);
+}
+
+.no-style-link {
+	text-decoration: inherit;
+	color: inherit;
 }
 
 h1, h2, h3, p {
@@ -61,11 +71,26 @@ h3 {
 	/* position: fixed; */
 	position: sticky;
 	top: 0;
-	background-color: white;
+}
+.tab.light-theme {
+	border: 1px solid var(--light-bd);
+	background-color: var(--light-bg);
+	color: var(--light-tx);
+}
+.tab.dark-theme {
+	border: 1px solid var(--dark-bd);
+	background-color: var(--dark-bg);
+	color: var(--dark-tx);
+}
+.tab.hot-dog-theme {
+	border: 1px solid var(--hds-bd);
+	background-color: var(--hds-bg);
+	color: var(--hds-tx);
 }
   
 .tablinks {
 	background-color: inherit;
+	color: inherit;
 	float: left;
 	border: none;
 	cursor: pointer;
@@ -83,6 +108,9 @@ h3 {
 	box-shadow: 1.5px 1.5px 5px black;
 }
 
+
+/* These don't work sadge
+	Can't edit selection :-[
 #dark-theme {
 	background-color: var(--dark-bg);
 	color: var(--dark-tx);
@@ -97,3 +125,4 @@ option.hot-dog-theme {
 	background-color: var(--hds-bg);
 	color: var(--hds-tx);
 }
+*/
