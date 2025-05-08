@@ -11,7 +11,7 @@
 {% block content %}
 	<div class = "loginblock {{theme}}">
 		<h1>Create New Account</h1>
-		<form method='post' enctype='multipart/form-data'>
+		<form method='post' autocomplete="off" enctype='multipart/form-data'>
 			{% csrf_token %}
 
 			{% if messages %}

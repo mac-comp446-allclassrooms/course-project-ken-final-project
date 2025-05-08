@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-	<form id="character_sheet" method="post">
+	<form autocomplete="off" id="character_sheet" method="post">
 		{% csrf_token %}
 		<div class="content-block">
 			<div class="stat-block {{theme}}" id="profile-block">
@@ -139,7 +139,7 @@
 						<th class="medium-column">Ability</th>
 						<th class="small-column">Mod</th>
 					</tr>
-					{% for skill in skills %}
+					{% for skill in skills|dictsort:"name"  %}
 					<tr>
 						<td>
 							<select class='level-input' id="{{skill.name}}_row" name="{{skill.name}}_{{skill.ability_score.name}}_skill" onchange="updateAllAbilities()">
