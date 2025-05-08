@@ -231,7 +231,7 @@ class DungeonsAndDragonsFifthEditionSkill(models.Model):
 class DungeonsAndDragonsFifthEditionItem(models.Model):
 	name = models.CharField(max_length=200)
 	amount = models.IntegerField(default=0)
-	weight = models.IntegerField(default=0)
+	weight = models.CharField(default="", max_length=200)
 	description = models.CharField(max_length=10000, default="")
 	character = models.ForeignKey(DungeonsAndDragonsFifthEditionCharacter, on_delete=models.CASCADE)
 

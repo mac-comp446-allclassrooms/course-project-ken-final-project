@@ -83,7 +83,12 @@ textarea {
 	/* resize: vertical; */
 	width: 100%;
 	min-width: 100px;
+	min-height: 100px;
 	/* height: 100%; */
+}
+
+td > textarea {
+	min-height: 50px;
 }
 
 /* Classes */
@@ -102,6 +107,10 @@ textarea {
 }
 .stat-block.light-theme {
 	background-color: var(--light-bg);
+}
+
+.trait * textarea {
+	min-height: 200px;
 }
 
 .stat-block:hover {
@@ -132,7 +141,7 @@ textarea {
 }
 
 .extralarge-column {
-	width: 8rem;
+	width: 10rem;
 }
 
 .content-block {
@@ -140,24 +149,11 @@ textarea {
 	flex-wrap: wrap;
 }
 
-/* .ability-scores-section {
-	display: inline-block;
-	float: left;
+.description {
+	font-size: xx-small;
+	font-style: italic;
 }
-
-.saving-throws-section {
-	display: inline-block;
-	float: right;
-} */
-
-/* IDs */
-
-/* #abilityblock {
-	display: inline-block;
-	float: left;
+ /* IDs */
+#proficiencies {
+	height: 200px;
 }
-
-#extra_ability_block {
-	display: inline-block;
-	float: right;
-} */
