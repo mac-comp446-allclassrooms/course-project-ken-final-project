@@ -20,7 +20,7 @@
 
 	/* theme stuff */
 	--dark-bg: #2d2d2d;
-	--dark-bg2: #dddddd;
+	--dark-bg2: #0d0d0d;
 	--dark-tx: #fff;
 	--dark-bd: #fff;
 
@@ -30,19 +30,19 @@
 	--light-bd: #000;
 
 	--hds-bg: red;
-	--hds-bg2: orangered;
+	--hds-bg2: red;
 	--hds-tx: yellow;
 	--hds-bd: lime;
 
 	--nb-bg: tan;
-	--nb-bg2: chocolate;
-	--nb-tx: brown;
+	--nb-bg2: peru;
+	--nb-tx: saddlebrown;
 	--nb-bd: brown;
 
-	--ft-bg: lightgreen;
+	--ft-bg: olivedrab;
 	--ft-bg2: darkolivegreen;
-	--ft-tx: darkgreen;
-	--ft-bd: darkgreen;
+	--ft-tx: sandybrown;
+	--ft-bd: saddlebrown;
 }
 
 /* Fonts */
@@ -82,6 +82,14 @@ p{
 	border: 1px solid var(--hds-bd);
 	background-color: var(--hds-bg);
 }
+.tab.notebook-theme {
+	border: 1px solid var(--nb-bd);
+	background-color: var(--nb-bg);
+}
+.tab.forest-theme {
+	border: 1px solid var(--ft-bd);
+	background-color: var(--ft-bg);
+}
 
 .tab button {
 	background-color: inherit;
@@ -106,6 +114,14 @@ p{
 	background-color: var(--hds-bg);
 	color: var(--hds-tx);
 }
+.tab.notebook-theme button:hover {
+	background-color: var(--nb-bg);
+	color: var(--nb-tx);
+}
+.tab.forest-theme button:hover {
+	background-color: var(--ft-bg);
+	color: var(--ft-tx);
+}
 
 .tab.light-theme button.active {
 	background-color: var(--light-bg2);
@@ -119,15 +135,29 @@ p{
 	background-color: var(--hds-bg2);
 	color: var(--hds-tx);
 }
+.tab.notebook-theme button.active {
+	background-color: var(--nt-bg2);
+	color: var(--nt-tx);
+}
+.tab.forest-theme button.active {
+	background-color: var(--ft-bg2);
+	color: var(--ft-tx);
+}
 
 body.light-theme {
-    background-color: var(--light-bg);
+    background-color: var(--light-bg2);
 }
 body.dark-theme {
-    background-color: var(--dark-bg);
+    background-color: var(--dark-bg2);
 }
 body.hot-dog-theme {
-    background-color: var(--hds-bg);
+    background-color: var(--hds-bg2);
+}
+body.notebook-theme {
+    background-color: var(--nb-bg2);
+}
+body.forest-theme {
+    background-color: var(--ft-bg);
 }
 
 /* Probably unnecessary
@@ -178,6 +208,14 @@ body.hot-dog-theme {
 .loginblock.hot-dog-theme {
 	border-color: var(--hds-bd);
 	background-color: var(--hds-bg);
+}
+.loginblock.notebook-theme {
+    border-color: var(--nb-bd);
+    background-color: var(--nb-bg);
+}
+.loginblock.forest-theme {
+    border-color: var(--ft-bd);
+    background-color: var(--ft-bg);
 }
 
 .loginblock * input[type=text] {

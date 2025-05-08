@@ -20,6 +20,8 @@
 				<option value='light-theme' class='light-theme' id='light-theme' {% if theme == 'light-theme' %}selected='selected'{% endif %}>Light</option>
 				<option value='dark-theme' class='dark-theme' id='dark-theme' {% if theme == 'dark-theme' %}selected='selected'{% endif %}>Dark</option>
 				<option value='hot-dog-theme' class='hot-dog-theme' id='hot-dog-theme' {% if theme == 'hot-dog-theme' %}selected='selected'{% endif %}>Hot Dog Stand</option>
+				<option value='notebook-theme' class='notebook-theme' id='notebook-theme' {% if theme == 'notebook-theme' %}selected='selected'{% endif %}>Notebook</option>
+				<option value='forest-theme' class='forest-theme' id='forset-theme' {% if theme == 'forest-theme' %}selected='selected'{% endif %}>Forest</option>
 			</select>
 			<button type='submit' id='theme-submit' name='theme-submit'>Save Theme</button>
 		</form>
@@ -56,7 +58,7 @@
 				apply.push(stat[i]);
 			}
 		}
-		const themes = ['dark-theme', 'light-theme', 'hot-dog-theme'];
+		const themes = ['dark-theme', 'light-theme', 'hot-dog-theme', 'notebook-theme', 'forest-theme'];
 
 		themeSelect.addEventListener('change', function() {
 			for (let i in apply) {

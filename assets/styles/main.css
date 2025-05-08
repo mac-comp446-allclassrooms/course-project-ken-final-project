@@ -16,29 +16,34 @@
 	--hds-bd: lime;
 
 	--nb-bg: tan;
-	--nb-bg2: chocolate;
-	--nb-tx: brown;
+	--nb-bg2: peru;
+	--nb-tx: saddlebrown;
 	--nb-bd: brown;
 
-	--ft-bg: lightgreen;
+	--ft-bg: olivedrab;
 	--ft-bg2: darkolivegreen;
-	--ft-tx: darkgreen;
-	--ft-bd: darkgreen;
+	--ft-tx: sandybrown;
+	--ft-bd: saddlebrown;
 }
-
 body.dark-theme {
 	background-color: var(--dark-bg2);
 	color: var(--dark-tx);
 }
-
 body.light-theme {
 	background-color: var(--light-bg2);
 	color: var(--light-tx);
 }
-
 body.hot-dog-theme {
 	background-color: var(--hds-bg2);
 	color: var(--hds-tx);
+}
+body.notebook-theme {
+	background-color: var(--nb-bg2);
+	color: var(--nb-tx);
+}
+body.forest-theme {
+	background-color: var(--ft-bg2);
+	color: var(--ft-tx);
 }
 
 .no-style-link {
@@ -86,6 +91,16 @@ h3 {
 	border: 1px solid var(--hds-bd);
 	background-color: var(--hds-bg);
 	color: var(--hds-tx);
+}
+.tab.notebook-theme {
+	border: 1px solid var(--nb-bd);
+	background-color: var(--nb-bg);
+	color: var(--nb-tx);
+}
+.tab.foresttheme {
+	border: 1px solid var(--ft-bd);
+	background-color: var(--ft-bg);
+	color: var(--ft-tx);
 }
   
 .tablinks {

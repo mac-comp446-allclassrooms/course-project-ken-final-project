@@ -73,6 +73,12 @@ button:hover {
 .character-thumbnail.hot-dog-theme {
 	background-color: var(--hds-bg);
 }
+.character-thumbnail.notebook-theme {
+	background-color: var(--nb-bg);
+}
+.character-thumbnail.forest-theme {
+	background-color: var(--ft-bg);
+}
 
 .character-thumbnail:hover {
 	box-shadow: 1.5px 1.5px 5px gray;

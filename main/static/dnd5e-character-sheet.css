@@ -7,6 +7,8 @@ input {
 	font-family: var(--font);
 	border-width: 1px;
 	border-radius: 5px;
+	background-color: inherit;
+	color: inherit;
 }
 
 table { 
@@ -85,6 +87,8 @@ textarea {
 	min-width: 100px;
 	min-height: 100px;
 	/* height: 100%; */
+	color: inherit;
+	background-color: inherit;
 }
 
 td > textarea {
@@ -113,6 +117,12 @@ td > textarea {
 }
 .stat-block.hot-dog-theme {
 	background-color: var(--hds-bg);
+}
+.stat-block.notebook-theme {
+	background-color: var(--nb-bg);
+}
+.stat-block.forest-theme {
+	background-color: var(--ft-bg);
 }
 
 
@@ -154,6 +164,7 @@ td > textarea {
 .content-block {
 	display: flex;
 	flex-wrap: wrap;
+	background-color: inherit;
 }
 
 .description {
