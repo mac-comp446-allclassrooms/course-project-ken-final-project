@@ -167,7 +167,7 @@ function updateSavingThrows() {
     let initiativebonus = document.getElementsByClassName("ability-score Dexterity-score")[0].parentNode.nextSibling.nextSibling.innerText;
     let newsave = document.createElement("tr");
     newsave.innerHTML = "<td> Initiative </td>"
-    + "<td>" + (parseInt(initiativebonus)+parseInt(profbonus)) + "</td>"
+    + "<td>" + plusMinus(parseInt(initiativebonus)+parseInt(profbonus)) + "</td>"
     savingthrowtable.appendChild(newsave);
     
     for (const savingThrow of saved) {
@@ -178,7 +178,7 @@ function updateSavingThrows() {
             newsave = document.createElement("tr");
             
             newsave.innerHTML = "<td>" + abilityname + "</td>"
-            + "<td>" + (parseInt(profbonus) + parseInt(abilityscore)) + "</td>"
+            + "<td>" + plusMinus((parseInt(profbonus) + parseInt(abilityscore))) + "</td>"
             
             savingthrowtable.appendChild(newsave);
         }

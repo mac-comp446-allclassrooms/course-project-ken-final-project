@@ -26,14 +26,14 @@ tr {
 
 td, th {
 	padding-inline: 0.25rem;
-	font-size: x-small;
+	font-size: small;
 	align-items: center;
 	/* border: 1px solid; */
 	/* border-collapse: collapse; */
 }
 
 td input[type='text'] {
-	font-size: x-small;
+	font-size: small;
 	min-width: 3rem;
 	width: 100%;
 	/* width: 6rem; */
@@ -41,7 +41,7 @@ td input[type='text'] {
 
 
 td input[type='number'] {
-	font-size: x-small;
+	font-size: small;
 	min-width: 1rem;
 	width: 100%;
 	/* width: 2rem; */
@@ -49,7 +49,7 @@ td input[type='number'] {
 
 button {
 	font-family: var(--font);
-	font-size: x-small;
+	font-size: small;
 	border-radius: 10px;
 	border-width: 1px;
 	transition: background-color 0.5s;
@@ -70,7 +70,7 @@ select {
 
 td select {
 	font-family: var(--font);
-	font-size: x-small;
+	font-size: small;
 }
 
 h2 {
@@ -78,7 +78,7 @@ h2 {
 }
 
 textarea {
-	font-size: x-small;
+	font-size: small;
 	resize: none;
 	/* resize: vertical; */
 	width: 100%;
@@ -144,7 +144,7 @@ td > textarea {
 }
 
 .large-column {
-	width: 6rem;
+	width: 8rem;
 }
 
 .extralarge-column {
@@ -157,7 +157,7 @@ td > textarea {
 }
 
 .description {
-	font-size: xx-small;
+	font-size: x-small;
 	font-style: italic;
 }
  /* IDs */
