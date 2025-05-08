@@ -62,8 +62,16 @@ button:hover {
   border-radius: 15px;
   padding: 10px;
   transition: box-shadow 0.5s;
-  
   justify-content: center;
+}
+.character-thumbnail.light-theme {
+	background-color: var(--light-bg);
+}
+.character-thumbnail.dark-theme {
+	background-color: var(--dark-bg);
+}
+.character-thumbnail.hot-dog-theme {
+	background-color: var(--hds-bg);
 }
 
 .character-thumbnail:hover {

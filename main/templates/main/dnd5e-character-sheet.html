@@ -12,7 +12,7 @@
 	<form id="character_sheet" method="post">
 		{% csrf_token %}
 		<div class="content-block">
-			<div class="stat-block" id="profile-block">
+			<div class="stat-block {{theme}}" id="profile-block">
 				<div class="stat-heading">
 					<h2>{{character.name}}'s Character Profile</h2>
 					<button type="submit" id="save-character" name="save-character">Save Character</button>
@@ -61,18 +61,18 @@
 					</table>
 				</div>
 			</div>
-			<div class="stat-block">
+			<div class="stat-block {{theme}}">
 				<div class="stat-heading">
 					<h2>Character Description</h2>
 				</div>
 				<div class="content-block" style="display: flex;">
-					<div class="stat-block">
+					<div class="stat-block {{theme}}">
 						<div class="stat-heading">
 							<h3>Physical</h3>
 						</div>
 						<textarea placeholder="Physical Description" name="description_physical">{{character.description_physical}}</textarea>
 					</div>
-					<div class="stat-block">
+					<div class="stat-block {{theme}}">
 						<div class="stat-heading">
 							<h2>Personality</h2>
 						</div>
@@ -83,7 +83,7 @@
 		<!-- </div>
 			
 		<div class="content-block"> -->
-			<div class="stat-block">
+			<div class="stat-block {{theme}}">
 				<div class='ability-scores-section'>
 					<div class="stat-heading">
 						<h2>Abilities</h2>
@@ -120,7 +120,7 @@
 				</div>
 			</div>
 
-			<div class="stat-block">
+			<div class="stat-block {{theme}}">
 				<div class="stat-heading">
 					<h2>Skills</h2>
 					<div>
@@ -158,13 +158,13 @@
 			</div>
 
 			<div class="content-block">
-				<div class="stat-block">
+				<div class="stat-block {{theme}}">
 					<div class="stat-heading">
 						<h2>Proficiencies</h2>
 					</div>
 					<textarea id="proficiencies" name="proficiencies">{{character.proficiencies}}</textarea>
 				</div>
-				<div class="stat-block">
+				<div class="stat-block {{theme}}">
 					<div class="stat-heading">
 						<h2>Traits & Features</h2>
 						<button type="button" onclick="createNewTrait()">New Trait</button>
@@ -186,7 +186,7 @@
 			</div>
 				
 			<div class="content-block">
-				<div class="stat-block">
+				<div class="stat-block {{theme}}">
 					<div class="stat-heading">
 						<h2>Attack</h2>
 						<button type="button" onclick="createNewAttack()">New Attack</button>
@@ -217,7 +217,7 @@
 					</table>
 				</div>
 			</div>
-			<div class="stat-block">
+			<div class="stat-block {{theme}}">
 				<div class="stat-heading">
 					<h2>Inventory</h2>
 					<button type="button" onclick="createNewItem()">New Item</button>
@@ -242,7 +242,7 @@
 					{% endfor %}
 				</table>
 			</div>
-			<div class="stat-block">
+			<div class="stat-block {{theme}}">
 				<h2>Wallet</h2>
 				<table>
 					<tr>
@@ -271,12 +271,12 @@
 					</tr>
 				</table>
 			</div>
-			<div class="stat-block">
+			<div class="stat-block {{theme}}">
 				<div class="stat-heading">
 					<h2>Spells</h2>
 				</div>
 				<div class="content-block">
-					<div class="stat-block">
+					<div class="stat-block {{theme}}">
 						<div class="stat-heading">
 							<h3>Spellcasting</h3>
 						</div>
@@ -362,7 +362,7 @@
 							</tr>
 						</table>
 					</div>
-					<div class="stat-block">
+					<div class="stat-block {{theme}}">
 						<div class="stat-heading">
 							<h3>Spell List</h3>
 							<button type="button" onclick="createNewSpell()">New Spell</button>

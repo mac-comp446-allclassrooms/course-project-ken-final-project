@@ -1,7 +1,7 @@
 :root {
 	--font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	--dark-bg: #2d2d2d;
-	--dark-bg2: #dddddd;
+	--dark-bg2: #0d0d0d;
 	--dark-tx: #fff;
 	--dark-bd: #fff;
 
@@ -11,7 +11,7 @@
 	--light-bd: #000;
 
 	--hds-bg: red;
-	--hds-bg2: orangered;
+	--hds-bg2: red;
 	--hds-tx: yellow;
 	--hds-bd: lime;
 
@@ -27,17 +27,17 @@
 }
 
 body.dark-theme {
-	background-color: var(--dark-bg);
+	background-color: var(--dark-bg2);
 	color: var(--dark-tx);
 }
 
 body.light-theme {
-	background-color: var(--light-bg);
+	background-color: var(--light-bg2);
 	color: var(--light-tx);
 }
 
 body.hot-dog-theme {
-	background-color: var(--hds-bg);
+	background-color: var(--hds-bg2);
 	color: var(--hds-tx);
 }
 

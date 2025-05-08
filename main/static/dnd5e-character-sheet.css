@@ -108,6 +108,13 @@ td > textarea {
 .stat-block.light-theme {
 	background-color: var(--light-bg);
 }
+.stat-block.dark-theme {
+	background-color: var(--dark-bg);
+}
+.stat-block.hot-dog-theme {
+	background-color: var(--hds-bg);
+}
+
 
 .trait * textarea {
 	min-height: 200px;

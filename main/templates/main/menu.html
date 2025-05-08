@@ -19,7 +19,7 @@
 		
 		<div class="container-display" id="character-list">
 			{% for character in characters %}
-				<div class="character-thumbnail">
+				<div class="character-thumbnail {{theme}}">
 					<form method="post">
 						{% csrf_token %}
 						<h2>{{character.name}}</h2>

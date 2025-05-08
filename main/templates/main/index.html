@@ -42,8 +42,20 @@
 		var nav = document.getElementById('navbar');
 		var tabl = document.getElementsByClassName('tablinks')[0];
 		var logout = document.getElementsByClassName('tablinks')[1];
+		var thumb = document.getElementsByClassName('character-thumbnail');
+		var stat = document.getElementsByClassName('stat-block');
 		
 		const apply = [body, nav, tabl, logout];
+		if (thumb.length > 0) {
+			for (let i in thumb) {
+				apply.push(thumb[i]);
+			}
+		}
+		if (stat.length > 0) {
+			for (let i in stat) {
+				apply.push(stat[i]);
+			}
+		}
 		const themes = ['dark-theme', 'light-theme', 'hot-dog-theme'];
 
 		themeSelect.addEventListener('change', function() {
