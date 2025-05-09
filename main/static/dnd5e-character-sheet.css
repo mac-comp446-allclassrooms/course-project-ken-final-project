@@ -1,0 +1,177 @@
+/* Tags */
+/* body {
+	background-color: white;
+} */
+
+input {
+	font-family: var(--font);
+	border-width: 1px;
+	border-radius: 5px;
+	background-color: inherit;
+	color: inherit;
+}
+
+table { 
+	font-family: var(--font);
+	/* width: 100%; */
+	/* border: 1px solid; */
+	table-layout: fixed;
+	border-radius: 10px;
+	/* border-collapse: collapse; */
+	/* width: fit-content; */
+}
+
+tr {
+	border: 1px solid;
+	border-collapse: collapse;
+}
+
+td, th {
+	padding-inline: 0.25rem;
+	font-size: small;
+	align-items: center;
+	/* border: 1px solid; */
+	/* border-collapse: collapse; */
+}
+
+td input[type='text'] {
+	font-size: small;
+	min-width: 3rem;
+	width: 100%;
+	/* width: 6rem; */
+}
+
+
+td input[type='number'] {
+	font-size: small;
+	min-width: 1rem;
+	width: 100%;
+	/* width: 2rem; */
+}
+
+button {
+	font-family: var(--font);
+	font-size: small;
+	border-radius: 10px;
+	border-width: 1px;
+	transition: background-color 0.5s;
+	transition: box-shadow 0.5s;
+}
+
+button:hover {
+	background-color: lightgray;
+	box-shadow: 1px 1px 1px black;
+}
+
+select {
+	font-family: var(--font);
+	font-size: small;
+	border-radius: 10px;
+	border-width: 1px;
+}
+
+td select {
+	font-family: var(--font);
+	font-size: small;
+}
+
+h2 {
+	display: inline-block;
+}
+
+textarea {
+	font-size: small;
+	resize: none;
+	/* resize: vertical; */
+	width: 100%;
+	min-width: 100px;
+	min-height: 100px;
+	/* height: 100%; */
+	color: inherit;
+	background-color: inherit;
+}
+
+td > textarea {
+	min-height: 50px;
+}
+
+/* Classes */
+
+.stat-block {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 5px;
+	margin-block: 5px;
+	transition: box-shadow 0.5s;
+	display: inline-block;
+	max-width: fit-content;
+	width: fit-content;
+}
+.stat-block.light-theme {
+	background-color: var(--light-bg);
+}
+.stat-block.dark-theme {
+	background-color: var(--dark-bg);
+}
+.stat-block.hot-dog-theme {
+	background-color: var(--hds-bg);
+}
+.stat-block.notebook-theme {
+	background-color: var(--nb-bg);
+}
+.stat-block.forest-theme {
+	background-color: var(--ft-bg);
+}
+
+
+.trait * textarea {
+	min-height: 200px;
+}
+
+.stat-block:hover {
+	box-shadow: 1.5px 1.5px 5px gray;
+}
+
+.stat-heading {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	/* border: solid 1px; */
+	/* background-color: white; */
+	transition: background-color 0.5s;
+	transition: box-shadow 0.5s;
+}
+
+.small-column {
+	width: 2rem;
+}
+
+.medium-column {
+	width: 4rem;
+}
+
+.large-column {
+	width: 8rem;
+}
+
+.extralarge-column {
+	width: 10rem;
+}
+
+.content-block {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: inherit;
+}
+
+.description {
+	font-size: x-small;
+	font-style: italic;
+}
+ /* IDs */
+#proficiencies {
+	height: 200px;
+}

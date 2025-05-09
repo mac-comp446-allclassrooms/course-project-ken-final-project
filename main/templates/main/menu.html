@@ -1,0 +1,40 @@
+{% extends 'main/index.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_css %}
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'menu.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div style="display: flex; justify-content: space-between;">
+			<h1>Characters</h1>
+			<form method="post">
+				{% csrf_token %}
+				<button id="new-character-button" type='submit' name="new-character">New Character</button>
+			</form>
+		</div>
+		
+		<div class="container-display" id="character-list">
+			{% for character in characters %}
+				<div class="character-thumbnail {{theme}}">
+					<form method="post">
+						{% csrf_token %}
+						<h2>{{character.name}}</h2>
+						{% if character.system == "D&D 5e" %}
+							<p><i>Level: {{character.level}}</i></p>
+							<p><strong>Species:</strong> <i>{{character.species}}</i></p>
+							<p><strong>Class:</strong> <i>{{character.character_class}}</i></p>
+						<!-- Dev Note: to add new templates, add a new ifelse clause here. -->
+						{% endif %}
+						<button id="open-button" type='submit' name="open">Open</button>
+						<button id="delete-button" type='submit' name="delete">Delete</button>
+						<input type="hidden" id="character-id" name="character-id" value={{character.id}}>
+					</form>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

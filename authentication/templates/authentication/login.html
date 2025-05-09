@@ -1,0 +1,44 @@
+{% extends 'authentication/base.html' %}
+
+{% block title %}RPMe Login{% endblock %}
+
+{% block page_css %}
+	{% load static %}
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/loginpage.css' %}">
+	
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/main.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class = "loginblock {{theme}}">
+		<h1>Login</h1>
+		<form method='post' autocomplete="off" enctype='multipart/form-data'>
+			
+			{% csrf_token %}
+
+			<!-- Display error and success messages -->
+			{% if messages %}
+			<div class='alert alert-primary' role='alert'>
+				{% for message in messages %}
+				{{message}}
+				{% endfor %}
+			</div>
+			{% endif %}
+			
+			<div>
+				<div>
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username">
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password">
+				<div>
+			</div>
+			<div>
+				<a href='/register/'><button type='button' >Create New Account</button></a>
+				<button id="login" type='submit'>Login</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}

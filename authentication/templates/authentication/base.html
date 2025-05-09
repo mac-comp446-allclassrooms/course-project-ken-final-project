@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>{% block title %}Test Page{% endblock %}</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'main.css' %}">
+	{% block page_css %}{% endblock %}
+	{% block theme_css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{{theme}}{% endblock %}">
+{% block navbar %}
+	<div id='navbar' class="tab {{theme}}" style="display: flex; justify-content: space-between;">
+		<form name='theme-form' id='theme-form' method='post'>
+			{% csrf_token %}
+			<select name='theme' id='theme'>
+				<option value='light-theme' class='light-theme' id='light-theme' {% if theme == 'light-theme' %}selected='selected'{% endif %}>Light</option>
+				<option value='dark-theme' class='dark-theme' id='dark-theme' {% if theme == 'dark-theme' %}selected='selected'{% endif %}>Dark</option>
+				<option value='hot-dog-theme' class='hot-dog-theme' id='hot-dog-theme' {% if theme == 'hot-dog-theme' %}selected='selected'{% endif %}>Hot Dog Stand</option>
+				<option value='notebook-theme' class='notebook-theme' id='notebook-theme' {% if theme == 'notebook-theme' %}selected='selected'{% endif %}>Notebook</option>
+				<option value='forest-theme' class='forest-theme' id='forset-theme' {% if theme == 'forest-theme' %}selected='selected'{% endif %}>Forest</option>
+			</select>
+			<button type='submit' id='theme-submit' name='theme-submit'>Save Theme</button>
+		</form>
+	</div>
+{% endblock %}
+
+{% block content %}
+<p>Current theme: {{ theme }}</p>
+{% endblock %}
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const themeSelect = document.getElementById('theme');
+		var body = document.body;
+		var nav = document.getElementById('navbar');
+		var login = document.getElementsByClassName('loginblock')[0];
+		
+		const apply = [body, nav, login];
+		const themes = ['dark-theme', 'light-theme', 'hot-dog-theme', 'notebook-theme', 'forest-theme'];
+
+		themeSelect.addEventListener('change', function() {
+			for (let i in apply) {
+				for (let j in themes) {
+					apply[i].classList.remove(themes[j]);
+				}
+				apply[i].classList.add(themeSelect.value);
+			}
+		});
+	});
+</script>
+</body>
+</html>

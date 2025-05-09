@@ -1,0 +1,46 @@
+{% extends 'authentication/base.html' %}
+
+{% block title %}Registration Form{% endblock %}
+{% block page_css %}
+	{% load static %}
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/loginpage.css' %}">
+	
+	<link rel='stylesheet' type="text/css" href = "{% static 'authentication/main.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class = "loginblock {{theme}}">
+		<h1>Create New Account</h1>
+		<form method='post' autocomplete="off" enctype='multipart/form-data'>
+			{% csrf_token %}
+
+			{% if messages %}
+			<div class='alert alert-primary' role='alert'>
+				{% for message in messages %}
+				{{message}}
+				{% endfor %}
+			</div>
+			{% endif %}
+
+			<div>
+				<div>
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username">
+				</div>
+				<div>
+					<!-- REPLACE WITH type='password' -->
+					<!-- TODO -->
+					<label for="password">Password:</label>
+					<input type="text" id="password" name="password">
+					<br>
+					<label for="password2">Confirm Password:</label>
+					<input type="text" id="password2" name="password2">
+				<div>
+			</div>
+			<div>
+				<a href='/login/'><button type='button' id="loginpage">Return to Login Page</button></a>
+				<button id="createaccount" type='submit'>Create Account</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+from django.contrib import admin
+from .models import Character, DungeonsAndDragonsFifthEditionCharacter, DungeonsAndDragonsFifthEditionAbilityScore, DungeonsAndDragonsFifthEditionAttack, DungeonsAndDragonsFifthEditionItem, DungeonsAndDragonsFifthEditionSkill
+
+# Register your models here.
+
+admin.site.register(Character)
+admin.site.register(DungeonsAndDragonsFifthEditionCharacter)
+admin.site.register(DungeonsAndDragonsFifthEditionItem)
+admin.site.register(DungeonsAndDragonsFifthEditionAbilityScore)
+admin.site.register(DungeonsAndDragonsFifthEditionSkill)
+admin.site.register(DungeonsAndDragonsFifthEditionAttack)

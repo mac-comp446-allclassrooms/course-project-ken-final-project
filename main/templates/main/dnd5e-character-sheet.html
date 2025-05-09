@@ -1,0 +1,390 @@
+{% extends 'main/index.html' %}
+
+{% block title %}{{ character.name }}{% endblock %}
+
+{% block page_css %}
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'dnd5e-character-sheet.css' %}">
+	<script src="{% static 'dnd5e-character-sheet.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+	<form autocomplete="off" id="character_sheet" method="post">
+		{% csrf_token %}
+		<div class="content-block">
+			<div class="stat-block {{theme}}" id="profile-block">
+				<div class="stat-heading">
+					<h2>{{character.name}}'s Character Profile</h2>
+					<button type="submit" id="save-character" name="save-character">Save Character</button>
+				</div>
+				<div class="content-block">
+					<table>
+						<tr class="stat">
+							<th class="medium-column">Name</th>
+							<td class="large-column"><input type="text" name="character_name" value="{{character.name}}" required></td>
+						</tr>
+						<tr class="stat">
+							<th>Species</th>
+							<td><input type="text" name="species" value="{{character.species}}" required></td>
+						</tr>
+						<tr class="stat">
+							<th>Class</th>
+							<td><input type="text" name="character_class" value="{{character.character_class}}" required></td>
+						</tr>
+						<!-- <tr class="stat">
+							<th>Subclass</th>
+							<td><input type="text" name="character_subclass" value="{{character.character_subclass}}" required></td>
+						</tr> -->
+						<tr class="stat">
+							<th>Level</th>
+							<td><input type="number" id="character-level" name="character_level" value="{{character.level}}" onchange="updateProficiencyBonus()"></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<th class="medium-column">Proficiency Bonus</th>
+							<td class="large-column" id="proficiency-bonus"></td>
+						</tr>
+
+						<tr class="stat">
+							<th>Health</th>
+							<td style="display: flex; justify-content: space-between;">
+								<input type="number" name="hp_current" value="{{character.hp_current}}" style="width: 40%;">
+								/
+								<input type="number" name="hp_maximum" value="{{character.hp_maximum}}" style="width: 40%;">
+							</td>
+						</tr>
+						<tr class="stat">
+							<th>Armor Class</th>
+							<td><input type="number" name="armor_class" value="{{character.armor_class}}" required></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="stat-block {{theme}}">
+				<div class="stat-heading">
+					<h2>Character Description</h2>
+				</div>
+				<div class="content-block" style="display: flex;">
+					<div class="stat-block {{theme}}">
+						<div class="stat-heading">
+							<h3>Physical</h3>
+						</div>
+						<textarea placeholder="Physical Description" name="description_physical">{{character.description_physical}}</textarea>
+					</div>
+					<div class="stat-block {{theme}}">
+						<div class="stat-heading">
+							<h2>Personality</h2>
+						</div>
+						<textarea placeholder="Personality" name="description_personality">{{character.description_personality}}</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="stat-block {{theme}}">
+				<div class='ability-scores-section'>
+					<div class="stat-heading">
+						<h2>Abilities</h2>
+					</div>
+					<table class="content-block" id="ability-block">
+						<tr>
+							<th class="medium-column">Ability</th>
+							<th class="small-column">Score</th>
+							<th class="small-column">Mod</th>
+							<th class="medium-column">Save</th>
+						</tr>
+						{% for ability in ability_scores %}
+							<tr>
+								<td>{{ability.name}}</td>
+								<td><input type="number" class="ability-score {{ability.name}}-score" name="{{ability.name}}_ability_score" value="{{ability.score}}" min="0" max="30" onchange ="updateAbilityMod(this)"></td>
+								<td>{{skill.ability_score.score}}</td>
+								<td>
+								{% if ability.saving_throw %}
+									<input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" checked="checked" onchange="updateSavingThrows()"></td>
+								{% endif %}
+
+								{% if not ability.saving_throw %}
+									<input type="checkbox" class="saving-check-box" name="{{ability.name}}_saving_throw" onchange="updateSavingThrows()"></td>
+								{% endif %}
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+
+				<div class='saving-throws-section'>
+					<h2>Saving Throws</h2>
+					<table id="extra-ability-block">
+					</table>
+				</div>
+			</div>
+
+			<div class="stat-block {{theme}}">
+				<div class="stat-heading">
+					<h2>Skills</h2>
+					<div>
+						<p class="description">
+							Not Proficient = ○ / Proficient = ●
+						</p>
+						<p class="description">
+							Expert = ◆ / Jack of All Trades = ▲
+						</p>
+					</div>
+				</div>
+				<table id="skill-block">
+					<tr>
+						<th class="small-column">Prof</th>
+						<th class="large-column">Skill</th>
+						<th class="medium-column">Ability</th>
+						<th class="small-column">Mod</th>
+					</tr>
+					{% for skill in skills|dictsort:"name"  %}
+					<tr>
+						<td>
+							<select class='level-input' id="{{skill.name}}_row" name="{{skill.name}}_{{skill.ability_score.name}}_skill" onchange="updateAllAbilities()">
+								<option value="0" {% if skill.proficiency == 0 %} selected {% endif %}>○</option>
+								<option value="1" {% if skill.proficiency == 1 %} selected {% endif %}>●</option>
+								<option value="2" {% if skill.proficiency == 2 %} selected {% endif %}>◆</option>
+								<option value="0.5" {% if skill.proficiency == 0.5 %} selected {% endif %}>▲</option>
+							</select>
+						</td>
+						<td>{{skill.name}}</td>
+						<td><i>({{skill.ability_score.name}})</i></td>
+						<td class="skill-score {{skill.ability_score.name}}-skill">{{skill.ability_score.score}}</td>
+					</tr>					
+					{% endfor %}
+				</table>
+			</div>
+
+				<div class="stat-block {{theme}}">
+					<div class="stat-heading">
+						<h2>Proficiencies</h2>
+					</div>
+					<textarea id="proficiencies" name="proficiencies">{{character.proficiencies}}</textarea>
+				</div>
+				<div class="stat-block {{theme}}">
+					<div class="stat-heading">
+						<h2>Traits & Features</h2>
+						<button type="button" onclick="createNewTrait()">New Trait</button>
+					</div>
+					<table id="trait-block">
+						<tr>
+							<th class="extralarge-column"></th>
+							<th class="medium-column"></th>
+						</tr>
+						{% for trait in traits %}
+							<tr class="trait">
+								<td><input type='text' name='trait_name' placeholder='Name' value="{{trait.name}}">
+									<textarea name='trait_description' placeholder='Description'>{{trait.description}}</textarea></td>
+									<td><button type='button' onclick = 'deleteTrait(this)'>Delete</button></td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+				
+			<div class="content-block">
+				<div class="stat-block {{theme}}">
+					<div class="stat-heading">
+						<h2>Attack</h2>
+						<button type="button" onclick="createNewAttack()">New Attack</button>
+					</div>
+					<table id="attack-block">
+						<tr>
+							<th class="large-column">Name</th>
+							<th class="medium-column">Range</th>
+							<th class="medium-column">Attack Bonus</th>
+							<th class="medium-column">Damage Roll</th>
+							<th class="large-columns">Damage Type</th>
+							<th class="large-column">Notes</th>
+							<th class="medium-column"></th>
+						</tr>
+
+						{% for attack in attacks %}
+						<tr>
+							<td><input type='text' name='attack_name' value='{{attack.name}}'></td>
+							<td><input type='text' name='attack_range' value='{{attack.range}}'></td>
+							<td><input type='text' name='attack_bonus' value='{{attack.attack_bonus}}'></td>
+							<td><input type='text' name='attack_damage_roll' value='{{attack.damage_roll}}'></td>
+							<td><input type='text' name='attack_damage_type' value='{{attack.damage_type}}'></td>
+							<td><textarea name='attack_notes'>{{attack.notes}}</textarea></td>
+							<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+						</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+			</div>
+			<div class="stat-block {{theme}}">
+				<div class="stat-heading">
+					<h2>Inventory</h2>
+					<button type="button" onclick="createNewItem()">New Item</button>
+				</div>
+				<table id="inventory-block">
+					<tr>
+						<th class="small-column">Equip</th>
+						<th class="small-column">Quantity</th>
+						<th class="large-column">Name</th>
+						<th class="large-column">Description</th>
+						<th class="medium-column">Weight</th>
+						<th class="medium-column"></th>
+					</tr>
+					{% for item in items %}
+					<tr>
+						<td><input type="checkbox" name='item_equipped'></td>
+						<td><input type='number' name='item_quantity' value='{{item.amount}}'></td><td><input type='text' name='item_name' value="{{item.name}}"></input></td>
+						<td><textarea name='item_description'>{{item.description}}</textarea></td>
+						<td><input type='text' name='item_weight' value="{{item.weight}}"></td>
+						<td><button type='button' onclick = 'deleteItem(this)'>Delete</button></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="stat-block {{theme}}">
+				<h2>Wallet</h2>
+				<table>
+					<tr>
+						<th class="medium-column">Currency</th>
+						<th class="medium-column">Amount</th>
+					</tr>
+					<tr>
+						<td>Platinum (Pp)</td>
+						<td><input type="number" name="coins_platinum" value="{{character.coins_platinum}}"></td>
+					</tr>
+					<tr>
+						<td>Gold (Gp)</td>
+						<td><input type="number" name="coins_gold" value="{{character.coins_gold}}"></td>
+					</tr>
+					<tr>
+						<td>Electrum (Ep)</td>
+						<td><input type="number" name="coins_electrum" value="{{character.coins_electrum}}"></td>
+					</tr>
+					<tr>
+						<td>Silver (Sp)</td>
+						<td><input type="number" name="coins_silver" value="{{character.coins_silver}}"></td>
+					</tr>
+					<tr>
+						<td>Copper (Cp)</td>
+						<td><input type="number" name="coins_copper" value="{{character.coins_copper}}"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="stat-block {{theme}}">
+				<div class="stat-heading">
+					<h2>Spells</h2>
+				</div>
+				<div class="content-block">
+					<div class="stat-block {{theme}}">
+						<div class="stat-heading">
+							<h3>Spellcasting</h3>
+						</div>
+						<select name="spellcasting_ability" id="spellcasting-ability" onchange="updateSpellcasting()">
+							{% for ability in ability_scores %}
+							<option value="{{ability.name}}" {% if character.spellcasting_ability == ability.name %}selected{% endif %}>{{ability.name}}</option>
+							{% endfor %}
+							<option value="" {% if character.spellcasting_ability == "" %}selected{% endif %}>---</option>
+						</select>
+						<table id="spellcasting-table">
+							<tr>
+								<th class="large-column">Spellcasting Mod</th>
+								<td class="small-column" id="spell-mod">0</td>
+							</tr>
+							<tr>
+								<th>Spell Save DC</th>
+								<td id="spell-save-dc">0</td>
+							</tr>
+							<tr>
+								<th>Spell Attack Bonus</th>
+								<td id="spell-attack-bonus">0</td>
+							</tr>
+						</table>
+						<h3>Spellslots</h3>
+						<table>
+							<tr>
+								<th class="small-column">Lv</th>
+								<th class="large-column">Slots</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td><input type="number" name="spell_slots_level1_current" value="{{character.spell_slots_level1_current}}" min="0" style="width: 35%;">
+									/
+									<input type="number" name="spell_slots_level1_maximum" value="{{character.spell_slots_level1_maximum}}" min="0" style="width: 35%;"></td>
+								</tr>
+							<tr>
+								<td>2</td>
+								<td><input type="number" name="spell_slots_level2_current" value="{{character.spell_slots_level2_current}}" min="0" style="width: 35%;">
+									/
+								<input type="number" name="spell_slots_level2_maximum" value="{{character.spell_slots_level2_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td><input type="number" name="spell_slots_level3_current" value="{{character.spell_slots_level3_current}}" min="0" style="width: 35%;">
+									/
+									<input type="number" name="spell_slots_level3_maximum" value="{{character.spell_slots_level3_maximum}}" min="0" style="width: 35%;"></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td><input type="number" name="spell_slots_level4_current" value="{{character.spell_slots_level4_current}}" min="0" style="width: 35%;">
+										/
+										<input type="number" name="spell_slots_level4_maximum" value="{{character.spell_slots_level4_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><input type="number" name="spell_slots_level5_current" value="{{character.spell_slots_level5_current}}" min="0" style="width: 35%;">
+								/
+								<input type="number" name="spell_slots_level5_maximum" value="{{character.spell_slots_level5_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td><input type="number" name="spell_slots_level6_current" value="{{character.spell_slots_level6_current}}" min="0" style="width: 35%;">
+										/
+								<input type="number" name="spell_slots_level6_maximum" value="{{character.spell_slots_level6_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td><input type="number" name="spell_slots_level7_current" value="{{character.spell_slots_level7_current}}" min="0" style="width: 35%;">
+								/
+								<input type="number" name="spell_slots_level7_maximum" value="{{character.spell_slots_level7_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td><input type="number" name="spell_slots_level8_current" value="{{character.spell_slots_level8_current}}" min="0" style="width: 35%;">
+								/
+								<input type="number" name="spell_slots_level8_maximum" value="{{character.spell_slots_level8_maximum}}" min="0" style="width: 35%;"></td>
+								</tr>
+							<tr>
+								<td>9</td>
+								<td><input type="number" name="spell_slots_level9_current" value="{{character.spell_slots_level9_current}}" min="0" style="width: 35%;">
+								/
+								<input type="number" name="spell_slots_level9_maximum" value="{{character.spell_slots_level9_maximum}}" min="0" style="width: 35%;"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="stat-block {{theme}}">
+						<div class="stat-heading">
+							<h3>Spell List</h3>
+							<button type="button" onclick="createNewSpell()">New Spell</button>
+						</div>
+						<table id="spell-block">
+							<tr>
+								<th class="small-column">Level</th>
+								<th class="large-column">Name</th>
+								<th class="large-column">Description</th>
+								<th class="medium-column">School</th>
+								<th class="medium-column"></th>
+							</tr>
+
+							{% for spell in spells %}
+							<tr>
+								<td><input type='number' class='level-input' name='spell_level' value='{{spell.level}}' min="0"></td>
+								<td><input type='text' name='spell_name' value='{{spell.name}}'></td>
+								<td><textarea type='text' name='spell_description'>{{spell.description}}</textarea></td>
+								<td><input type='text' name='spell_school' value='{{spell.school}}'></td>
+								<td><button type='button' onclick = 'deleteSpell(this)'>Delete</button></td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endblock %}
+	

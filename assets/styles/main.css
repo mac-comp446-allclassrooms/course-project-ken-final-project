@@ -1,1 +1,142 @@
+:root {
+	--font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	--dark-bg: #2d2d2d;
+	--dark-bg2: #0d0d0d;
+	--dark-tx: #fff;
+	--dark-bd: #fff;
 
+	--light-bg: #fff;
+	--light-bg2: #eee;
+	--light-tx: #000;
+	--light-bd: #000;
+
+	--hds-bg: red;
+	--hds-bg2: red;
+	--hds-tx: yellow;
+	--hds-bd: lime;
+
+	--nb-bg: tan;
+	--nb-bg2: peru;
+	--nb-tx: saddlebrown;
+	--nb-bd: brown;
+
+	--ft-bg: olivedrab;
+	--ft-bg2: darkolivegreen;
+	--ft-tx: sandybrown;
+	--ft-bd: saddlebrown;
+}
+body.dark-theme {
+	background-color: var(--dark-bg2);
+	color: var(--dark-tx);
+}
+body.light-theme {
+	background-color: var(--light-bg2);
+	color: var(--light-tx);
+}
+body.hot-dog-theme {
+	background-color: var(--hds-bg2);
+	color: var(--hds-tx);
+}
+body.notebook-theme {
+	background-color: var(--nb-bg2);
+	color: var(--nb-tx);
+}
+body.forest-theme {
+	background-color: var(--ft-bg2);
+	color: var(--ft-tx);
+}
+
+.no-style-link {
+	text-decoration: inherit;
+	color: inherit;
+}
+
+h1, h2, h3, p {
+	font-family: var(--font);
+	margin: 0.1rem;
+}
+
+h1 {
+	font-size: x-large;
+}
+
+h2 {
+	font-size: large;
+	margin: 0.1rem;
+}
+
+h3 {
+	font-size: medium;
+	margin: 0.1rem;
+}
+
+.tab {
+	overflow: hidden;
+	padding: 5px;
+	/* position: fixed; */
+	position: sticky;
+	top: 0;
+}
+.tab.light-theme {
+	border: 1px solid var(--light-bd);
+	background-color: var(--light-bg);
+	color: var(--light-tx);
+}
+.tab.dark-theme {
+	border: 1px solid var(--dark-bd);
+	background-color: var(--dark-bg);
+	color: var(--dark-tx);
+}
+.tab.hot-dog-theme {
+	border: 1px solid var(--hds-bd);
+	background-color: var(--hds-bg);
+	color: var(--hds-tx);
+}
+.tab.notebook-theme {
+	border: 1px solid var(--nb-bd);
+	background-color: var(--nb-bg);
+	color: var(--nb-tx);
+}
+.tab.foresttheme {
+	border: 1px solid var(--ft-bd);
+	background-color: var(--ft-bg);
+	color: var(--ft-tx);
+}
+  
+.tablinks {
+	background-color: inherit;
+	color: inherit;
+	float: left;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	padding-inline: 20px;
+	font-size: medium;
+	border-radius: 30px;
+	box-shadow: 1px 1px 1px gray;
+	transition: background-color 0.5s;
+	transition: box-shadow 0.5s;
+}
+  
+.tablinks:hover {
+	background-color: lightgray;
+	box-shadow: 1.5px 1.5px 5px black;
+}
+
+/* These don't work sadge
+	Can't edit selection :-[
+#dark-theme {
+	background-color: var(--dark-bg);
+	color: var(--dark-tx);
+}
+
+option.light-theme {
+	background-color: var(--light-bg);
+	color: var(--light-tx);
+}
+
+option.hot-dog-theme {
+	background-color: var(--hds-bg);
+	color: var(--hds-tx);
+}
+*/

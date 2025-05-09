@@ -1,0 +1,89 @@
+
+/* Tags */
+body {
+   /* background-color: red; */
+}
+
+table { 
+  font-family: var(--font);
+}
+
+td {
+  padding-inline: 0.25rem;
+}
+
+input {
+  font-family: inherit;
+}
+
+button {
+  font-family: var(--font);
+  border-radius: 10px;
+  border-width: 1px;
+  transition: background-color 0.5s;
+  transition: box-shadow 0.5s;
+}
+
+input[type=text] {
+  width: 6rem;
+
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+input[type=number] {
+  width: 3rem;
+
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: lightgray;
+  box-shadow: 1px 1px 1px black;
+}
+
+/* Classes */
+
+.container-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.container {
+  border: 1px, solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.character-thumbnail {
+  border: 1px, solid;
+  border-radius: 15px;
+  padding: 10px;
+  transition: box-shadow 0.5s;
+  justify-content: center;
+}
+.character-thumbnail.light-theme {
+	background-color: var(--light-bg);
+}
+.character-thumbnail.dark-theme {
+	background-color: var(--dark-bg);
+}
+.character-thumbnail.hot-dog-theme {
+	background-color: var(--hds-bg);
+}
+.character-thumbnail.notebook-theme {
+	background-color: var(--nb-bg);
+}
+.character-thumbnail.forest-theme {
+	background-color: var(--ft-bg);
+}
+
+.character-thumbnail:hover {
+	box-shadow: 1.5px 1.5px 5px gray;
+}
+
+.character-thumbnail button {
+  margin-left: 1rem;
+}
